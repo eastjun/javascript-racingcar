@@ -18,7 +18,7 @@ class InputController {
       return splitedName;
     } catch (error) {
       console.log(error.message);
-      await this.inputName();
+      return this.inputName();
     }
   }
 
@@ -26,7 +26,6 @@ class InputController {
     try {
       const inputTryNumber = await InputView.readLineAsync(MESSAGE.INPUT.TRY_NUMBER);
       Validator.isEmpty(inputTryNumber);
-      console.log(inputTryNumber);
       const parsedNumber = Number(inputTryNumber.trim());
       Validator.isNumber(parsedNumber);
       Validator.isRangeOver(parsedNumber, DEFINITION.MIN_GAME, DEFINITION.MAX_GAME);
@@ -34,7 +33,7 @@ class InputController {
       return inputTryNumber;
     } catch (error) {
       console.log(error.message);
-      await this.inputTryNumber();
+      return this.inputTryNumber();
     }
   }
 }
