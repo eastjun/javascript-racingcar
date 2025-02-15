@@ -4,13 +4,9 @@ import Validate from './Validate.js'
 import Car from './Car.js';
 
 class RacingcarManager {
-    #inputView
-    #outputView
     #validate
 
     constructor() {
-        this.#inputView = new InputView();
-        this.#outputView = new OutputView();
         this.#validate = new Validate();
     }
 
@@ -20,17 +16,17 @@ class RacingcarManager {
         const attempts = await this.#getAttempts();
         this.roundOfRacing(cars, attempts);
         const winners = this.getWinners(cars);
-        this.#outputView.printWinners(winners);
+        OutputView.printWinners(winners);
     }
 
     async #getCarNames() {
         while (true) {
             try {
-                const carNames = await this.#inputView.readCarNames();
+                const carNames = await InputView.readCarNames();
                 this.#validateCarName(carNames);
                 return carNames.split(',');
             } catch (error) {
-                this.#outputView.printErrorMessage(error.message);
+                OutputView.printErrorMessage(error.message);
             }
         }
     }
@@ -56,11 +52,11 @@ class RacingcarManager {
     async #getAttempts() {
         while (true) {
             try {
-                const attempts = await this.#inputView.readAttempts();
+                const attempts = await InputView.readAttempts();
                 this.#validateAttempts(attempts);
                 return Number(attempts);
             } catch (error) {
-                this.#outputView.printErrorMessage(error.message);
+                OutputView.printErrorMessage(error.message);
             }
         }
     }
@@ -88,10 +84,10 @@ class RacingcarManager {
     }
 
     roundOfRacing(cars, attempts) {
-        this.#outputView.printResultMessage();
+        OutputView.printResultMessage();
         for (let i = 0; i < attempts; i++) {
             this.oneRound(cars);
-            this.#outputView.printOneRoundResult(cars);
+            OutputView.printOneRoundResult(cars);
         }
     }
 
@@ -107,10 +103,10 @@ class RacingcarManager {
     }
 
     getWinners(cars) {
-        const maxPositon = this.getMaxPosition(cars);
+        const maxPosition = this.getMaxPosition(cars);
         const winners = [];
         cars.forEach(car => {
-            if (car.position === maxPositon) {
+            if (car.position === maxPosition) {
                 winners.push(car.name);
             }
         });
