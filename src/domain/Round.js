@@ -1,11 +1,10 @@
 import { MOVE_THRESHOLD } from '../Const.js';
-import Car from './Car.js';
 
 class Round {
   #cars;
 
-  constructor(names) {
-    this.#cars = names.map((raceCarName) => new Car(raceCarName));
+  constructor(cars) {
+    this.#cars = cars;
   }
 
   #getMaxMovementCount() {
