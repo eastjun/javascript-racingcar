@@ -68,6 +68,26 @@
 - [x] 테스트) '무엇인가'에 초점을 두고, 테스트 서술 내용 변경
 - [x] 테스트) raceController 분리 후, -> 도메인에 대한 단위 테스트 작성
 
+### ✅ 2단계 미션 - 수정 및 리팩토링
+
+- [ ] prettier 및 eslint 설정하기
+  - [ ] prettier printWidth 변경하기 (80~120)
+- [ ] Random 생성 기준이라 할 수 있는 10 상수화
+- [ ] Random 번호 생성 함수 네이밍 변경 및 파라미터 변경
+- [ ] validation에서 사용하는 conditon 분리하기 -> utils 관리 (ex. isEmpty, isDuplicated)
+- [ ] gameController 결합도 측면에서 분리
+  - [ ] retryValidCheck 메서드 분리 -> utils 관리
+  - [ ] printRaceResults 메서드 분리 -> Output 모듈에서 관리
+- [ ] 함수가 한 가지 기능만 담당
+  - [ ] validateCarNames input 파싱 기능 함수 분리
+- [ ] getter 대신 객체에 메시지 보내기
+- [ ] 입력값 예외 테스트하기
+  - [ ] validateCarsNames
+  - [ ] validateTryCounts
+- [ ] 경계 조건 테스트하기 (test.each api 활용하기)
+  - [ ] 자동차 전진 테스트
+  - [ ] 자동차 이름 5글자 입력값
+
 ## ⚙️ 폴더 구조
 
 ```
