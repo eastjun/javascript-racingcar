@@ -1,5 +1,5 @@
-import { CAR_NAMES } from '../Constants/errorMessage.js';
-import { MAX, MIN } from '../Constants/rules.js';
+import { CAR_NAMES } from '../../Constants/errorMessage.js';
+import { MAX, MIN } from '../../Constants/rules.js';
 
 export const validateCarsNameLength = (input) => {
   if (
