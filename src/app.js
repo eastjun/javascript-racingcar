@@ -46,7 +46,8 @@ class App {
     const cars = carNames.split(',').map((carName) => new Car(carName));
     const gameCount = Number(await this.getGameCount());
 
-    outputView.printGameResult(gameCount, cars);
+    const results = racingGame.playRacing(gameCount, cars);
+    outputView.printGameResult(results);
 
     const winners = racingGame.determineWinners(cars);
     outputView.printWinners(winners);
