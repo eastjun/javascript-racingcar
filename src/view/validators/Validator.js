@@ -36,6 +36,12 @@ const validateDuplicateName = (names) => {
   }
 };
 
+const validateEndWithDelimiter = (names) => {
+  if (names[names.length - 1] === '') {
+    throw new Error(ERROR_MESSAGE.endWithDelimiter);
+  }
+};
+
 export {
   validateLimitLength,
   validatePositiveLength,
@@ -43,4 +49,5 @@ export {
   validateNumeric,
   validateInteger,
   validateDuplicateName,
+  validateEndWithDelimiter,
 };

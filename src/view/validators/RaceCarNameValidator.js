@@ -1,11 +1,27 @@
-import { validateLimitLength, validatePositiveLength } from './validator.js';
+import {
+  validateDuplicateName,
+  validateEndWithDelimiter,
+  validateLimitLength,
+  validatePositiveLength,
+} from './validator.js';
 
-const raceCarNameValidators = [validateLimitLength, validatePositiveLength];
+const nameValidators = [validateLimitLength, validatePositiveLength];
+
+const seperatedNameValidators = [
+  validateDuplicateName,
+  validateEndWithDelimiter,
+];
 
 const validateRaceCarNames = (name) => {
-  raceCarNameValidators.forEach((raceCarNameValidator) => {
+  nameValidators.forEach((raceCarNameValidator) => {
     raceCarNameValidator(name);
   });
 };
 
-export { validateRaceCarNames };
+const vaildateSeperatedRaceCarName = (names) => {
+  seperatedNameValidators.forEach((seperatedNameValidator) => {
+    seperatedNameValidator(names);
+  });
+};
+
+export { validateRaceCarNames, vaildateSeperatedRaceCarName };

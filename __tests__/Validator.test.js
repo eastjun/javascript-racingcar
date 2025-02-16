@@ -5,6 +5,7 @@ import {
   validatePositiveNumber,
   validateNumeric,
   validateInteger,
+  validateDuplicateName,
 } from '../src/view/validators/validator.js';
 
 describe('validate 테스트', () => {
@@ -40,4 +41,21 @@ describe('validate 테스트', () => {
     expect(() => validateInteger(1.1)).toThrow();
     expect(() => validateInteger(2)).not.toThrow();
   });
+});
+
+test.each([
+  [['a', 'b', 'c'], false],
+  [['a', 'a', 'c'], true],
+  [['a', 'a', 'a'], true],
+])('자동차 이름이 중복되지 않는지 확인한다.', (carNameList, result) => {
+  if (result) {
+    expect(() => validateDuplicateName(carNameList)).toThrow();
+  } else {
+    expect(() => validateDuplicateName(carNameList)).not.toThrow();
+  }
+});
+
+test('사용자로부터 입력받은 자동차 list의 마지막이 컴마로 종료되지 않는지 확인한다', () => {
+  const RACE_CAR_NAMES = ['aa', 'b', ''];
+  expect(() => validateEndWithDelimiter(RACE_CAR_NAMES)).toThrow();
 });

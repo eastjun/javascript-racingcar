@@ -9,6 +9,7 @@ const ERROR_MESSAGE = {
   numeric: '시도 횟수는 숫자여야 합니다',
   integer: '시도 횟수는 정수어야 합니다',
   duplicateNames: '중복된 이름은 작성하실 수 없습니다.',
+  endWithDelimiter: '문장의 마지막은 구분자로 끝낼 수 없습니다',
 };
 
 const INPUT_MESSAGE = {
