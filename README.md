@@ -76,7 +76,7 @@
 - [x] validation에서 사용하는 split 함수 분리하기 -> utils
 - [x] validation에서 사용하는 conditon 분리하기 -> utils 관리 (ex. isEmpty, isDuplicated)
 - [ ] gameController 결합도 측면에서 분리
-  - [ ] retryValidCheck 메서드 분리 -> utils 관리
+  - [x] retryValidCheck 메서드 분리 -> utils 관리
   - [ ] printRaceResults 메서드 분리 -> Output 모듈에서 관리
 - [ ] 함수가 한 가지 기능만 담당
   - [ ] validateCarNames input 파싱 기능 함수 분리
