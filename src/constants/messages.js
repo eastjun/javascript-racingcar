@@ -11,6 +11,7 @@ export const OUTPUT = Object.freeze({
 export const ERROR = Object.freeze({
   IS_CAR_NAME_EMPTY: '자동차 이름이 비어있습니다.',
   IS_LENGTH_LONGER_THAN_FIVE: '자동차 이름은 다섯 글자 이내로 작성주세요.',
+  ARE_CAR_NAMES_DUPLICATED: '자동차 이름은 중복되지 않도록 해주세요.',
   IS_TRY_COUNT_EMPTY: '시도할 횟수가 비어있습니다.',
   IS_NOT_NUMBER: '0보다 큰 정수를 입력해주세요.',
 });
