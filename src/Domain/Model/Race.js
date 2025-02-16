@@ -1,4 +1,4 @@
-import { CAR_MOVE_FORWARD, MAX, MIN } from '../../Constants/rules.js';
+import { CAR_MOVE_FORWARD, MAX, MIN } from '../Constants/rules.js';
 import { getRandomNumber } from '../../Utils/math.js';
 
 export default class Race {
