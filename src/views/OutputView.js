@@ -23,6 +23,16 @@ const OutputView = {
   printWinners(winners) {
     this.print(`${OUTPUT_MESSAGE.WINNER} ${winners.join(", ")}`);
   },
+
+  printOutput(raceResult, winners) {
+    OutputView.printStartMessage();
+
+    raceResult.forEach((carStatus) => {
+      OutputView.printCarStatus(carStatus);
+    });
+
+    OutputView.printWinners(winners);
+  },
 };
 
 export default OutputView;
