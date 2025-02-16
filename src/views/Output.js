@@ -7,20 +7,23 @@ const Output = {
   printRaceStart() {
     Console.print(OUTPUT_PROMPT_MESSAGE.RACE_RESULT);
   },
-  printRace(name, count) {
+  printCarStatus(name, count) {
     Console.print(`${name} : ${EXPRESSION_FLAG.repeat(count)}`);
   },
-  printWinners(winners) {
-    Console.print(`${OUTPUT_PROMPT_MESSAGE.FINAL_WINNERS}: ${winners.join(", ")}`);
+  printRoundResult(roundResult) {
+    roundResult.forEach(({ name, count }) => {
+      Output.printCarStatus(name, count);
+    });
+    Console.printLineBreak();
   },
   printRaceResults(raceResults) {
     Output.printRaceStart();
     raceResults.forEach((roundResult) => {
-      roundResult.forEach(({ name, count }) => {
-        Output.printRace(name, count);
-      });
-      Console.printLineBreak();
+      Output.printRoundResult(roundResult);
     });
+  },
+  printWinners(winners) {
+    Console.print(`${OUTPUT_PROMPT_MESSAGE.FINAL_WINNERS}: ${winners.join(", ")}`);
   },
 };
 
