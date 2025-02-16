@@ -7,10 +7,7 @@ export const playRound = (cars) => {
 };
 
 export const playRacing = (cars, tryCount) => {
-  return Array.from({ length: tryCount }).reduce((rounds, _) => {
-    const newRound = playRound(rounds[rounds.length - 1] || cars);
-    return [...rounds, newRound];
-  }, []);
+  return Array.from({ length: tryCount }).reduce((rounds) => [...rounds, playRound(rounds.at(-1))], [cars]);
 };
 
 export const getWinnersByPosition = (cars) => {
