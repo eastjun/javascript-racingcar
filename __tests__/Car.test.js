@@ -10,19 +10,17 @@ describe("Car 객체 테스트", () => {
 
   describe("자동차 이동 테스트", () => {
     test("자동차 전진 테스트", () => {
-      const randomNumber = 4;
       const car = new Car("happy");
 
-      car.move(randomNumber);
+      car.move(() => true);
 
       expect(car.position).toBe(1);
     });
 
     test("자동차 멈춤 테스트", () => {
-      const randomNumber = 3;
       const car = new Car("happy");
 
-      car.move(randomNumber);
+      car.move(() => false);
 
       expect(car.position).toBe(0);
     });
@@ -41,10 +39,10 @@ describe("Car 객체 테스트", () => {
       }).toThrow(new Error(ERROR_MESSAGE.CAR_NAME_MIN_LENGTH));
     });
 
-    test("자동차 이름 숫자 입력 예외 테스트", () => {
+    test("자동차 이름 영어/한글 입력 예외 테스트", () => {
       expect(() => {
         new Car(1);
-      }).toThrow(new Error(ERROR_MESSAGE.CAR_NAME_INVALID_NUMBER));
+      }).toThrow(new Error(ERROR_MESSAGE.CAR_NAME_KOREAN_AND_ENGLISH));
     });
   });
 });
