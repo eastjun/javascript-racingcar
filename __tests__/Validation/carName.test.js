@@ -31,16 +31,19 @@ describe('자동차 이름 유효성 검사', () => {
     [' ', '[Error]'],
     ['', '[Error]'],
     [',', '[Error]'],
-  ])('자동차 이름 틀린 형식', (input, errorMessage) => {
-    expect(() => {
-      validateCarNameForm(input);
-    }).toThrow(errorMessage);
-  });
+  ])(
+    '자동차 이름 공백, 미입력, 구분자만 입력한 틀린 형식',
+    (input, errorMessage) => {
+      expect(() => {
+        validateCarNameForm(input);
+      }).toThrow(errorMessage);
+    },
+  );
 
   test('자동차 이름 중복', () => {
-    const carsName = 'haku,haku';
+    const carNames = 'haku,haku';
     expect(() => {
-      validateDuplicatedCarName(carsName);
+      validateDuplicatedCarName(carNames);
     }).toThrow('[Error]');
   });
 });
