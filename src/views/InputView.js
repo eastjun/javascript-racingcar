@@ -1,7 +1,11 @@
 import readline from 'readline';
+import InputHandler from '../utils/InputHandler.js';
+import MESSAGE from '../constants/Message.js';
+import { Parser } from '../utils/Parser.js';
+import Validator from '../utils/ValidationUtils.js';
 
-class InputView {
-  static readLineAsync(query) {
+const InputView = {
+  readLineAsync(query) {
     return new Promise((resolve, reject) => {
       if (arguments.length !== 1) {
         reject(new Error('arguments must be 1'));
@@ -21,7 +25,15 @@ class InputView {
         resolve(input);
       });
     });
-  }
-}
+  },
+
+  async inputName() {
+    return InputHandler.getValidInput(MESSAGE.INPUT.NAME, Parser.splitName, Validator.validateInputNames);
+  },
+
+  async inputTryNumber() {
+    return InputHandler.getValidInput(MESSAGE.INPUT.TRY_NUMBER, Parser.toNumber, Validator.validateInputTryNumber);
+  },
+};
 
 export default InputView;

@@ -1,7 +1,7 @@
 import { createRandom } from '../utils/Random.js';
 import Car from '../models/Car.js';
 import OutputView from '../views/OutputView.js';
-import InputController from './InputController.js';
+import InputView from '../views/InputView.js';
 
 export default class Game {
   #carList;
@@ -34,8 +34,8 @@ export default class Game {
   }
 
   async start() {
-    const inputName = await InputController.inputName();
-    const inputTryNumber = await InputController.inputTryNumber();
+    const inputName = await InputView.inputName();
+    const inputTryNumber = await InputView.inputTryNumber();
     this.createCarList(inputName);
     for (let i = 0; i < inputTryNumber; i++) {
       this.#carList.forEach(car => {
