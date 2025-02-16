@@ -1,44 +1,46 @@
 import { INPUT_MESSAGE } from '../Const.js';
 import Output from './Output.js';
-import Validate from '../Validate.js';
 import readLineAsync from '../ReadLineAsync.js';
-class Input {
-  #validate = new Validate();
+import { validateRaceCarNames } from './validators/RaceCarNameValidator.js';
+import { validateRaceCount } from './validators/RaceCount.js';
 
-  async raceCarNames() {
-    try {
-      const raceCarName = await readLineAsync(
-        INPUT_MESSAGE.raceCarNames + Output.printNewLine()
-      );
-      const raceCarNames = raceCarName.split(',');
+const getSeparatedCarNames = async () => {
+  const raceCarName = await readLineAsync(
+    INPUT_MESSAGE.raceCarNames + Output.printNewLine()
+  );
+  return raceCarName.split(',');
+};
 
-      raceCarNames.forEach((raceCarName) => {
-        this.#validate.isLiminLength(raceCarName).isPositiveLength(raceCarName);
-      });
+const getNumericRaceCount = async () => {
+  return Number(
+    await readLineAsync(INPUT_MESSAGE.raceCount + Output.printNewLine())
+  );
+};
 
-      return raceCarNames;
-    } catch (e) {
-      Output.printLine(e.message);
-      return await this.raceCarNames();
-    }
+const getValidRaceCarNames = async () => {
+  try {
+    const raceCarNames = await getSeparatedCarNames();
+    raceCarNames.forEach((raceCarName) => {
+      validateRaceCarNames(raceCarName);
+    });
+
+    return raceCarNames;
+  } catch (e) {
+    Output.printLine(e.message);
+    return await this.raceCarNames();
   }
+};
 
-  async raceCount() {
-    try {
-      const raceCount = Number(
-        await readLineAsync(INPUT_MESSAGE.raceCount + Output.printNewLine())
-      );
-      this.#validate
-        .isPositiveNumber(raceCount)
-        .isNumeric(raceCount)
-        .isInteger(raceCount);
+const getValidRaceCount = async () => {
+  try {
+    const raceCount = await getNumericRaceCount();
+    validateRaceCount(raceCount);
 
-      return raceCount;
-    } catch (e) {
-      Output.printLine(e.message);
-      return await this.raceCount();
-    }
+    return raceCount;
+  } catch (e) {
+    Output.printLine(e.message);
+    return await this.raceCount();
   }
-}
+};
 
-export default Input;
+export { getValidRaceCarNames, getValidRaceCount };
