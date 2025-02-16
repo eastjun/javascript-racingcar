@@ -2,6 +2,7 @@ import {
   validateCarsNameLength,
   validateCarNameForm,
   validateDuplicatedCarName,
+  validateCarNameNoSpaces,
 } from '../../src/Validation/carName.js';
 
 describe('자동차 이름 유효성 검사', () => {
@@ -44,6 +45,13 @@ describe('자동차 이름 유효성 검사', () => {
     const carNames = 'haku,haku';
     expect(() => {
       validateDuplicatedCarName(carNames);
+    }).toThrow('[Error]');
+  });
+
+  test('자동차 이름 공백 오류', () => {
+    const carNames = 'ha ku,pobi';
+    expect(() => {
+      validateCarNameNoSpaces(carNames);
     }).toThrow('[Error]');
   });
 });
