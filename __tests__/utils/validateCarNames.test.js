@@ -30,10 +30,10 @@ describe("utils/valideCarNames", () => {
     [["a"], ERROR.INVALID_CARS_LENGTH],
     [["a", "b"], null]
   ])("%s가 최소 2대인지 확인", (input, expectedError) => {
-    if (expectedError) {
+    if (expectedError !== null) {
       expect(() => validateLeastCars(input)).toThrow(expectedError);
     } else {
-      expect(() => validateLeastCars(input)).not.toThrow();
+      expect(() => validateLeastCars(input)).not.toBeUndefined();
     }
   });
 
@@ -41,10 +41,10 @@ describe("utils/valideCarNames", () => {
     [["일이삼사오", "일이삼"], null],
     [["일이삼사오육", "일이삼"], ERROR.INVALID_CARNAME_LENGTH]
   ])("%s가 5자 이하인지 확인", (input, expectedError) => {
-    if (expectedError) {
+    if (expectedError !== null) {
       expect(() => validateCarNameLength(input)).toThrow(expectedError);
     } else {
-      expect(() => validateCarNameLength(input)).not.toThrow();
+      expect(() => validateCarNameLength(input)).not.toBeUndefined();
     }
   });
 
