@@ -11,7 +11,7 @@ import {
   validateGameCountType,
 } from '../Validation/gameCount.js';
 
-import readLineAsync from './utils.js';
+import { readLineAsync } from './utils.js';
 
 export const getCarsName = async () => {
   const input = await readLineAsync(`${INPUT.CARS_NAME}\n`);

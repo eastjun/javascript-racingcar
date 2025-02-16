@@ -1,6 +1,6 @@
 import readline from 'readline';
 
-function readLineAsync(query) {
+export function readLineAsync(query) {
   return new Promise((resolve, reject) => {
     if (arguments.length !== 1) {
       reject(new Error('arguments must be 1'));
@@ -36,5 +36,3 @@ export const readUserInputUntilSuccess = async ({
     return readUserInputUntilSuccess({ readUserInput, validation });
   }
 };
-
-export default readLineAsync;
