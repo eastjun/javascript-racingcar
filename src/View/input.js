@@ -1,4 +1,4 @@
-import { INPUT } from '../Constants/message.js';
+import { INPUT } from './Constants/query.js';
 import { readLineAsync } from './utils.js';
 
 export const getCarsName = async () => {

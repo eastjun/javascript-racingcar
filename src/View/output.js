@@ -1,4 +1,4 @@
-import { RACE } from '../Constants/message.js';
+import { RACE } from './Constants/message.js';
 
 const outputView = {
   printRaceResult(raceResult) {
