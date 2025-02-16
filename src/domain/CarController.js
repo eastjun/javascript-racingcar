@@ -1,10 +1,10 @@
-import InputView from '../Views/InputView.js';
-import OutputView from '../Views/OutputView.js';
+import InputView from '../view/InputView.js';
+import OutputView from '../view/OutputView.js';
 import { checkTryCountRange, checkIsInteger } from '../validates/tryCountValidates.js';
 import { checkIsEmpty, checkCarNameLength, checkCarCount, checkCarNameDuplicate } from '../validates/carValidates.js';
 import { splitString } from '../utils/separator.js';
 import { stringToNumber } from '../utils/changeDataType.js';
-import Car from '../Models/Car.js';
+import Car from './Car.js';
 import { getRandomNumber } from '../utils/randomNumber.js';
 
 class CarController {
