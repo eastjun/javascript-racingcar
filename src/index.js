@@ -1,5 +1,4 @@
-import CarRace from './domain/CarRace.js';
+import { Controller } from './controller/index.js';
 
-const carRace = new CarRace();
-await carRace.init();
-carRace.run();
+const controller = new Controller();
+await controller.init();
