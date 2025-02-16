@@ -15,10 +15,7 @@ class Car {
     }
   }
 
-  moveForward(randomValue) {
-    if (randomValue < 4) {
-      return;
-    }
+  moveForward() {
     this.position++;
   }
 }

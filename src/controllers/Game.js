@@ -2,6 +2,7 @@ import { createRandom } from '../utils/Random.js';
 import Car from '../domain/models/Car.js';
 import OutputView from '../views/OutputView.js';
 import InputView from '../views/InputView.js';
+import DEFINITION from '../constants/Definition.js';
 
 export default class Game {
   #carList;
@@ -40,7 +41,7 @@ export default class Game {
     for (let i = 0; i < inputTryNumber; i++) {
       this.#carList.forEach(car => {
         const randomValue = createRandom();
-        car.moveForward(randomValue);
+        if (randomValue < DEFINITION.ADVANCE_CONDITION) car.moveForward(randomValue);
         OutputView.roundResult(car.name, car.position);
       });
       OutputView.break();
