@@ -1,4 +1,5 @@
 # javascript-racingcar
+
 ```
 javascript-racingcar
 ├─ .eslintrc.json
@@ -6,24 +7,38 @@ javascript-racingcar
 ├─ README.md
 ├─ __tests__
 │  ├─ Car.test.js : 자동차 클래스 테스트
+│  ├─ Race.test.js : 자동차 경주 클래스 테스트
 │  └─ Validation : 유효성 검사 테스트
 │     ├─ carName.test.js : 자동차 이름 테스트
 │     └─ gameCount.test.js : 시도 횟수 테스트
 ├─ package-lock.json
 ├─ package.json
 └─ src
-  ├─ Model
-  │  └─ Car.js
-  ├─ Validation : 유효성 검사
-  │  ├─ carName.js
-  │  └─ gameCount.js
-  ├─ View
-  │  ├─ input.js
-  │  └─ output.js
-  ├─ app.js : 컨트롤러
-  ├─ index.js : 진입점
-  └─ util.js
+   ├─ Domain : 도메인 관련 로직
+   │  ├─ Constants : 상수
+   │  │  ├─ errorMessage.js : 유효성 검사에 쓰이는 상수
+   │  │  └─ rules.js : 도메인 관련 규칙
+   │  ├─ Model : 모델
+   │  │  ├─ Car.js : 자동차
+   │  │  └─ Race.js : 자동차 경주
+   │  └─ Validation : 유효성 검사
+   │     ├─ carName.js : 자동차 이름
+   │     └─ gameCount.js : 시도 횟수
+   ├─ Utils
+   │  └─ math.js : 무작위 수 생성
+   ├─ View : UI 관련 로직
+   │  ├─ Constants : 상수
+   │  │  ├─ message.js : 결과 메시지
+   │  │  └─ query.js : 사용자 입력
+   │  ├─ input.js : 사용자 입력 가져오기
+   │  ├─ output.js : 결과 출력하기
+   │  └─ utils.js : 사용자 입력 전처리 및 재입력
+   ├─ app.js : 컨트롤러
+   └─ index.js : 진입점
+
 ```
+
+
 ## 자동차
 
 1. 자동차에 5자 이하로 이름을 부여할 수 있다.
@@ -31,6 +46,7 @@ javascript-racingcar
 3. 자동차는 0에서 9 사이에서 무작위 값을 구한 후 무작위 값이 4 이상일 경우 전진할 수 있다.
 4. 자동차는 0에서 9 사이에서 무작위 값을 구한 후 무작위 값이 3 이하일 경우 멈춘다.
 5. 실행 시 자동차 이름을 같이 출력한다.
+
 
 ## 콘트롤러
 
@@ -53,3 +69,5 @@ javascript-racingcar
 3. 경주 실행 시키기
 4. 경주 결과 출력하기
 5. 우승자 출력하기
+
+
