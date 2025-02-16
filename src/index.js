@@ -1,5 +1,5 @@
-import Output from "./ui/Output.js";
-import Input from "./ui/Input.js";
+import Output from "./view/Output.js";
+import Input from "./view/Input.js";
 import Race from "./domain/Race.js";
 
 const input = new Input();
