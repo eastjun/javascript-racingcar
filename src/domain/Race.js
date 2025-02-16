@@ -1,5 +1,5 @@
 import Car from "./Car.js";
-import { MOVE_CONDITION, RANDOM_NUMBER } from "../constants/Constants.js";
+import { RANDOM_NUMBER } from "../constants/Constants.js";
 import { getRandomNumber } from "../utils/getRandomNumber.js";
 
 class Race {
@@ -13,10 +13,18 @@ class Race {
   executeTurn() {
     this.#carList.forEach((car) => {
       const randomNumber = getRandomNumber(RANDOM_NUMBER.MIN, RANDOM_NUMBER.MAX);
-      if (randomNumber >= MOVE_CONDITION) {
-        car.move(randomNumber);
-      }
+      car.move(randomNumber);
     });
+  }
+
+  executeRace() {
+    const raceResult = [];
+    for (let i = 0; i < this.attemptCount; i++) {
+      this.executeTurn();
+      raceResult.push([...this.#carList]);
+    }
+
+    return raceResult;
   }
 
   getWinnerName() {
@@ -25,15 +33,13 @@ class Race {
   }
 
   play() {
-    const raceResult = [];
-
-    for (let i = 0; i < this.attemptCount; i++) {
-      this.executeTurn();
-      raceResult.push([...this.#carList]);
-    }
-
+    const raceResult = this.executeRace();
     const winners = this.getWinnerName();
     return { raceResult, winners };
+  }
+
+  get carList() {
+    return this.carList;
   }
 }
 

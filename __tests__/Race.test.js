@@ -1,17 +1,30 @@
-import { getRandomNumber } from "../src/utils/getRandomNumber.js";
 import Race from "../src/domain/Race.js";
+import { MOVE_CONDITION } from "../src/constants/Constants.js";
 
-test("공동 우승자 출력", () => {
-  const race = new Race(["수이", "메타", "메이토"], 2);
+describe("Race 클래스 테스트", () => {
+  test("자동차 리스트가 정상적으로 생성되는가", () => {
+    const race = new Race(["Tesla", "BMW", "Audi"], 3);
+    expect(race).not.toBeUndefined();
+    expect(race.carList.length).toBe(3);
+    expect(race.carList[0].name).toBe("Tesla");
+  });
 
-  // Given: 자동차들의 위치 설정
-  Object.defineProperty(race.carList[0], "position", { get: () => 2 });
-  Object.defineProperty(race.carList[1], "position", { get: () => 2 });
-  Object.defineProperty(race.carList[2], "position", { get: () => 0 });
+  test("executeRace() 실행 후 모든 시도 결과가 저장되는가", () => {
+    const race = new Race(["Tesla"], 3);
 
-  // When: 우승자 확인
-  const winners = race.getWinnerName();
+    const raceResult = race.executeRace();
 
-  // Then: 수이와 메타가 공동 우승자로 출력되어야 함
-  expect(winners).toEqual(["수이", "메타"]);
+    expect(raceResult.length).toBe(3);
+  });
+
+  test("getWinnerName()이 우승자를 정상적으로 반환하는가", () => {
+    const race = new Race(["Tesla", "BMW", "Audi"], 1);
+
+    race.carList[0].move(MOVE_CONDITION);
+    race.carList[2].move(MOVE_CONDITION + 2);
+
+    const winners = race.getWinnerName();
+    expect(winners).toEqual(expect.arrayContaining(["Tesla", "Audi"]));
+    expect(winners).not.toContain("BMW");
+  });
 });
