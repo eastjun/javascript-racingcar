@@ -1,11 +1,11 @@
 import Race from "./domain/Race.js";
-import InputHandler from "./input/InputHandler.js";
+import InputView from "./views/InputView.js";
 import OutputView from "./views/OutputView.js";
 
 class App {
   async run() {
-    const carNameList = await InputHandler.getCarNameList();
-    const attemptCount = await InputHandler.getAttemptCount();
+    const carNameList = await InputView.getCarNameList();
+    const attemptCount = await InputView.getAttemptCount();
 
     const race = new Race(carNameList, attemptCount);
 
