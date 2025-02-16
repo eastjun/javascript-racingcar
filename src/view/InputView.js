@@ -1,4 +1,6 @@
 import readline from "readline";
+import { INPUT_MESSAGE } from './constants.js';
+
 function readLineAsync(query) {
   return new Promise((resolve, reject) => {
     if (arguments.length !== 1) {
@@ -21,16 +23,12 @@ function readLineAsync(query) {
   });
 }
 
-const MESSAGE = {
-  READ_CAR_NAME: '경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).\n',
-  READ_ATTEMPTS: '시도할 횟수는 몇 회인가요?\n'
-}
 async function readCarNames() {
-  return await readLineAsync(MESSAGE.READ_CAR_NAME);
+  return await readLineAsync(INPUT_MESSAGE.READ_CAR_NAME);
 }
 
 async function readAttempts() {
-  return await readLineAsync(MESSAGE.READ_ATTEMPTS);
+  return await readLineAsync(INPUT_MESSAGE.READ_ATTEMPTS);
 }
 
 const InputView = {

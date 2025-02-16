@@ -1,14 +1,11 @@
-const MESSAGE = {
-    RACING_RESULT_TITLE: '\n실행 결과',
-    WINNER_RESULT_TITLE: '최종 우승자:',
-};
+import { OUTPUT_MESSAGE } from './constants.js';
 
 function printErrorMessage(errorMessage) {
     console.log(`${errorMessage}\n`);
 }
 
 function printResultMessage() {
-    console.log(MESSAGE.RACING_RESULT_TITLE);
+    console.log(OUTPUT_MESSAGE.RACING_RESULT_TITLE);
 }
 
 function printOneRoundResult(cars) {
@@ -19,7 +16,7 @@ function printOneRoundResult(cars) {
 }
 
 function printWinners(winners) {
-    console.log(`${MESSAGE.WINNER_RESULT_TITLE} ${winners.join(', ')}`);
+    console.log(`${OUTPUT_MESSAGE.WINNER_RESULT_TITLE} ${winners.join(', ')}`);
 }
 
 const OutputView = {
