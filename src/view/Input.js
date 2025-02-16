@@ -1,5 +1,5 @@
 import { INPUT_MESSAGE } from '../Const.js';
-import Output from '../ui/Output.js';
+import Output from './Output.js';
 import Validate from '../Validate.js';
 import readLineAsync from '../ReadLineAsync.js';
 class Input {

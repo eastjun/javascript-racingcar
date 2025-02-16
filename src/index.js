@@ -1,6 +1,6 @@
-import Output from './view/Output.js';
-import Input from './view/Input.js';
 import Race from './domain/Race.js';
+import Input from './view/Input.js';
+import Output from './view/Output.js';
 
 const input = new Input();
 const output = new Output();
@@ -11,10 +11,10 @@ async function run() {
 
   const race = new Race(raceCarNames, raceCount);
   race.raceCar();
-  const moveResult = race.getMoveResult();
+  const raceResults = race.getRaceResult();
   const winnerList = race.getWinner();
 
-  output.printResult(moveResult, winnerList);
+  output.printResult(raceResults, winnerList);
 }
 
 run();
