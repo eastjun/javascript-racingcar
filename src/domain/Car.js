@@ -3,6 +3,7 @@ import {
   ERROR_MESSAGE,
   CAR_NAME_MAX_LENGTH,
   CAR_NAME_MIN_LENGTH,
+  KOREAN_AND_ENGLISH_REGEX,
 } from "../config/constants.js";
 
 class Car {
@@ -19,8 +20,8 @@ class Car {
       throw Error(ERROR_MESSAGE.CAR_NAME_MAX_LENGTH);
     if (name.length < CAR_NAME_MIN_LENGTH)
       throw Error(ERROR_MESSAGE.CAR_NAME_MIN_LENGTH);
-    if (!Number.isNaN(Number(name)))
-      throw Error(ERROR_MESSAGE.CAR_NAME_INVALID_NUMBER);
+    if (KOREAN_AND_ENGLISH_REGEX.test(name))
+      throw Error(ERROR_MESSAGE.CAR_NAME_KOREAN_AND_ENGLISH);
   }
 
   get name() {
