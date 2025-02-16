@@ -1,5 +1,4 @@
 import readline from 'readline';
-import OutputView from '../view/OutputView.js';
 
 export async function readLineAsync(query) {
   return new Promise((resolve, reject) => {
