@@ -1,3 +1,3 @@
 export const createCars = (carNames) => {
-  return carNames.map((carName) => ({ name: carName, position: 0 }));
+  return carNames.map((carName) => ({ name: carName.trim(), position: 0 }));
 };
