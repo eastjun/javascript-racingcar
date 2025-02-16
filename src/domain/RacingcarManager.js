@@ -1,4 +1,3 @@
-import Validate from './Validate.js'
 import Car from './Car.js';
 
 class RacingcarManager {
