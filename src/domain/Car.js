@@ -1,5 +1,4 @@
-const MOVE_CONDITION = 4
-const MOVE_FORWARD = 1;
+import { MOVE_CONDITION, MOVE_FORWARD } from "./constants.js";
 class Car {
     name
     position
