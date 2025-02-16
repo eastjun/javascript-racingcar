@@ -2,13 +2,15 @@ const MIN_GAME_COUNT = 0;
 const MAX_GAME_COUNT = 100;
 
 export const validateGameCountType = (input) => {
-  const isInteger = Number.isInteger(Number(input));
-  if (
-    (typeof input === 'string' && input.trim() === '') ||
-    isInteger === false
-  ) {
+  const trimmedInput = String(input).trim();
+  const numberValue = Number(trimmedInput);
+
+  const isEmpty = trimmedInput === '';
+  const isNotInteger = !Number.isInteger(numberValue);
+
+  if (isEmpty || isNotInteger) {
     throw new Error(
-      '[Error] 시도 횟수는 공백,소수,문자열,NaN,Infinity 안됩니다.',
+      '[Error] 시도 횟수는 공백, 소수, 문자열, NaN, Infinity가 될 수 없습니다',
     );
   }
 };
