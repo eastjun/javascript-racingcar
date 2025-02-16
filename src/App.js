@@ -4,12 +4,6 @@ import OutputView from './view/OutputView.js';
 import Validate from './domain/Validate.js';
 
 class App {
-  #validate
-
-  constructor() {
-    this.#validate = new Validate();
-  }
-
   async run() {
     const racingcarManager = new RacingcarManager();
 
@@ -38,12 +32,12 @@ class App {
 
   #validateCarName(carNames) {
     try {
-      this.#validate.isEmpty(carNames);
+      Validate.isEmpty(carNames);
       const carNamesList = carNames.split(',');
       carNamesList.forEach(carName => {
-        this.#validate.isEmpty(carName);
-        this.#validate.carCount(carNamesList);
-        this.#validate.carNameLength(carName);
+        Validate.isEmpty(carName);
+        Validate.carCount(carNamesList);
+        Validate.carNameLength(carName);
       });
     } catch (error) {
       throw error;
@@ -64,11 +58,11 @@ class App {
 
   #validateAttempts(attempts) {
     try {
-      this.#validate.isEmpty(attempts);
+      Validate.isEmpty(attempts);
       const numAttempts = Number(attempts);
-      this.#validate.isNumber(numAttempts);
-      this.#validate.isPositiveNumber(numAttempts);
-      this.#validate.isInteger(numAttempts);
+      Validate.isNumber(numAttempts);
+      Validate.isPositiveNumber(numAttempts);
+      Validate.isInteger(numAttempts);
     } catch (error) {
       throw error;
     }
