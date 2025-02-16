@@ -1,5 +1,5 @@
 import { CAR_MOVE_STANDARD } from '../lib/constants.js';
-import { getRandomInteger } from '../lib/utils.js';
+import { getRandomNumber } from '../lib/utils.js';
 import Car from './Car.js';
 
 export default class CarRace {
@@ -18,15 +18,22 @@ export default class CarRace {
   runRace(onRoundEnd) {
     for (let round = 0; round < this.#tryCount; round++) {
       this.#cars.forEach(car => {
-        if (this.#checkCarGo()) car.go();
+        const randomNumber = this.#getCarRaceRandomNumber();
+        const isCarGo = this.#checkCarGo(randomNumber);
+
+        if (isCarGo) car.go();
       });
 
       onRoundEnd(this.#cars);
     }
   }
 
-  #checkCarGo() {
-    return getRandomInteger(9) >= CAR_MOVE_STANDARD;
+  #getCarRaceRandomNumber() {
+    return getRandomNumber(9);
+  }
+
+  #checkCarGo(carRaceNUmber) {
+    return carRaceNUmber >= CAR_MOVE_STANDARD;
   }
 
   getWinners() {
