@@ -14,7 +14,7 @@ describe("TryCount 유효성 테스트", () => {
       input: "-1",
       errorMessage: ERROR_TRY_COUNT_MESSAGE.INVALID_RANGE,
     },
-  ])("%s 에러가 발생한다.", ({ input, errorMessage }) => {
+  ])("$description 에러가 발생한다.", ({ input, errorMessage }) => {
     // given
     // when & then
     expect(() => validateTryCount(input)).toThrow(errorMessage);
