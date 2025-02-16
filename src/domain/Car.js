@@ -1,5 +1,4 @@
 import {
-  MOVE_THRESHOLD,
   ERROR_MESSAGE,
   CAR_NAME_MAX_LENGTH,
   CAR_NAME_MIN_LENGTH,
@@ -7,7 +6,7 @@ import {
 } from "../config/constants.js";
 
 class Car {
-  #name = "";
+  #name;
   #position = 0;
 
   constructor(name) {
