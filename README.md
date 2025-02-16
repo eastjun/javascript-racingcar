@@ -75,18 +75,14 @@
 - [x] Random 번호 생성 함수 네이밍 변경 및 파라미터 변경
 - [x] validation에서 사용하는 split 함수 분리하기 -> utils
 - [x] validation에서 사용하는 conditon 분리하기 -> utils 관리 (ex. isEmpty, isDuplicated)
-- [ ] gameController 결합도 측면에서 분리
+- [x] gameController 결합도 측면에서 분리
   - [x] retryValidCheck 메서드 분리 -> utils 관리
   - [x] printRaceResults 메서드 분리 -> Output 모듈에서 관리
     - [x] printRaceResults 메서드 내부 역할 분리
-- [ ] 함수가 한 가지 기능만 담당
-- [ ] getter 대신 객체에 메시지 보내기
+- [ ] getter 대신 객체에 메시지 보내기 (race 도메인에서의 winner -> count값 계산)
 - [x] 입력값 예외 테스트하기
   - [x] validateCarsNames
   - [x] validateTryCounts
-- [ ] 경계 조건 테스트하기 (test.each api 활용하기)
-  - [ ] 자동차 전진 테스트
-  - [ ] 자동차 이름 5글자 입력값
 
 ## ⚙️ 폴더 구조
 
