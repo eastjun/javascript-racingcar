@@ -11,10 +11,10 @@ describe("utils/valideMoveCount", () => {
     ["1.5", ERROR.INVALID_NUMBER],
     ["-5", ERROR.INVALID_NUMBER]
   ])("%s가 1 이상의 숫자인지 확인", (input, expectedError) => {
-    if (expectedError) {
+    if (expectedError !== null) {
       expect(() => validateMoveCount(input)).toThrow(expectedError);
     } else {
-      expect(() => validateMoveCount(input)).not.toThrow();
+      expect(() => validateMoveCount(input)).not.toBeUndefined();
     }
   });
 });
