@@ -1,5 +1,4 @@
 import { MOVE_CONDITION } from "../constants/Constants.js";
-import OutputView from "../views/OutputView.js";
 
 class Car {
   #name;
@@ -14,10 +13,6 @@ class Car {
     if (condition >= MOVE_CONDITION) {
       this.#position++;
     }
-  }
-
-  printStatus() {
-    OutputView.print(`${this.name} : ${"-".repeat(this.position)}`);
   }
 
   get name() {
