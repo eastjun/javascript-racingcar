@@ -13,7 +13,7 @@ describe("domain/playGame", () => {
     jest.clearAllMocks();
   });
 
-  test("", () => {
+  test("playGame이 라운드 진행 후 최종 결과를 반환하는지 확인한다.", () => {
     // given
     const carNames = ["A", "B", "C"];
     const rounds = 3;
