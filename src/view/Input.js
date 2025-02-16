@@ -1,4 +1,4 @@
-import { INPUT_MESSAGE } from '../Const.js';
+import { DELIMITER, INPUT_MESSAGE } from '../Const.js';
 import Output from './Output.js';
 import readLineAsync from './ReadLineAsync.js';
 import { validateRaceCarNames } from './validators/RaceCarNameValidator.js';
@@ -9,7 +9,7 @@ const getSeparatedCarNames = async () => {
   const raceCarName = await readLineAsync(
     INPUT_MESSAGE.raceCarNames + Output.printNewLine()
   );
-  return raceCarName.split(',');
+  return raceCarName.split(DELIMITER);
 };
 
 const getNumericRaceCount = async () => {

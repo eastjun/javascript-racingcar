@@ -1,7 +1,7 @@
 /* eslint-disable */
 
 import {
-  vaildateSeperatedRaceCarName,
+  validateSeparatedCars,
   validateRaceCarNames,
 } from '../src/view/validators/RaceCarNameValidator';
 
@@ -22,6 +22,6 @@ test.each([[['a', 'b', 'a']], [['a', 'b', '']]])(
   '자동차 이름 배열에 대한 유효성 검사를 통과하는지 확인한다.',
   (names) => {
     console.log(names);
-    expect(() => vaildateSeperatedRaceCarName(names)).toThrow();
+    expect(() => validateSeparatedCars(names)).toThrow();
   }
 );

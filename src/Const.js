@@ -2,6 +2,8 @@ const MOVE_THRESHOLD = 4;
 
 const MAX_CAR_LENGTH = 5;
 
+const DELIMITER = ',';
+
 const ERROR_MESSAGE = {
   belowLimit: `자동차 이름은 ${MAX_CAR_LENGTH}글자 이하만 가능합니다`,
   positiveLength: '자동차 이름을 입력해야 합니다',
@@ -28,4 +30,5 @@ export {
   ERROR_MESSAGE,
   INPUT_MESSAGE,
   OUTPUT_MESSAGE,
+  DELIMITER,
 };

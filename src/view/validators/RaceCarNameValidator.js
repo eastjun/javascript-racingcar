@@ -18,10 +18,10 @@ const validateRaceCarNames = (name) => {
   });
 };
 
-const vaildateSeperatedRaceCarName = (names) => {
+const validateSeparatedCars = (names) => {
   seperatedNameValidators.forEach((seperatedNameValidator) => {
     seperatedNameValidator(names);
   });
 };
 
-export { validateRaceCarNames, vaildateSeperatedRaceCarName };
+export { validateRaceCarNames, validateSeparatedCars };
