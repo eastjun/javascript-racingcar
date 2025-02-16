@@ -1,7 +1,8 @@
 import { ERROR_CAR_NAMES_MESSAGE, CAR_NAME_BOUNDARY_LENGTH } from "../constants/constants.js";
+import splitInput from "../utils/splitInput.js";
 
 const validateCarNames = (input) => {
-  const carNames = input.split(",").map((el) => el.trim());
+  const carNames = splitInput(input, ",");
 
   carNames.forEach((car) => {
     if (isEmpty(car)) throw new Error(ERROR_CAR_NAMES_MESSAGE.NOT_EXIST);
