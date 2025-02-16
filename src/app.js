@@ -7,7 +7,7 @@ import { validateCarsName } from './Validation/carName.js';
 import { validateGameCount } from './Validation/gameCount.js';
 
 class App {
-  async run() {
+  async #initialize() {
     const carNames = await readUserInputUntilSuccess({
       readUserInput: getCarsName,
       validation: validateCarsName,
@@ -20,7 +20,11 @@ class App {
         validation: validateGameCount,
       }),
     );
+    return { cars, gameCount };
+  }
 
+  async run() {
+    const { cars, gameCount } = await this.#initialize();
     const race = new Race(gameCount, cars);
     race.startRace();
     outputView.printRaceResult(race.getRaceResult());
