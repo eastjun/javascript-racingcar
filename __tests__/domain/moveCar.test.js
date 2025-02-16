@@ -8,11 +8,12 @@ describe("domain/moveCar", () => {
     [1, { name: "가", count: 0 }],
     [4, { name: "가", count: 1 }],
     [5, { name: "가", count: 1 }]
-  ])("", (randomNumber, expectedReturnValue) => {
-    // when
-    const result = moveCar(car, randomNumber);
-
-    // then
-    expect(result).toEqual(expectedReturnValue);
-  });
+  ])(
+    "randomNumber가 %i이면 car의 count는 %j가 되어야 한다",
+    (randomNumber, expectedReturnValue) => {
+      const car = { name: "가", count: 0 };
+      const result = moveCar(car, randomNumber);
+      expect(result).toEqual(expectedReturnValue);
+    }
+  );
 });
