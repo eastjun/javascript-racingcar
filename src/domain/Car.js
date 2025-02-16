@@ -1,15 +1,11 @@
 class Car {
-  position = 0;
-  history = [];
-
   constructor(name) {
     this.name = name;
+    this.position = 0;
   }
 
-  updateHistory(isMove) {
+  move(isMove) {
     this.position += Number(isMove);
-
-    this.history.push(this.position);
   }
 }
 
