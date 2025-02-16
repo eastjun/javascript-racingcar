@@ -2,7 +2,7 @@ import {
   validateInteger,
   validateNumeric,
   validatePositiveNumber,
-} from './validator';
+} from './validator.js';
 
 const raceCountVaildators = [
   validateNumeric,

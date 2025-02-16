@@ -1,8 +1,9 @@
 import { INPUT_MESSAGE } from '../Const.js';
 import Output from './Output.js';
-import readLineAsync from '../ReadLineAsync.js';
+import readLineAsync from './ReadLineAsync.js';
 import { validateRaceCarNames } from './validators/RaceCarNameValidator.js';
 import { validateRaceCount } from './validators/RaceCount.js';
+import { validateDuplicateName } from './validators/validator.js';
 
 const getSeparatedCarNames = async () => {
   const raceCarName = await readLineAsync(
@@ -20,6 +21,8 @@ const getNumericRaceCount = async () => {
 const getValidRaceCarNames = async () => {
   try {
     const raceCarNames = await getSeparatedCarNames();
+
+    validateDuplicateName(raceCarNames);
     raceCarNames.forEach((raceCarName) => {
       validateRaceCarNames(raceCarName);
     });
@@ -27,7 +30,7 @@ const getValidRaceCarNames = async () => {
     return raceCarNames;
   } catch (e) {
     Output.printLine(e.message);
-    return await this.raceCarNames();
+    return await getValidRaceCarNames();
   }
 };
 
@@ -39,7 +42,7 @@ const getValidRaceCount = async () => {
     return raceCount;
   } catch (e) {
     Output.printLine(e.message);
-    return await this.raceCount();
+    return await getValidRaceCount();
   }
 };
 

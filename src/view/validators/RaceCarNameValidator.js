@@ -1,4 +1,4 @@
-import { validateLimitLength, validatePositiveLength } from './validator';
+import { validateLimitLength, validatePositiveLength } from './validator.js';
 
 const raceCarNameValidators = [validateLimitLength, validatePositiveLength];
 

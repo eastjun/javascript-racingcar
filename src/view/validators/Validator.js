@@ -1,4 +1,4 @@
-import { ERROR_MESSAGE, MAX_CAR_LENGTH } from '../../Const';
+import { ERROR_MESSAGE, MAX_CAR_LENGTH } from '../../Const.js';
 
 const validateLimitLength = (name) => {
   if (name.length > MAX_CAR_LENGTH) {
@@ -30,10 +30,17 @@ const validateInteger = (number) => {
   }
 };
 
+const validateDuplicateName = (names) => {
+  if (names.length !== new Set(names).size) {
+    throw new Error(ERROR_MESSAGE.duplicateNames);
+  }
+};
+
 export {
   validateLimitLength,
   validatePositiveLength,
   validatePositiveNumber,
   validateNumeric,
   validateInteger,
+  validateDuplicateName,
 };
