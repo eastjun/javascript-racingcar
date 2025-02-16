@@ -1,5 +1,6 @@
 import readLineAsync from './View/input.js';
 import {
+  validateCarNameNoSpaces,
   validateCarNameForm,
   validateDuplicatedCarName,
   validateCarsNameLength,
@@ -19,6 +20,7 @@ class App {
       '경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).\n',
     );
     try {
+      validateCarNameNoSpaces(input);
       validateCarsNameLength(input);
       validateCarNameForm(input);
       validateDuplicatedCarName(input);

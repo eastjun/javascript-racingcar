@@ -1,5 +1,15 @@
 const MAX_NAME_LENGTH = 5;
 
+export const validateCarNameNoSpaces = (input) => {
+  const carNames = input.split(',').map((name) => name.trim());
+
+  const space = carNames.some((name) => name.includes(' '));
+
+  if (space) {
+    throw new Error('[Error] 자동차 이름에는 공백이 포함될 수 없습니다.');
+  }
+};
+
 export const validateCarsNameLength = (input) => {
   if (input.split(',').some((carName) => carName.length > MAX_NAME_LENGTH)) {
     throw new Error(
