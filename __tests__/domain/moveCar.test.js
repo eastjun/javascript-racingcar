@@ -1,4 +1,4 @@
-import moveCar from "../../src/domain/moveCar";
+import moveCar from "../../src/domain/moveCar.js";
 
 describe("domain/moveCar", () => {
   const car = { name: "가", count: 0 };
