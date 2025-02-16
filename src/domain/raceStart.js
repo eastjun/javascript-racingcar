@@ -1,5 +1,9 @@
 import Car from "./Car.js";
-import { MAX_RANDOM_VALUE, MIN_RANDOM_VALUE } from "../config/constants.js";
+import {
+  MAX_RANDOM_VALUE,
+  MIN_RANDOM_VALUE,
+  MOVE_THRESHOLD,
+} from "../config/constants.js";
 import { validateCars } from "../utils/validate.js";
 import { getAttempt, getCarNames } from "../view/inputHandler.js";
 import {
@@ -14,7 +18,7 @@ export const raceStart = async () => {
 
   displayResultTitle();
   for (let i = 0; i < attempt; i++) {
-    moveCars(cars);
+    moveCars(cars, moveCondition);
     displayRaceResult(cars);
   }
 
@@ -37,9 +41,11 @@ const getCars = async () => {
   }
 };
 
-const moveCars = (cars) => {
-  cars.forEach((car) => car.move(getRandomNumber()));
+const moveCars = (cars, condition) => {
+  cars.forEach((car) => car.move(condition));
 };
+
+const moveCondition = () => getRandomNumber() >= MOVE_THRESHOLD;
 
 const getRandomNumber = () => {
   return Math.floor(Math.random() * (MAX_RANDOM_VALUE - MIN_RANDOM_VALUE + 1));

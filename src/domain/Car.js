@@ -20,7 +20,7 @@ class Car {
       throw Error(ERROR_MESSAGE.CAR_NAME_MAX_LENGTH);
     if (name.length < CAR_NAME_MIN_LENGTH)
       throw Error(ERROR_MESSAGE.CAR_NAME_MIN_LENGTH);
-    if (KOREAN_AND_ENGLISH_REGEX.test(name))
+    if (!KOREAN_AND_ENGLISH_REGEX.test(name))
       throw Error(ERROR_MESSAGE.CAR_NAME_KOREAN_AND_ENGLISH);
   }
 
@@ -32,8 +32,8 @@ class Car {
     return this.#position;
   }
 
-  move(number) {
-    if (number >= MOVE_THRESHOLD) ++this.#position;
+  move(condition) {
+    if (condition()) ++this.#position;
   }
 }
 
