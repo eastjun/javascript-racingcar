@@ -4,3 +4,6 @@ export const RACE = {
   WINNER_DELIMITER: ', ',
   MOVEMENT: '-',
 };
+
+export const NEW_LINE = '\n';
+export const EMPTY_LINE = '';
