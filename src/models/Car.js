@@ -11,7 +11,7 @@ class Car {
   validateName(name) {
     const validationResults = Validator.validateCarName(name);
     if (Object.values(validationResults).some(isError => isError)) {
-      throw new Error(ERROR.MESSAGE.INVALID_CAR_NAME); // ❌ 특정 에러 메시지 출력 없이 종료
+      throw new Error(ERROR.MESSAGE.INVALID_CAR_NAME);
     }
   }
 
