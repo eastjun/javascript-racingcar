@@ -1,4 +1,4 @@
-import { ERROR_MESSAGE } from "../src/config/constants.js";
+import { ERROR_MESSAGE } from "../src/config/errorConstants.js";
 import { validateAttempt, validateCars } from "../src/utils/validate.js";
 
 describe("예외 처리", () => {

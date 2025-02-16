@@ -1,11 +1,8 @@
-import {
-  ERROR_MESSAGE,
-  CAR_NAME_MAX_LENGTH,
-  CAR_NAME_MIN_LENGTH,
-  KOREAN_AND_ENGLISH_REGEX,
-} from "../config/constants.js";
+import { KOREAN_AND_ENGLISH_REGEX } from "../config/constants.js";
+import { ERROR_MESSAGE } from "../config/errorConstants.js";
 
 class Car {
+  static NameLength = { MAX: 5, MIN: 1 };
   #name;
   #position = 0;
 
@@ -15,9 +12,9 @@ class Car {
   }
 
   #validate(name) {
-    if (name.length > CAR_NAME_MAX_LENGTH)
+    if (name.length > Car.NameLength.MAX)
       throw Error(ERROR_MESSAGE.CAR_NAME_MAX_LENGTH);
-    if (name.length < CAR_NAME_MIN_LENGTH)
+    if (name.length < Car.NameLength.MIN)
       throw Error(ERROR_MESSAGE.CAR_NAME_MIN_LENGTH);
     if (!KOREAN_AND_ENGLISH_REGEX.test(name))
       throw Error(ERROR_MESSAGE.CAR_NAME_KOREAN_AND_ENGLISH);

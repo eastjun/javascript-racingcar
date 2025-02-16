@@ -1,7 +1,8 @@
-import { CAR_MOVE_SYMBOL, INFO_MESSAGE } from "../config/constants.js";
+import { CAR_MOVE_SYMBOL } from "../config/constants.js";
+import { OUTPUT_MESSAGE } from "../config/ioconstans.js";
 
 export const displayResultTitle = () => {
-  console.log(INFO_MESSAGE.RACE_RESULT_TITLE);
+  console.log(OUTPUT_MESSAGE.RACE_RESULT_TITLE);
 };
 
 export const displayRaceResult = (cars) => {
@@ -13,5 +14,5 @@ export const displayRaceResult = (cars) => {
 };
 
 export const displayWinners = (winners) => {
-  console.log(`${INFO_MESSAGE.WINNER_TITLE}${winners.join(", ")}`);
+  console.log(`${OUTPUT_MESSAGE.WINNER_TITLE}${winners.join(", ")}`);
 };

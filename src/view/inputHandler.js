@@ -1,16 +1,16 @@
-import { INFO_MESSAGE } from "../config/constants.js";
+import { INPUT_MESSAGE } from "../config/ioconstans.js";
 import { validateAttempt } from "../utils/validate.js";
 import readLineAsync from "./input.js";
 
 export const getCarNames = async () => {
-  return (await readLineAsync(INFO_MESSAGE.CAR_NAME_INPUT)).trim();
+  return (await readLineAsync(INPUT_MESSAGE.CAR_NAME_INPUT)).trim();
 };
 
 export const getAttempt = async () => {
   while (true) {
     try {
       const attempt = Number(
-        (await readLineAsync(INFO_MESSAGE.ATTEMPT_INPUT)).trim()
+        (await readLineAsync(INPUT_MESSAGE.ATTEMPT_INPUT)).trim()
       );
       validateAttempt(attempt);
       return attempt;

@@ -1,9 +1,9 @@
 import {
   CAR_MAX_COUNT,
-  ERROR_MESSAGE,
   MAX_ATTEMPT,
   MIN_ATTEMPT,
 } from "../config/constants.js";
+import { ERROR_MESSAGE } from "../config/errorConstants.js";
 
 export const validateCars = (cars, carNames) => {
   if (cars.length > CAR_MAX_COUNT) throw Error(ERROR_MESSAGE.CAR_MAX_COUNT);
