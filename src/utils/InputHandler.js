@@ -2,7 +2,7 @@ import InputView from '../views/InputView.js';
 import OutputView from '../views/OutputView.js';
 
 const InputHandler = {
-  async getValidInput(promptMessage, parser, validator) {
+  async getValidInput(promptMessage, parser, validator, errorCategory) {
     let isNotValid = true;
     let parsedInput;
 
@@ -11,7 +11,7 @@ const InputHandler = {
       parsedInput = parser ? parser(input) : input;
 
       const validationResults = validator(parsedInput);
-      OutputView.printValidationResults(validationResults);
+      OutputView.printValidationResults(validationResults, errorCategory);
       isNotValid = Object.values(validationResults).some(value => value);
     }
     return parsedInput;

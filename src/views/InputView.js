@@ -28,11 +28,11 @@ const InputView = {
   },
 
   async inputName() {
-    return InputHandler.getValidInput(MESSAGE.INPUT.NAME, Parser.splitName, Validator.validateInputNames);
+    return InputHandler.getValidInput(MESSAGE.INPUT.NAME, Parser.splitName, Validator.validateInputNames, 'INPUT_NAME');
   },
 
   async inputTryNumber() {
-    return InputHandler.getValidInput(MESSAGE.INPUT.TRY_NUMBER, Parser.toNumber, Validator.validateInputTryNumber);
+    return InputHandler.getValidInput(MESSAGE.INPUT.TRY_NUMBER, Parser.toNumber, Validator.validateInputTryNumber, 'INPUT_TRY_NUMBER');
   },
 };
 
