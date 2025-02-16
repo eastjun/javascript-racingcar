@@ -15,6 +15,10 @@ describe('유효성 검사 테스트', () => {
     expect(carArr).toBeFalsy();
   });
 
+  test('자동차 이름이 중복되면 에러를 반환한다.', () => {
+    expect(() => validateCarNames('levi, levi').toThrow(ERROR.ARE_CAR_NAMES_DUPLICATED));
+  });
+
   test('숫자가 아닌 값이 들어오면 에러를 반환한다.', () => {
     expect(() => validateCount('123').toThrow(ERROR.IS_NOT_NUMBER));
   });
