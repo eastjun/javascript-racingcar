@@ -1,7 +1,7 @@
 import {
   validateGameCountType,
   validateGameCountRange,
-} from '../../src/Validation/gameCount.js';
+} from '../../src/Domain/Validation/gameCount.js';
 
 describe('시도 횟수 유효성 검사', () => {
   test.each([
