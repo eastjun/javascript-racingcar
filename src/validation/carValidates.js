@@ -1,3 +1,5 @@
+import { splitString } from '../utils/separator.js';
+
 export function checkIsEmpty(input) {
   if (input.trim().length === 0) throw new Error('[ERROR] 자동차 이름을 입력해주세요.');
 }
@@ -16,4 +18,13 @@ export function checkCarNameDuplicate(carNames) {
 
 export function checkCarCount(carNames) {
   if (carNames.length < 2) throw new Error('[ERROR] 자동차는 두 대 이상이여야 합니다.');
+}
+
+export function checkCarName(carNamesInput) {
+  checkIsEmpty(carNamesInput);
+  const carNames = splitString(carNamesInput);
+  checkCarNameLength(carNames);
+  checkCarCount(carNames);
+  checkCarNameDuplicate(carNames);
+  return carNames;
 }
