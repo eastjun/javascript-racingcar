@@ -5,6 +5,12 @@ describe("CarNames 유효성 테스트", () => {
   test.each([
     { description: "자동차 이름이 존재하지 않는 경우", input: "", errorMessage: ERROR_CAR_NAMES_MESSAGE.NOT_EXIST },
     {
+      description: "자동차 이름들 중, 공백이 존재하는 경우",
+      input: "Niya,,HoyyChoi",
+      errorMessage: ERROR_CAR_NAMES_MESSAGE.NOT_EXIST,
+    },
+
+    {
       description: "자동차 이름이 5글자가 넘는 경우",
       input: "Niya,HoyyChoi",
       errorMessage: ERROR_CAR_NAMES_MESSAGE.OVER,
