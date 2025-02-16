@@ -1,4 +1,4 @@
-import { ERROR_MESSAGE, MAX_CAR_LENGTH } from "./Const.js";
+import { ERROR_MESSAGE, MAX_CAR_LENGTH } from './Const.js';
 
 class Validate {
   #throwIfInValid(condition, errorMessage) {
@@ -33,7 +33,6 @@ class Validate {
       ERROR_MESSAGE.integer
     );
   }
-  
 }
 
 export default Validate;

@@ -1,8 +1,8 @@
-import { OUTPUT_MESSAGE } from "../Const.js";
+import { OUTPUT_MESSAGE } from '../Const.js';
 
 class Output {
   static printNewLine = () => {
-    return "\n";
+    return '\n';
   };
 
   static printLine(message) {
@@ -15,7 +15,7 @@ class Output {
         OUTPUT_MESSAGE.result +
         Output.printNewLine() +
         moveResult +
-        `최종 우승자: ${winnerList.join(", ")}`
+        `최종 우승자: ${winnerList.join(', ')}`
     );
   }
 }

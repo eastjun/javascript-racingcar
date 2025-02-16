@@ -1,6 +1,6 @@
-import Output from "./view/Output.js";
-import Input from "./view/Input.js";
-import Race from "./domain/Race.js";
+import Output from './view/Output.js';
+import Input from './view/Input.js';
+import Race from './domain/Race.js';
 
 const input = new Input();
 const output = new Output();

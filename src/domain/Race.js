@@ -1,5 +1,5 @@
-import Car from "./Car.js";
-import { MOVE_THRESHOLD } from "../Const.js";
+import Car from './Car.js';
+import { MOVE_THRESHOLD } from '../Const.js';
 class Race {
   #cars;
   #raceCount;
@@ -8,7 +8,7 @@ class Race {
   constructor(names, raceCount) {
     this.#cars = names.map((raceCarName) => new Car(raceCarName));
     this.#raceCount = raceCount;
-    this.#moveResult = "";
+    this.#moveResult = '';
   }
   #getRandomNumber = () => {
     return Math.floor(Math.random() * 10);
@@ -17,7 +17,7 @@ class Race {
   #formatCarPosition(car) {
     let positionStick = `${car.raceCarName} : `;
     for (let i = 0; i < car.position; i++) {
-      positionStick += "-";
+      positionStick += '-';
     }
     return positionStick;
   }
@@ -52,9 +52,9 @@ class Race {
     for (let i = 0; i < this.#raceCount; i++) {
       this.#cars.forEach((car) => {
         this.#tryMove(car);
-        this.#moveResult += this.#formatCarPosition(car) + "\n";
+        this.#moveResult += this.#formatCarPosition(car) + '\n';
       });
-      this.#moveResult += "\n";
+      this.#moveResult += '\n';
     }
   }
 }

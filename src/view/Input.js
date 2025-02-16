@@ -1,7 +1,7 @@
-import { INPUT_MESSAGE } from "../Const.js";
-import Output from "../ui/Output.js";
-import Validate from "../Validate.js";
-import readLineAsync from "../ReadLineAsync.js";
+import { INPUT_MESSAGE } from '../Const.js';
+import Output from '../ui/Output.js';
+import Validate from '../Validate.js';
+import readLineAsync from '../ReadLineAsync.js';
 class Input {
   #validate = new Validate();
 
@@ -10,7 +10,7 @@ class Input {
       const raceCarName = await readLineAsync(
         INPUT_MESSAGE.raceCarNames + Output.printNewLine()
       );
-      const raceCarNames = raceCarName.split(",");
+      const raceCarNames = raceCarName.split(',');
 
       raceCarNames.forEach((raceCarName) => {
         this.#validate.isLiminLength(raceCarName).isPositiveLength(raceCarName);
