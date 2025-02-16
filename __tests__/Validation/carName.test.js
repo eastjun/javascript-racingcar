@@ -1,6 +1,6 @@
 import {
   validateCarsNameLength,
-  validateCarsNameForm,
+  validateCarNameForm,
   validateDuplicatedCarName,
 } from '../../src/Validation/carName.js';
 
@@ -22,7 +22,7 @@ describe('자동차 이름 유효성 검사', () => {
   test('자동차 이름 올바른 형식', () => {
     const carsName = 'haku,logun';
     expect(() => {
-      validateCarsNameForm(carsName);
+      validateCarNameForm(carsName);
     }).not.toThrow('[Error]');
   });
 
@@ -33,7 +33,7 @@ describe('자동차 이름 유효성 검사', () => {
     [',', '[Error]'],
   ])('자동차 이름 틀린 형식', (input, errorMessage) => {
     expect(() => {
-      validateCarsNameForm(input);
+      validateCarNameForm(input);
     }).toThrow(errorMessage);
   });
 

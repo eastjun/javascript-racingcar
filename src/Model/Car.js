@@ -10,8 +10,8 @@ export default class Car {
     this.#position = 0;
   }
 
-  move(moveCondition) {
-    if (moveCondition >= MOVE_FORWARD) {
+  move(condition) {
+    if (condition >= MOVE_FORWARD) {
       this.#position += 1;
     }
   }

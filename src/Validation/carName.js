@@ -8,7 +8,7 @@ export const validateCarsNameLength = (input) => {
   }
 };
 
-export const validateCarsNameForm = (input) => {
+export const validateCarNameForm = (input) => {
   const commaCount = input.split('').filter((value) => value === ',').length;
   const carCount = input.split(',').filter(Boolean).length;
   if (input.trim() === '' || commaCount !== carCount - 1) {
