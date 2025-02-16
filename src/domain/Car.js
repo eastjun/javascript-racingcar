@@ -9,10 +9,11 @@ class Car {
     }
 
     move(randomNumber) {
-        if(randomNumber >= MOVE_CONDITION) {
+        if (randomNumber >= MOVE_CONDITION) {
             this.position += MOVE_FORWARD;
         }
     }
 
 }
+
 export default Car;
