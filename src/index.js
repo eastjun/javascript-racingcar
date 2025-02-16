@@ -1,4 +1,4 @@
-import { raceStart } from "./domain/raceStart.js";
+import { raceStart } from "./view/raceStart.js";
 
 async function run() {
   await raceStart();
