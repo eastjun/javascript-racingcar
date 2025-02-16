@@ -9,9 +9,11 @@ export const validateCarsNameLength = (input) => {
 };
 
 export const validateCarNameForm = (input) => {
-  const commaCount = input.split('').filter((value) => value === ',').length;
-  const carCount = input.split(',').filter(Boolean).length;
-  if (input.trim() === '' || commaCount !== carCount - 1) {
+  const trimmedInput = input.trim();
+  const carNames = trimmedInput.split(',').filter(Boolean);
+  const commaCount = (trimmedInput.match(/,/g) || []).length;
+
+  if (!trimmedInput || commaCount !== carNames.length - 1) {
     throw new Error('[Error] 자동차 이름이 올바르지 않습니다.');
   }
 };
