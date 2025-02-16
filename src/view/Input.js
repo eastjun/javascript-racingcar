@@ -1,25 +1,30 @@
 import { DELIMITER, INPUT_MESSAGE } from '../Const.js';
-import Output from './Output.js';
+import { printLine } from './Output.js';
 import readLineAsync from './ReadLineAsync.js';
 import { validateRaceCarNames } from './validators/RaceCarNameValidator.js';
 import { validateRaceCount } from './validators/RaceCount.js';
 import { validateDuplicateName } from './validators/validator.js';
 
 const getSeparatedCarNames = async () => {
-  const raceCarName = await readLineAsync(
-    INPUT_MESSAGE.raceCarNames + Output.printNewLine()
-  );
+  const raceCarName = await readLineAsync(INPUT_MESSAGE.raceCarNames + '\n');
   return raceCarName.split(DELIMITER);
 };
 
 const getNumericRaceCount = async () => {
-  return Number(
-    await readLineAsync(INPUT_MESSAGE.raceCount + Output.printNewLine())
-  );
+  return Number(await readLineAsync(INPUT_MESSAGE.raceCount + '\n'));
+};
+
+const retryOnError = async (condition) => {
+  try {
+    return await condition();
+  } catch (e) {
+    printLine(e.message);
+    return await retryOnError(condition);
+  }
 };
 
 const getValidRaceCarNames = async () => {
-  try {
+  return await retryOnError(async () => {
     const raceCarNames = await getSeparatedCarNames();
 
     validateDuplicateName(raceCarNames);
@@ -28,22 +33,16 @@ const getValidRaceCarNames = async () => {
     });
 
     return raceCarNames;
-  } catch (e) {
-    Output.printLine(e.message);
-    return await getValidRaceCarNames();
-  }
+  });
 };
 
 const getValidRaceCount = async () => {
-  try {
+  return await retryOnError(async () => {
     const raceCount = await getNumericRaceCount();
     validateRaceCount(raceCount);
 
     return raceCount;
-  } catch (e) {
-    Output.printLine(e.message);
-    return await getValidRaceCount();
-  }
+  });
 };
 
 export { getValidRaceCarNames, getValidRaceCount };

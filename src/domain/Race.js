@@ -15,10 +15,10 @@ class Race {
   }
 
   raceCar() {
-    for (let i = 0; i < this.#raceCount; i++) {
+    Array.from({ length: this.#raceCount }, () => {
       this.#round.playOneRound();
       this.#raceResult.push(this.#round.getRoundResult());
-    }
+    });
   }
 
   getRaceResult() {

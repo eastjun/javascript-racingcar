@@ -1,44 +1,37 @@
 import { OUTPUT_MESSAGE } from '../Const.js';
 
-class Output {
-  static printNewLine = () => {
-    return '\n';
-  };
+const printLine = (message) => {
+  console.log(message);
+};
 
-  static printLine(message) {
-    console.log(message);
-  }
+const formatRoundResult = (raceResult) => {
+  return raceResult.reduce((acc, roundResult) => {
+    return (acc +=
+      `${roundResult.raceCarName}: ${'-'.repeat(roundResult.racePosition)}` +
+      '\n');
+  }, '');
+};
 
-  #formatRoundResult(raceResult) {
-    return raceResult.reduce((acc, roundResult) => {
-      return (acc +=
-        `${roundResult.raceCarName}: ${'-'.repeat(roundResult.racePosition)}` +
-        Output.printNewLine());
-    }, '');
-  }
+const formatRaceResult = (raceResults) => {
+  return raceResults.reduce((acc, raceResult) => {
+    return (acc += formatRoundResult(raceResult) + '\n');
+  }, '');
+};
 
-  #formatRaceResult(raceResults) {
-    return raceResults.reduce((acc, raceResult) => {
-      return (acc +=
-        this.#formatRoundResult(raceResult) + Output.printNewLine());
-    }, '');
-  }
+const formatWinner = (winnerList) => {
+  return winnerList.map((winner) => winner.raceCarName).join(', ');
+};
 
-  #formatWinner(winnerList) {
-    return winnerList.map((winner) => winner.raceCarName).join(', ');
-  }
+const printResult = (raceResults, winnerList) => {
+  const formattedRaceResult = formatRaceResult(raceResults);
 
-  printResult(raceResults, winnerList) {
-    const formattedRaceResult = this.#formatRaceResult(raceResults);
+  console.log(
+    '\n' +
+      OUTPUT_MESSAGE.result +
+      '\n' +
+      formattedRaceResult +
+      `최종 우승자: ${formatWinner(winnerList)}`
+  );
+};
 
-    console.log(
-      Output.printNewLine() +
-        OUTPUT_MESSAGE.result +
-        Output.printNewLine() +
-        formattedRaceResult +
-        `최종 우승자: ${this.#formatWinner(winnerList)}`
-    );
-  }
-}
-
-export default Output;
+export { printLine, formatRoundResult, printResult };
