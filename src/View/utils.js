@@ -25,14 +25,20 @@ export function readLineAsync(query) {
 export const readUserInputUntilSuccess = async ({
   readUserInput,
   validation,
+  formatter,
 }) => {
   try {
     const input = await readUserInput();
     validation(input);
 
-    return input;
+    return formatter(input);
   } catch (error) {
     console.error(error.message);
-    return readUserInputUntilSuccess({ readUserInput, validation });
+    return readUserInputUntilSuccess({ readUserInput, validation, formatter });
   }
+};
+
+export const FORMATTER = {
+  splitByComma: (input) => input.split(','),
+  convertToNumber: (input) => Number(input),
 };
