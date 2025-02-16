@@ -1,5 +1,5 @@
-import ERROR from '../constants/Error.js';
-import Validator from '../utils/Validator.js';
+import ERROR from '../../constants/Error.js';
+import Validator from '../../utils/Validator.js';
 
 class Car {
   constructor(name) {

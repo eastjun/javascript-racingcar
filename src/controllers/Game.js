@@ -1,5 +1,5 @@
 import { createRandom } from '../utils/Random.js';
-import Car from '../models/Car.js';
+import Car from '../domain/models/Car.js';
 import OutputView from '../views/OutputView.js';
 import InputView from '../views/InputView.js';
 
