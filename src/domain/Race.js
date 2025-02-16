@@ -1,6 +1,6 @@
 import CarPositionHistory from '../storage/CarPositionHistory.js';
 import { getRandomNumber } from '../utils/randomNumber.js';
-
+import { CAR_MOVE_STANDARD } from '../constants/MAGIC_NUMBER.js';
 class Race {
   constructor(cars, tryCount) {
     this.cars = cars;
@@ -11,7 +11,7 @@ class Race {
   tryMove(cars, tryCount) {
     for (let i = 0; i < tryCount; i++) {
       cars.forEach((car) => {
-        car.move(getRandomNumber() >= 4);
+        car.move(getRandomNumber() >= CAR_MOVE_STANDARD);
         this.carPositionHistory.saveHistory(car);
       });
     }

@@ -1,5 +1,8 @@
+import { MAX_TRY_COUNT, MIN_TRY_COUNT } from '../constants/MAGIC_NUMBER';
+
 export function checkTryCountRange(tryCount) {
-  if (tryCount < 1 || tryCount > 20) throw new Error('[ERROR] 시도 횟수는 1 ~ 20 사이여야 합니다.');
+  if (tryCount < MIN_TRY_COUNT || tryCount > MAX_TRY_COUNT)
+    throw new Error(`[ERROR] 시도 횟수는 ${MIN_TRY_COUNT} ~ ${MAX_TRY_COUNT} 사이여야 합니다.`);
 }
 
 export function checkIsInteger(tryCount) {
