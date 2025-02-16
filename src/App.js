@@ -1,6 +1,7 @@
 import Car from './domain/Car.js';
 import Race from './domain/Race.js';
 import InputView from './view/InputView.js';
+import OutputView from './view/OutputView.js';
 import { checkCarName } from './validation/carValidates.js';
 import { checkTryCount } from './validation/tryCountValidates.js';
 class App {
@@ -17,10 +18,10 @@ class App {
 
     const race = new Race(cars, tryCount);
     race.tryMove(cars, tryCount);
-    race.outputResult(cars, tryCount);
+    OutputView.outputResult(cars, tryCount);
 
     const winners = race.getWinner(cars);
-    race.outputWinner(winners);
+    OutputView.printWinner(winners);
   }
 }
 
