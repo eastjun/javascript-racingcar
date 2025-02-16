@@ -2,7 +2,6 @@ import { createRandom } from '../utils/Random.js';
 import Car from '../domain/models/Car.js';
 import OutputView from '../views/OutputView.js';
 import InputView from '../views/InputView.js';
-import DEFINITION from '../constants/Definition.js';
 
 export default class Game {
   #carList;
@@ -12,19 +11,12 @@ export default class Game {
   }
 
   createCarList(names) {
-    names.forEach(name => {
-      this.#carList.push(new Car(name));
-    });
+    this.#carList = names.map(name => new Car(name));
   }
 
   judgeWinner() {
     const winnerNames = [];
-    let maxPosition = 0;
-    this.#carList.forEach(car => {
-      if (car.position > maxPosition) {
-        maxPosition = car.position;
-      }
-    });
+    const maxPosition = Math.max(...this.#carList.map(car => car.position));
 
     this.#carList.forEach(car => {
       if (car.position === maxPosition) {
