@@ -1,7 +1,7 @@
 import Car from './Car.js';
 import { getRandomNumber } from '../util/random.js';
 
-class RacingcarManager {
+class RacingCar {
     createCars(carNames) {
         return carNames.map(name => new Car(name));
     }
@@ -36,4 +36,5 @@ class RacingcarManager {
     }
 
 }
-export default RacingcarManager;
+
+export default RacingCar;

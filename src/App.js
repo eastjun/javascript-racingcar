@@ -1,19 +1,19 @@
-import RacingcarManager from './domain/RacingcarManager.js';
+import RacingCar from './domain/RacingCar.js';
 import InputView from './view/InputView.js';
 import OutputView from './view/OutputView.js';
 import Validate from './domain/Validate.js';
 
 class App {
   async run() {
-    const racingcarManager = new RacingcarManager();
+    const racingCar = new RacingCar();
 
     const carNames = await this.#getCarNames();
     const attempts = await this.#getAttempts();
 
-    const cars = racingcarManager.createCars(carNames);
+    const cars = racingCar.createCars(carNames);
 
-    const raceResult = this.#roundOfRacing(racingcarManager, cars, attempts);
-    const winners = racingcarManager.getWinners(raceResult);
+    const raceResult = this.#roundOfRacing(racingCar, cars, attempts);
+    const winners = racingCar.getWinners(raceResult);
 
     OutputView.printWinners(winners);
   }
@@ -68,12 +68,12 @@ class App {
     }
   }
 
-  #roundOfRacing(racingcarManager, cars, attempts) {
+  #roundOfRacing(racingCar, cars, attempts) {
     OutputView.printResultMessage();
     let raceResult = [...cars];
 
     for (let i = 0; i < attempts; i++) {
-      raceResult = racingcarManager.oneRound(raceResult);
+      raceResult = racingCar.oneRound(raceResult);
       OutputView.printOneRoundResult(raceResult);
     }
 
