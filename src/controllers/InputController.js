@@ -10,6 +10,7 @@ class InputController {
       const inputName = await InputView.readLineAsync(MESSAGE.INPUT.NAME);
       Validator.isEmpty(inputName);
       const splitedName = Parser.splitName(inputName);
+      // parser의 구분자도 인자로 받도록
       Validator.isArrayLengthOver(splitedName, DEFINITION.MAX_NAME_LENGTH);
       Validator.isDuplicate(splitedName);
       splitedName.forEach(name => {
