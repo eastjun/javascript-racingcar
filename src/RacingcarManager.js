@@ -14,8 +14,8 @@ class RacingcarManager {
         const carNames = await this.#getCarNames();
         const cars = this.createCars(carNames);
         const attempts = await this.#getAttempts();
-        this.roundOfRacing(cars, attempts);
-        const winners = this.getWinners(cars);
+        const raceResult = this.roundOfRacing(cars, attempts);
+        const winners = this.getWinners(raceResult);
         OutputView.printWinners(winners);
     }
 
@@ -78,17 +78,22 @@ class RacingcarManager {
     }
 
     oneRound(cars) {
-        cars.forEach(car => {
-            car.move(this.getRandomNumber());
+        return cars.map(car => {
+            const newCar = new Car(car.name, car.position);
+            newCar.move(this.getRandomNumber());
+            return newCar;
         });
     }
 
+
     roundOfRacing(cars, attempts) {
         OutputView.printResultMessage();
+        let raceResult = [...cars];
         for (let i = 0; i < attempts; i++) {
-            this.oneRound(cars);
-            OutputView.printOneRoundResult(cars);
+            raceResult = this.oneRound(raceResult);
+            OutputView.printOneRoundResult(raceResult);
         }
+        return raceResult;
     }
 
     getMaxPosition(cars) {
