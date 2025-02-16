@@ -24,10 +24,10 @@ export const raceStart = async () => {
 
 const getCars = async () => {
   while (true) {
-    const carNames = (await getCarNames())
-      .split(",")
-      .map((name) => name.trim());
     try {
+      const carNames = (await getCarNames())
+        .split(",")
+        .map((name) => name.trim());
       let cars = carNames.map((name) => new Car(name));
       validateCars(cars, carNames);
       return cars;

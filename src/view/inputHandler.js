@@ -8,10 +8,10 @@ export const getCarNames = async () => {
 
 export const getAttempt = async () => {
   while (true) {
-    const attempt = Number(
-      (await readLineAsync(INFO_MESSAGE.ATTEMPT_INPUT)).trim()
-    );
     try {
+      const attempt = Number(
+        (await readLineAsync(INFO_MESSAGE.ATTEMPT_INPUT)).trim()
+      );
       validateAttempt(attempt);
       return attempt;
     } catch (error) {
