@@ -13,7 +13,7 @@ class OutputView {
     console.log(`최종 우승자: ${winners.join(', ')}`);
   }
 
-  static outputResult(cars, tryCount) {
+  static printRaceResult(cars, tryCount) {
     OutputView.printMessage('\n실행 결과');
     for (let i = 0; i < tryCount; i++) {
       cars.forEach((car) => {
