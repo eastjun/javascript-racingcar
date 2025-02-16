@@ -10,6 +10,7 @@ import {
 } from './Validation/gameCount.js';
 
 import Car from './Model/Car.js';
+import racingGame from './Model/game.js';
 import outputView from './View/output.js';
 
 class App {
@@ -47,7 +48,8 @@ class App {
 
     outputView.printGameResult(gameCount, cars);
 
-    outputView.printWinners(cars);
+    const winners = racingGame.determineWinners(cars);
+    outputView.printWinners(winners);
   }
 }
 

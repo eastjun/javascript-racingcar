@@ -12,14 +12,8 @@ const outputView = {
       console.log('');
     }
   },
-  printWinners(cars) {
-    const carPositions = cars.map((car) => car.getPosition());
-    const winnerPosition = Math.max(...carPositions);
-    const winners = cars
-      .filter((car) => car.getPosition() === winnerPosition)
-      .map((car) => car.getName())
-      .join(', ');
-    console.log(`최종 우승자: ${winners}`);
+  printWinners(winners) {
+    console.log(`최종 우승자: ${winners.join(', ')}`);
   },
 };
 
