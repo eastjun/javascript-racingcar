@@ -2,7 +2,7 @@ import readline from 'readline';
 import InputHandler from '../utils/InputHandler.js';
 import MESSAGE from '../constants/Message.js';
 import { Parser } from '../utils/Parser.js';
-import Validator from '../utils/ValidationUtils.js';
+import Validator from '../utils/Validator.js';
 
 const InputView = {
   readLineAsync(query) {

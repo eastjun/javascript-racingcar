@@ -1,15 +1,6 @@
 import DEFINITION from './Definition.js';
 
 const ERROR = {
-  CODE: {
-    IS_STRING_LENGTH_OVER: 'IS_STRING_LENGTH_OVER',
-    IS_ARRAY_LENGTH_OVER: 'IS_ARRAY_LENGTH_OVER',
-    IS_RANGE_OVER: 'IS_RANGE_OVER',
-    IS_DECIMAL: `IS_DECIMAL`,
-    IS_DUPLICATE: `IS_DUPLICATE`,
-    IS_NUMBER: `IS_NUMBER`,
-    IS_EMPTY: `IS_EMPTY`,
-  },
   MESSAGE: {
     INPUT_NAME: {
       IS_ARRAY_LENGTH_OVER: '[ERROR] 자동차는 최대 40명까지만 경주할 수 있습니다.',
@@ -23,6 +14,7 @@ const ERROR = {
       IS_DECIMAL: `[ERROR] 시도 횟수는 정수를 입력해주세요.`,
       IS_NOT_NUMBER: `[ERROR] 숫자를 입력해주세요.`,
     },
+    INVALID_CAR_NAME: '[ERROR] 차 생성 중 예기치 못한 오류가 발생하였습니다.',
   },
 };
 
