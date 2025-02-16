@@ -6,16 +6,10 @@ class Race {
     this.tryCount = tryCount;
   }
 
-  canMove() {
-    const randomNumber = getRandomNumber();
-
-    return randomNumber >= 4;
-  }
-
   tryMove(cars, tryCount) {
     for (let i = 0; i < tryCount; i++) {
       cars.forEach((car) => {
-        car.updateHistory(this.canMove());
+        car.updateHistory(getRandomNumber() >= 4);
       });
     }
   }
