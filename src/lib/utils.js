@@ -23,12 +23,12 @@ export async function readLineAsync(query) {
   });
 }
 
-export async function retryUntilSuccess(callbackFn) {
+export async function retryUntilSuccess(callbackFn, onError) {
   try {
     return await callbackFn();
   } catch (error) {
-    OutputView.printErrorMessage(error);
-    return retryUntilSuccess(callbackFn);
+    onError(error);
+    return retryUntilSuccess(callbackFn, onError);
   }
 }
 
