@@ -1,4 +1,4 @@
-import Car from "../src/domains/Car";
+import Car from "../src/domain/Car";
 
 describe("Car 단위 테스트", () => {
   test("자동차가 생성되는지 확인한다.", () => {

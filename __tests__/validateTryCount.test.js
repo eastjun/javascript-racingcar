@@ -1,5 +1,5 @@
-import validateTryCount from "../src/validations/validateTryCount.js";
-import { ERROR_TRY_COUNT_MESSAGE } from "../src/constants/constants.js";
+import validateTryCount from "../src/validation/validateTryCount.js";
+import { ERROR_TRY_COUNT_MESSAGE } from "../src/constant/constant.js";
 
 describe("TryCount 유효성 테스트", () => {
   test.each([

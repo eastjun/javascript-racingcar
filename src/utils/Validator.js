@@ -1,4 +1,4 @@
-import { CAR_NAME_BOUNDARY_LENGTH } from "../constants/constants.js";
+import { CAR_NAME_BOUNDARY_LENGTH } from "../constant/constant.js";
 
 const Validator = {
   isEmpty(str) {

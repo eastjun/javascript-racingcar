@@ -1,4 +1,4 @@
-import { ERROR_TRY_COUNT_MESSAGE } from "../constants/constants.js";
+import { ERROR_TRY_COUNT_MESSAGE } from "../constant/constant.js";
 import Validator from "../utils/validator.js";
 
 const validateTryCount = (input) => {

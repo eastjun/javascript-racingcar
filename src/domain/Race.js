@@ -1,4 +1,4 @@
-import { RANDOM_RANGE_END, RANDOM_RANGE_START } from "../constants/constants.js";
+import { RANDOM_RANGE_END, RANDOM_RANGE_START } from "../constant/constant.js";
 import generateRandomNumber from "../utils/generateRandomNumber.js";
 
 class Race {

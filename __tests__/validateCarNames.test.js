@@ -1,5 +1,5 @@
-import validateCarNames from "../src/validations/validateCarNames.js";
-import { ERROR_CAR_NAMES_MESSAGE } from "../src/constants/constants.js";
+import validateCarNames from "../src/validation/validateCarNames.js";
+import { ERROR_CAR_NAMES_MESSAGE } from "../src/constant/constant.js";
 
 describe("CarNames 유효성 테스트", () => {
   test.each([

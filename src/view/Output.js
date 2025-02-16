@@ -1,4 +1,4 @@
-import { OUTPUT_PROMPT_MESSAGE } from "../constants/constants.js";
+import { OUTPUT_PROMPT_MESSAGE } from "../constant/constant.js";
 import Console from "../utils/Console.js";
 
 const EXPRESSION_FLAG = "-";

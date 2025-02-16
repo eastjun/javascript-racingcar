@@ -1,4 +1,4 @@
-import { ERROR_CAR_NAMES_MESSAGE } from "../constants/constants.js";
+import { ERROR_CAR_NAMES_MESSAGE } from "../constant/constant.js";
 import splitInput from "../utils/splitInput.js";
 import Validator from "../utils/validator.js";
 

@@ -1,9 +1,9 @@
-import Input from "../views/Input.js";
-import Output from "../views/Output.js";
-import Race from "../domains/Race.js";
-import validateCarNames from "../validations/validateCarNames.js";
-import validateTryCount from "../validations/validateTryCount.js";
-import Car from "../domains/Car.js";
+import Input from "../view/Input.js";
+import Output from "../view/Output.js";
+import Race from "../domain/Race.js";
+import validateCarNames from "../validation/validateCarNames.js";
+import validateTryCount from "../validation/validateTryCount.js";
+import Car from "../domain/Car.js";
 import retryValidCheck from "../utils/retryValidCheck.js";
 
 class GameController {

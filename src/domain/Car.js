@@ -1,4 +1,4 @@
-import { MOVE_CONDITION_BOUNDARY } from "../constants/constants.js";
+import { MOVE_CONDITION_BOUNDARY } from "../constant/constant.js";
 class Car {
   #name;
   #count = 0;
