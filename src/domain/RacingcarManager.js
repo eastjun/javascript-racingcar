@@ -1,17 +1,14 @@
 import Car from './Car.js';
+import { getRandomNumber } from '../util.js';
 
 class RacingcarManager {
     createCars(carNames) {
         return carNames.map(name => new Car(name));
     }
 
-    #getRandomNumber() {
-        return Math.floor(Math.random() * 10);
-    }
-
     oneRound(cars) {
         cars.forEach(car => {
-            car.move(this.#getRandomNumber());
+            car.move(getRandomNumber(0, 10));
         });
         return cars;
     }
