@@ -1,3 +1,4 @@
+import { MOVE_CONDITION } from "../constants/Constants.js";
 import OutputView from "../views/OutputView.js";
 
 class Car {
@@ -9,8 +10,10 @@ class Car {
     this.#position = 0;
   }
 
-  move() {
-    this.#position++;
+  move(condition) {
+    if (condition >= MOVE_CONDITION) {
+      this.#position++;
+    }
   }
 
   printStatus() {
