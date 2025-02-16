@@ -22,4 +22,19 @@ function readLineAsync(query) {
   });
 }
 
+export const readUserInputUntilSuccess = async ({
+  readUserInput,
+  validation,
+}) => {
+  try {
+    const input = await readUserInput();
+    validation(input);
+
+    return input;
+  } catch (error) {
+    console.error(error.message);
+    return readUserInputUntilSuccess({ readUserInput, validation });
+  }
+};
+
 export default readLineAsync;
