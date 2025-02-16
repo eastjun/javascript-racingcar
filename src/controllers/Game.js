@@ -41,7 +41,7 @@ export default class Game {
     for (let i = 0; i < inputTryNumber; i++) {
       this.#carList.forEach(car => {
         const randomValue = createRandom();
-        if (randomValue < DEFINITION.ADVANCE_CONDITION) car.moveForward(randomValue);
+        car.moveForward(randomValue);
         OutputView.roundResult(car.name, car.position);
       });
       OutputView.break();
