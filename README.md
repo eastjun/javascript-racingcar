@@ -71,8 +71,8 @@
 ### ✅ 2단계 미션 - 수정 및 리팩토링
 
 - [x] prettier printWidth 변경하기 (80~120)
-- [ ] Random 생성 기준이라 할 수 있는 10 상수화
-- [ ] Random 번호 생성 함수 네이밍 변경 및 파라미터 변경
+- [x] Random 생성 기준이라 할 수 있는 10 상수화
+- [x] Random 번호 생성 함수 네이밍 변경 및 파라미터 변경
 - [ ] validation에서 사용하는 conditon 분리하기 -> utils 관리 (ex. isEmpty, isDuplicated)
 - [ ] gameController 결합도 측면에서 분리
   - [ ] retryValidCheck 메서드 분리 -> utils 관리
