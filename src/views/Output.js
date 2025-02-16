@@ -13,6 +13,15 @@ const Output = {
   printWinners(winners) {
     Console.print(`${OUTPUT_PROMPT_MESSAGE.FINAL_WINNERS}: ${winners.join(", ")}`);
   },
+  printRaceResults(raceResults) {
+    Output.printRaceStart();
+    raceResults.forEach((roundResult) => {
+      roundResult.forEach(({ name, count }) => {
+        Output.printRace(name, count);
+      });
+      Console.printLineBreak();
+    });
+  },
 };
 
 export default Output;
