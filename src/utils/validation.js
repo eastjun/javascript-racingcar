@@ -12,6 +12,12 @@ export const isLongerThanMaxLength = (arr, maxLength) => {
 export const validateCarNames = (stringOfCarNames) => {
   const carNamesArr = stringOfCarNames.split(',');
 
+  const carSet = new Set(carNamesArr);
+
+  if (carSet.size !== carNamesArr.length) {
+    throw new Error(ERROR.ARE_CAR_NAMES_DUPLICATED);
+  }
+
   if (hasEmptyString(carNamesArr)) {
     throw new Error(ERROR.IS_CAR_NAME_EMPTY);
   }
