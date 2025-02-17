@@ -1,5 +1,5 @@
 import { Validation } from "../validation/Validation.js";
-import { systemSetting } from "../constants/systemSetting.js";
+import { systemConstants } from "../constants/systemConstants.js";
 import { errorMessage } from "../constants/ErrorMessage.js";
 
 export const parsingService = {
@@ -10,7 +10,7 @@ export const parsingService = {
       throw new Error(errorMessage.HAS_EMPTY_NAME);
     }
     if (!Validation.isNameLengthValid(parsedString)) {
-      throw new Error(errorMessage.NAME_TOO_LONG(systemSetting.NAME_LIMIT));
+      throw new Error(errorMessage.NAME_TOO_LONG(systemConstants.NAME_LIMIT));
     }
     if (!Validation.isNameNotDuplicate(parsedString)) {
       throw new Error(errorMessage.DUPLICATE_NAME);

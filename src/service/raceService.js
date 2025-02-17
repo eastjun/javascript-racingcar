@@ -4,7 +4,7 @@ import { OutputView } from "../view/OutputView.js";
 import { parsingService } from "./parsingService.js";
 import getValidInput from "../util/GetValidInput.js";
 import randomNumberGenerator from "../util/RandomNumberGenerator.js";
-import { systemSetting } from "../constants/systemSetting.js";
+import { systemConstants } from "../constants/systemConstants.js";
 import { SystemMessage } from "../constants/SystemMessage.js";
 
 export async function raceInit() {
@@ -27,7 +27,7 @@ export async function raceInit() {
 
 export const raceManager = {
   isMovable(randomNumber) {
-    return randomNumber >= systemSetting.MOVABLE_NUMBER;
+    return randomNumber >= systemConstants.MOVABLE_NUMBER;
   },
   startRace(cars, round) {
     OutputView.printMessage(SystemMessage.RESULT_MESSAGE);
@@ -39,8 +39,8 @@ export const raceManager = {
   moveCar(cars) {
     for (const car of cars) {
       const randomNumber = randomNumberGenerator(
-        systemSetting.MINIMUM_RANDOM_NUMBER,
-        systemSetting.MAXIMUM_RANDOM_NUMBER
+        systemConstants.MINIMUM_RANDOM_NUMBER,
+        systemConstants.MAXIMUM_RANDOM_NUMBER
       );
       if (this.isMovable(randomNumber)) {
         car.goForward();
