@@ -5,6 +5,7 @@ import OutputView from '../views/OutputView.js';
 import Validator from '../domain/validator/Validator.js';
 import { CONFIG } from '../constants/config.js';
 import AttemptsValidator from '../domain/validator/AttemptsValidator.js';
+import pickRandomNumber from '../utils/pickRandomNumber.js';
 
 class Controller {
   constructor() {
@@ -13,10 +14,31 @@ class Controller {
 
   async process() {
     const carNames = await this.readCarNames();
-    this.race.createCars(carNames);
     const attempts = await this.readAttempts();
+
+    this.startRace(carNames, attempts);
+  }
+
+  startRace(carNames, attempts) {
+    this.race.createCars(carNames);
+
     OutputView.printResultGreeting();
-    this.race.race(attempts);
+    for (let i = CONFIG.INITIAL_ATTEMPTS_NUMBER; i < attempts; i++) {
+      this.runSingleRound();
+      OutputView.printNewLine();
+    }
+    this.announceWinners();
+  }
+
+  runSingleRound() {
+    this.race.cars.forEach((car) => {
+      const randomNumber = pickRandomNumber();
+      this.race.moveForwardCar(car, randomNumber);
+      OutputView.printRaceResult(car.name, car.getPosition());
+    });
+  }
+
+  announceWinners() {
     const winners = this.race.determineWinners();
     OutputView.printWinners(winners);
   }

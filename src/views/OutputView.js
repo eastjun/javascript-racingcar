@@ -17,6 +17,9 @@ const OutputView = {
   printWinners(winners) {
     console.log(`${OUTPUT.WINNERS} : ${normalize(winners)}`);
   },
+  printNewLine() {
+    console.log();
+  },
 };
 
 export default OutputView;
