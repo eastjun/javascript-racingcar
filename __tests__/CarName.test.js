@@ -1,6 +1,6 @@
 import CarValidator from "../src/domains/validators/CarValidator.js";
 
-describe("", () => {
+describe("자동차 이름 유효성 테스트", () => {
   test.each([["다서엇글자"], ["일"]])(
     "자동차 이름은 5자 이하이어야 한다.",
     (carName) => {

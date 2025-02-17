@@ -13,7 +13,7 @@ export default class App {
     carName: "carName",
     tryNumber: "tryNumber",
     racing: "racing",
-    result: "result",
+    winner: "winner",
   };
 
   async play(step = App.STEP.carName) {

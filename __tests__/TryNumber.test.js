@@ -1,5 +1,5 @@
 import TryNumberValidator from "../src/domains/validators/TryNumberValidator";
-describe("시도 횟수 유효성 검사", () => {
+describe("시도 횟수 유효성 테스트", () => {
   test.each([[1], [100]])(
     "시도횟수는 1회 이상 100회 이하이어야 한다.",
     (tryNumber) => {
