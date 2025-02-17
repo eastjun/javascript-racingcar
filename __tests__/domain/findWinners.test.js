@@ -1,4 +1,4 @@
-import findWinners from "../../src/domain/findWinners";
+import findWinners from "../../src/domain/findWinners.js";
 
 describe("domain/findWinners", () => {
   test("최종 결과에 대해 우승자를 올바르게 가려내야 한다", () => {

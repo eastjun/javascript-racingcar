@@ -1,5 +1,5 @@
-import playRound from "../../src/domain/playRound";
-import generateRandomNumber from "../../src/utils/generateRandomNumber";
+import playRound from "../../src/domain/playRound.js";
+import generateRandomNumber from "../../src/utils/generateRandomNumber.js";
 
 jest.mock("../../src/utils/generateRandomNumber");
 
