@@ -1,6 +1,4 @@
-import throwError from '../utils/throwError.js';
 import validateCarName from '../validation/validate/validateCarName.js';
-import OutputView from '../views/OutputView.js';
 
 class Car {
   #name;
