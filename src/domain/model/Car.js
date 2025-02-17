@@ -1,7 +1,7 @@
 import { CONFIG } from '../../constants/config.js';
 
 class Car {
-  #position = CONFIG.INITIAL_NUMBER;
+  #position = CONFIG.INITIAL_POSITION_NUMBER;
 
   constructor(name) {
     this.name = name;

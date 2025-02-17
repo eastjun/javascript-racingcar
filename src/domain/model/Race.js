@@ -19,7 +19,7 @@ class Race {
   }
 
   race(attempts) {
-    for (let i = CONFIG.INITIAL_NUMBER; i < attempts; i++) {
+    for (let i = CONFIG.INITIAL_ATTEMPTS_NUMBER; i < attempts; i++) {
       this.cars.forEach((car) => {
         this.moveForwardCar(car, pickRandomNumber());
         OutputView.printRaceResult(car.name, car.position);
