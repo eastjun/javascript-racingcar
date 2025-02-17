@@ -1,7 +1,7 @@
 import Car from "../src/domains/Car.js";
 import { MOVE_THRESHOLD } from "../src/constants/constants.js";
 
-describe("Car 모델 클래스 테스트", () => {
+describe("Car 클래스 테스트", () => {
   const MOVED_DISTANCE = 1;
   const STATIONARY = 0;
 
