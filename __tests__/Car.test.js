@@ -1,6 +1,6 @@
 import Car from '../src/domain/Car.js';
 import { splitString } from '../src/utils/separator.js';
-import { checkCarName, checkCarCount } from '../src/validation/carValidates.js';
+import { checkCarName, checkCarCount, checkCarNameDuplicate } from '../src/validation/carValidates.js';
 
 describe('경주할 자동차 이름 입력 검증 테스트', () => {
   test('자동차는 이름을 가져야 한다.', () => {
@@ -47,5 +47,14 @@ describe('경주할 자동차 이름 입력 검증 테스트', () => {
     expect(() => {
       checkCarCount(carNames);
     }).not.toThrow('[ERROR]');
+  });
+
+  test('자동차 이름은 중복되면 안된다.', () => {
+    const carNamesInput = '상추,재오,재오';
+    const carNames = splitString(carNamesInput);
+
+    expect(() => {
+      checkCarNameDuplicate(carNames);
+    }).toThrow('[ERROR]');
   });
 });
