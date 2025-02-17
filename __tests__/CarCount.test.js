@@ -1,10 +1,10 @@
 import * as fc from "fast-check";
-import CarValidator from "../src/domains/validators/CarValidator";
+import CarCount from "../src/domains/CarCount";
 
 describe("자동차 갯수 유효성 테스트", () => {
   test("자동차 갯수가 1개인 경우 에러가 발생한다.", () => {
     const carNames = ["pobi"];
-    expect(() => CarValidator.validateInputCarName(carNames)).toThrow();
+    expect(() => CarCount.validate(carNames)).toThrow();
   });
 
   test("자동차 갯수가 101개 이상인 경우 에러가 발생한다.", () => {
@@ -14,7 +14,7 @@ describe("자동차 갯수 유효성 테스트", () => {
       maxLength: 101,
     });
     const [carNames] = fc.sample(carNamesArb, 1);
-    expect(() => CarValidator.validateInputCarName(carNames)).toThrow();
+    expect(() => CarCount.validate(carNames)).toThrow();
   });
 
   test("자동차 갯수가 2개 이상, 100개 이하이어야 한다.", () => {
@@ -26,9 +26,7 @@ describe("자동차 갯수 유효성 테스트", () => {
     const carNames = fc.sample(carNamesArb, 10);
 
     for (let i = 0; i < carNames.length; i++) {
-      expect(() =>
-        CarValidator.validateInputCarName(carNames[i])
-      ).not.toThrow();
+      expect(() => CarCount.validate(carNames[i])).not.toThrow();
     }
   });
 });

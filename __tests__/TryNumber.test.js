@@ -1,10 +1,10 @@
-import TryNumberValidator from "../src/domains/validators/TryNumberValidator";
+import TryNumber from "../src/domains/TryNumber";
 describe("시도 횟수 유효성 테스트", () => {
   test.each([[1], [100]])(
     "시도횟수는 1회 이상 100회 이하이어야 한다.",
     (tryNumber) => {
       expect(() => {
-        TryNumberValidator.validateInputTryNumber(tryNumber);
+        TryNumber.validate(tryNumber);
       }).not.toThrow();
     }
   );
@@ -13,7 +13,7 @@ describe("시도 횟수 유효성 테스트", () => {
     "시도 횟수가 양의 정수가 아닌 경우 에러가 발생한다.",
     (tryNumber) => {
       expect(() => {
-        TryNumberValidator.validateInputTryNumber(tryNumber);
+        TryNumber.validate(tryNumber);
       }).toThrow();
     }
   );
@@ -22,7 +22,7 @@ describe("시도 횟수 유효성 테스트", () => {
     "시도횟수가 0회 이하 101회 이상인 경우 에러가 발생한다.",
     (tryNumber) => {
       expect(() => {
-        TryNumberValidator.validateInputTryNumber(tryNumber);
+        TryNumber.validate(tryNumber);
       }).toThrow();
     }
   );

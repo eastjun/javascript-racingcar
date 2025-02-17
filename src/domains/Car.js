@@ -1,4 +1,4 @@
-import CarValidator from "./validators/CarValidator.js";
+import CarName from "./CarName.js";
 
 export default class Car {
   #name;
@@ -9,7 +9,7 @@ export default class Car {
   static MOVE_CONDITION = 4;
 
   constructor(name) {
-    CarValidator.validateCarNameLength(name);
+    CarName.validateCarNameLength(name);
     this.#name = name;
     this.#position = Car.START_POSITION;
   }
