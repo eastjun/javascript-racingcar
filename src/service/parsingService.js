@@ -8,7 +8,7 @@ export const parseNames = (input) => {
   const nameList = input.split(',');
 
   if (!Validation.isNameNotEmpty(nameList)) {
-    throw new Error(ERROR_MESSAGE.HAS_EMPTY_NAME);
+    throw new Error(ERROR_MESSAGE.EMPTY_NAME);
   }
   if (!Validation.isNameTooLong(nameList)) {
     throw new Error(ERROR_MESSAGE.NAME_TOO_LONG);
