@@ -13,6 +13,7 @@ class App {
     const carList = await this.inputCarList();
     const attemptCount = await this.inputAttemptCount();
     const race = new Race(carList);
+    this.printResultMessage();
     this.play(race, attemptCount);
     this.getWinner(race);
   }
@@ -25,17 +26,23 @@ class App {
     return await InputHandler.getAttemptCount();
   }
 
-  play(race, attemptCount) {
+  printResultMessage(){
     OutputView.print(OUTPUT_MESSAGE.RESULT);
     OutputView.print(LINE_BREAK);
+  }
 
+  play(race, attemptCount) {
     for (let i = 0; i < attemptCount; i++) {
       const carListStatus = race.executeTurn();
-      carListStatus.forEach((car) => {
-        OutputView.print(`${car.name} : ${POSITION.repeat(car.position)}`);
-      });
-      OutputView.print(LINE_BREAK);
+      this.printResult(carListStatus)
     }
+  }
+
+  printResult(carListStatus){
+    carListStatus.forEach((car) => {
+      OutputView.print(`${car.name} : ${POSITION.repeat(car.position)}`);
+    });
+    OutputView.print(LINE_BREAK);
   }
 
   getWinner(race) {
