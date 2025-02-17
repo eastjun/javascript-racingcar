@@ -11,8 +11,8 @@ import IO_MESSAGE from './constants/IO_MESSAGE.js';
 
 class App {
   async run() {
-    const cars = await this.getCar();
-    const tryCount = await this.getTryCount();
+    const cars = await this.#getCar();
+    const tryCount = await this.#getTryCount();
     const racing = new Racing(cars, tryCount);
 
     Printer.printHeader(IO_MESSAGE.resultHeader);
@@ -22,7 +22,7 @@ class App {
     Printer.printWinner(raceResult);
   }
 
-  async getCar() {
+  async #getCar() {
     try {
       const carNameInput = await InputView.readLineAsync(IO_MESSAGE.getCarName);
       const parsedCarName = splitInput(carNameInput);
@@ -30,11 +30,11 @@ class App {
       return parsedCarName.map((carName) => new Car(carName));
     } catch (error) {
       OutputView.print(error.message);
-      return this.getCar();
+      return this.#getCar();
     }
   }
 
-  async getTryCount() {
+  async #getTryCount() {
     try {
       const tryCount = await InputView.readLineAsync(IO_MESSAGE.getTryCount);
       const parsedTryCount = parseToNumber(tryCount);
@@ -42,7 +42,7 @@ class App {
       return parsedTryCount;
     } catch (error) {
       OutputView.print(error.message);
-      return this.getTryCount();
+      return this.#getTryCount();
     }
   }
 }
