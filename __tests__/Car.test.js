@@ -1,6 +1,6 @@
 import Car from '../src/domain/Car.js';
-import { checkCarName, checkIsEmpty } from '../src/validation/carValidates.js';
-import { MAX_CAR_NAME_LENGTH, MIN_CAR_NAME_LENGTH } from '../src/constants/MAGIC_NUMBER.js';
+import { splitString } from '../src/utils/separator.js';
+import { checkCarName, checkCarCount } from '../src/validation/carValidates.js';
 
 describe('경주할 자동차 이름 입력 검증 테스트', () => {
   test('자동차는 이름을 가져야 한다.', () => {
@@ -19,6 +19,15 @@ describe('경주할 자동차 이름 입력 검증 테스트', () => {
     // then
     expect(() => {
       checkCarName(invalidName);
+    }).toThrow('[ERROR]');
+  });
+
+  test('자동차는 쉼표를 기준으로 구분한다.', () => {
+    const carNamesInput = '상추/재오/앵버';
+    const carNames = splitString(carNamesInput);
+
+    expect(() => {
+      checkCarCount(carNames);
     }).toThrow('[ERROR]');
   });
 });
