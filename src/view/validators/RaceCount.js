@@ -11,7 +11,7 @@ const raceCountVaildators = [
 ];
 
 const validateRaceCount = (number) => {
-  raceCountVaildators.map((raceCountVaildator) => {
+  raceCountVaildators.forEach((raceCountVaildator) => {
     raceCountVaildator(number);
   });
 };

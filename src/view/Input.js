@@ -3,7 +3,7 @@ import { printLine } from './Output.js';
 import readLineAsync from './ReadLineAsync.js';
 import { validateRaceCarNames } from './validators/RaceCarNameValidator.js';
 import { validateRaceCount } from './validators/RaceCount.js';
-import { validateDuplicateName } from './validators/validator.js';
+import { validateDuplicateInput } from './validators/validator.js';
 
 const getSeparatedCarNames = async () => {
   const raceCarName = await readLineAsync(INPUT_MESSAGE.raceCarNames + '\n');
@@ -27,7 +27,7 @@ const getValidRaceCarNames = async () => {
   return await retryOnError(async () => {
     const raceCarNames = await getSeparatedCarNames();
 
-    validateDuplicateName(raceCarNames);
+    validateDuplicateInput(raceCarNames);
     raceCarNames.forEach((raceCarName) => {
       validateRaceCarNames(raceCarName);
     });

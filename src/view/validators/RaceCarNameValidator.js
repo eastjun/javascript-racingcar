@@ -1,5 +1,5 @@
 import {
-  validateDuplicateName,
+  validateDuplicateInput,
   validateEndWithDelimiter,
   validateLimitLength,
   validatePositiveLength,
@@ -8,7 +8,7 @@ import {
 const nameValidators = [validateLimitLength, validatePositiveLength];
 
 const seperatedNameValidators = [
-  validateDuplicateName,
+  validateDuplicateInput,
   validateEndWithDelimiter,
 ];
 

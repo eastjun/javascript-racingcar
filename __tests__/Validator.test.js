@@ -4,7 +4,7 @@ import {
   validatePositiveNumber,
   validateNumeric,
   validateInteger,
-  validateDuplicateName,
+  validateDuplicateInput,
 } from '../src/view/validators/validator.js';
 
 describe('validate 테스트', () => {
@@ -48,9 +48,9 @@ test.each([
   [['a', 'a', 'a'], true],
 ])('자동차 이름이 중복되지 않는지 확인한다.', (carNameList, result) => {
   if (result) {
-    expect(() => validateDuplicateName(carNameList)).toThrow();
+    expect(() => validateDuplicateInput(carNameList)).toThrow();
   } else {
-    expect(() => validateDuplicateName(carNameList)).not.toThrow();
+    expect(() => validateDuplicateInput(carNameList)).not.toThrow();
   }
 });
 
