@@ -1,4 +1,4 @@
-import { MAX_TRY_COUNT, MIN_TRY_COUNT } from '../constants/MAGIC_NUMBER';
+import { MAX_TRY_COUNT, MIN_TRY_COUNT } from '../constants/MAGIC_NUMBER.js';
 
 export function checkTryCountRange(tryCount) {
   if (tryCount < MIN_TRY_COUNT || tryCount > MAX_TRY_COUNT)
