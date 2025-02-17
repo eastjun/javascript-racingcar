@@ -1,16 +1,9 @@
 import runValidators from "../utils/runValidators.js";
 import throwError from "../utils/throwError.js";
-<<<<<<< HEAD
 import { ATTEMPT_ERROR_MESSAGES, ATTEMPT_NUMBER_MAX } from "../constants/Constants.js";
 
 const checkEmptyInput = (attemptCount) => {
   if (attemptCount === null) {
-=======
-import { ATTEMPT_ERROR_MESSAGES } from "../constants/Constants.js";
-
-const checkEmptyInput = (attemptCount) => {
-  if (attemptCount.length === 0) {
->>>>>>> upstream/youdame
     throwError(ATTEMPT_ERROR_MESSAGES.EMPTY_INPUT);
   }
 };
