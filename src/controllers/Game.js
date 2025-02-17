@@ -1,7 +1,8 @@
 import { createRandom } from '../utils/Random.js';
-import Car from '../models/Car.js';
+import Car from '../domain/models/Car.js';
 import OutputView from '../views/OutputView.js';
-import InputController from './InputController.js';
+import InputView from '../views/InputView.js';
+import WinnerManager from '../domain/models/WinnerManager.js';
 
 export default class Game {
   #carList;
@@ -11,41 +12,32 @@ export default class Game {
   }
 
   createCarList(names) {
-    names.forEach(name => {
-      this.#carList.push(new Car(name));
-    });
-  }
-
-  judgeWinner() {
-    const winnerNames = [];
-    let maxPosition = 0;
-    this.#carList.forEach(car => {
-      if (car.position > maxPosition) {
-        maxPosition = car.position;
-      }
-    });
-
-    this.#carList.forEach(car => {
-      if (car.position === maxPosition) {
-        winnerNames.push(car.name);
-      }
-    });
-    return winnerNames;
+    this.#carList = names.map(name => new Car(name));
   }
 
   async start() {
-    const inputName = await InputController.inputName();
-    const inputTryNumber = await InputController.inputTryNumber();
+    const inputName = await InputView.inputName();
+    const inputTryNumber = await InputView.inputTryNumber();
+
     this.createCarList(inputName);
+    this.#raceGame(inputTryNumber);
+
+    const winnerManager = new WinnerManager(this.#carList);
+    OutputView.gameResult(winnerManager.getWinners());
+  }
+
+  #raceRound() {
+    this.#carList.forEach(car => {
+      const randomValue = createRandom();
+      car.moveForward(randomValue);
+      OutputView.roundResult(car.name, car.position);
+    });
+  }
+
+  #raceGame(inputTryNumber) {
     for (let i = 0; i < inputTryNumber; i++) {
-      this.#carList.forEach(car => {
-        const randomValue = createRandom();
-        car.moveForward(randomValue);
-        OutputView.roundResult(car.name, car.position);
-      });
+      this.#raceRound();
       OutputView.break();
     }
-    const winnerNames = this.judgeWinner();
-    OutputView.gameResult(winnerNames);
   }
 }

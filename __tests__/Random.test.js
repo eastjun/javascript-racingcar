@@ -1,4 +1,4 @@
-import { createRandom } from '../src/utils/Random';
+import { createRandom } from '../src/utils/Random.js';
 test('Random값이 범위 내의 값을 생성하는가?', () => {
   //given
   const min = 0;
