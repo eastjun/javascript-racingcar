@@ -13,8 +13,8 @@ const OutputView = {
     this.print(LINE_BREAK);
   },
 
-  printCarStatus(carList) {
-    carList.forEach((car) => {
+  printCarStatus(turnResult) {
+    turnResult.forEach((car) => {
       this.print(`${car.name} : ${"-".repeat(car.position)}`);
     });
     this.printLineBreak();
@@ -27,8 +27,8 @@ const OutputView = {
   printOutput(raceResult, winners) {
     OutputView.printStartMessage();
 
-    raceResult.forEach((carStatus) => {
-      OutputView.printCarStatus(carStatus);
+    raceResult.forEach((turnResult) => {
+      OutputView.printCarStatus(turnResult);
     });
 
     OutputView.printWinners(winners);

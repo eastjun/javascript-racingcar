@@ -10,6 +10,16 @@ class Race {
     this.attemptCount = attemptCount;
   }
 
+  executeRace() {
+    const raceResult = [];
+    for (let i = 0; i < this.attemptCount; i++) {
+      this.executeTurn();
+      raceResult.push(this.getTurnResult());
+    }
+
+    return raceResult;
+  }
+
   executeTurn() {
     this.#carList.forEach((car) => {
       const randomNumber = getRandomNumber(RANDOM_NUMBER.MIN, RANDOM_NUMBER.MAX);
@@ -17,14 +27,8 @@ class Race {
     });
   }
 
-  executeRace() {
-    const raceResult = [];
-    for (let i = 0; i < this.attemptCount; i++) {
-      this.executeTurn();
-      raceResult.push([...this.#carList]);
-    }
-
-    return raceResult;
+  getTurnResult() {
+    return this.#carList.map((car) => ({ name: car.name, position: car.position }));
   }
 
   getWinnerName() {
