@@ -17,3 +17,8 @@ export const validateGameCountRange = (input) => {
     throw new Error(GAME_COUNT.RANGE);
   }
 };
+
+export const validateGameCount = (input) => {
+  validateGameCountType(input);
+  validateGameCountRange(input);
+};

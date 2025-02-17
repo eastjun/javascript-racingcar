@@ -1,5 +1,5 @@
 import { CAR_MOVE_FORWARD, MAX, MIN } from '../Constants/rules.js';
-import { getRandomNumber } from '../Utils/math.js';
+import { getRandomNumber } from '../../Utils/math.js';
 
 export default class Race {
   #cars;
@@ -41,11 +41,11 @@ export default class Race {
   }
 
   getWinners() {
-    const lastRound = this.#gameCount - 1;
     const winnerPosition = Math.max(
-      ...this.#raceResult[lastRound].map(({ position }) => position),
+      ...this.#cars.map((car) => car.getPosition()),
     );
-    const winners = this.#raceResult[lastRound]
+    const winners = this.#cars
+      .map((car) => ({ name: car.getName(), position: car.getPosition() }))
       .filter(({ position }) => position === winnerPosition)
       .map(({ name }) => name);
 

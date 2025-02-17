@@ -2,7 +2,7 @@ import {
   validateCarsNameLength,
   validateCarsNameForm,
   validateDuplicatedCarName,
-} from '../../src/Validation/carName.js';
+} from '../../src/Domain/Validation/carName.js';
 
 describe('자동차 이름 유효성 검사', () => {
   test('자동차 이름 길이 0자 이하', () => {

@@ -32,3 +32,9 @@ export const validateDuplicatedCarName = (input) => {
     throw new Error(CAR_NAMES.DUPLICATED);
   }
 };
+
+export const validateCarsName = (input) => {
+  validateCarsNameLength(input);
+  validateCarsNameForm(input);
+  validateDuplicatedCarName(input);
+};
