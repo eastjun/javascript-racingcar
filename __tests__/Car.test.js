@@ -1,4 +1,3 @@
-/* eslint-disable */
 import Car from '../src/domain/Car.js';
 
 test('자동차는 앞으로 전진할 수 있다.', () => {

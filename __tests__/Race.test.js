@@ -1,5 +1,3 @@
-/* eslint-disable */
-
 import Race from '../src/domain/Race';
 
 test.each([['abcdef'], ['']])(

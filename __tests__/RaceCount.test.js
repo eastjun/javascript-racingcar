@@ -1,5 +1,3 @@
-/* eslint-disable */
-
 import { validateRaceCount } from '../src/view/validators/RaceCount';
 
 test.each([

@@ -1,5 +1,3 @@
-/* eslint-disable */
-
 import {
   validateSeparatedCars,
   validateRaceCarNames,

@@ -1,5 +1,3 @@
-/* eslint-disable */
-
 import Car from '../src/domain/Car';
 import Round from '../src/domain/Round';
 
