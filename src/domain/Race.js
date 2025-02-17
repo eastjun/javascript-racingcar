@@ -39,7 +39,7 @@ class Race {
   }
 
   get carList() {
-    return this.carList;
+    return this.#carList;
   }
 }
 
