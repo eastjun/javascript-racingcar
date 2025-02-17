@@ -1,3 +1,4 @@
+import { MAX_TRY_COUNT, MIN_TRY_COUNT } from '../src/constants/common.js';
 import Validate from '../src/Models/Validate.js';
 
 export const getLogSpy = () => {
@@ -35,12 +36,14 @@ describe('자동차 이름 입력 검증 테스트', () => {
 });
 
 describe('시도 횟수 입력 검증 테스트', () => {
-  test.each([[0, 22]])('시도 횟수 범위() 밖 입력 오류 검증 테스트', (tryCount) => {
+  const INTEGER_FAIL_CASE = ['ㄱ', 3.4];
+
+  test.each([[MIN_TRY_COUNT - 1, MAX_TRY_COUNT + 1]])('시도 횟수 범위 밖 입력 오류 검증 테스트', (tryCount) => {
     //then
     expect(() => Validate.checkTryCountRange(tryCount)).toThrow('[ERROR]');
   });
 
-  test.each([['ㄱ', 3.4]])('자연수 입력 오류 검증 테스트', (tryCount) => {
+  test.each([INTEGER_FAIL_CASE])('자연수 입력 오류 검증 테스트', (tryCount) => {
     //then
     expect(() => Validate.checkIsInteger(tryCount)).toThrow('[ERROR]');
   });
