@@ -1,3 +1,5 @@
+import OUTPUT from '../constant/output.js';
+
 class Winners {
   #names;
 
@@ -10,6 +12,10 @@ class Winners {
   }
 
   getNames() {
+    if (!this.#names) {
+      return OUTPUT.NO_WINNER;
+    }
+
     return this.#names.join(', ');
   }
 }
