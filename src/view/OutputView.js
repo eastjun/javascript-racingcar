@@ -15,11 +15,15 @@ const OutputView = Object.freeze({
 
   printRaceStatus(raceStatus) {
     raceStatus.forEach((turn) => {
-      turn.forEach(({ name, position }) =>
-        OutputView.printMessage(`${name} : ${FORWARD_DASH.repeat(position)}`),
-      );
+      this.printOneTurn(turn);
       this.printBlank();
     });
+  },
+
+  printOneTurn(turn) {
+    turn.forEach(({ name, position }) =>
+      OutputView.printMessage(`${name} : ${FORWARD_DASH.repeat(position)}`),
+    );
   },
 
   printRaceWinner(winner) {
