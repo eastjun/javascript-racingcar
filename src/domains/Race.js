@@ -1,4 +1,5 @@
 import Car from "./Car.js";
+import { generateRandomNumber } from "../utils/utils.js";
 
 export default class Race {
   createCars(names) {
@@ -7,9 +8,13 @@ export default class Race {
 
   race(cars) {
     cars.forEach((car) => {
-      const isCanMove = Car.isCanMove();
+      const isCanMove = this.#isCanMove();
       car.move(isCanMove);
     });
+  }
+
+  #isCanMove() {
+    return generateRandomNumber() >= Car.MOVE_CONDITION;
   }
 
   getWinner(cars) {
