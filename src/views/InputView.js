@@ -1,8 +1,6 @@
 import { INPUT_MESSAGE } from "../constants/Constants.js";
 import InputParser from "../input/InputParser.js";
 import readLineAsync from "../utils/readLineAsync.js";
-import validateAttemptCount from "../validation/validateAttemptCount.js";
-import validateCarNameList from "../validation/validateCarNameList.js";
 import OutputView from "./OutputView.js";
 
 const InputView = {
@@ -11,20 +9,19 @@ const InputView = {
   },
 
   async getCarNameList() {
-    return this.handleUserInput(INPUT_MESSAGE.CAR, InputParser.car, validateCarNameList);
+    const userInput = await this.readUserInput(INPUT_MESSAGE.CAR);
+    return InputParser.car(userInput);
   },
 
   async getAttemptCount() {
-    return this.handleUserInput(INPUT_MESSAGE.ATTEMPT, InputParser.attempt, validateAttemptCount);
+    const userInput = await this.readUserInput(INPUT_MESSAGE.ATTEMPT);
+    return InputParser.attempt(userInput);
   },
 
-  async handleUserInput(inputMessage, parser, validator) {
+  async retryOnError(asyncFn) {
     while (true) {
       try {
-        const userInput = await InputView.readUserInput(inputMessage);
-        const parsedInput = parser(userInput);
-        validator(parsedInput);
-        return parsedInput;
+        return await asyncFn();
       } catch (e) {
         OutputView.print(e.message);
       }
