@@ -12,6 +12,7 @@ const ERROR_MESSAGE = {
   integer: '시도 횟수는 정수어야 합니다',
   duplicateNames: '중복된 이름은 작성하실 수 없습니다.',
   endWithDelimiter: '문장의 마지막은 구분자로 끝낼 수 없습니다',
+
 };
 
 const INPUT_MESSAGE = {
@@ -22,6 +23,7 @@ const INPUT_MESSAGE = {
 
 const OUTPUT_MESSAGE = {
   result: '실행 결과',
+
 };
 
 export {
@@ -31,4 +33,5 @@ export {
   INPUT_MESSAGE,
   OUTPUT_MESSAGE,
   DELIMITER,
+
 };

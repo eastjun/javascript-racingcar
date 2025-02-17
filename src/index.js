@@ -12,6 +12,7 @@ async function run() {
   const winnerList = race.getWinner();
 
   printResult(raceResults, winnerList);
+
 }
 
 run();
