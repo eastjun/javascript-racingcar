@@ -1,35 +1,57 @@
-import CarManager from '../model/CarManager.js';
+import Race from '../domain/model/Race.js';
 import readLineAsync from '../views/InputView.js';
 import { INPUT } from '../constants/messages.js';
 import OutputView from '../views/OutputView.js';
-import CarNameValidator from '../validator/CarNameValidator.js';
-import splitStringToArray from '../utils/utils.js';
+import Validator from '../domain/validator/Validator.js';
 import { CONFIG } from '../constants/config.js';
-import AttemptsValidator from '../validator/AttemptsValidator.js';
+import AttemptsValidator from '../domain/validator/AttemptsValidator.js';
+import pickRandomNumber from '../utils/pickRandomNumber.js';
 
 class Controller {
   constructor() {
-    this.carManager = new CarManager();
+    this.race = new Race();
   }
 
   async process() {
     const carNames = await this.readCarNames();
-    this.carManager.createCars(carNames);
     const attempts = await this.readAttempts();
-    this.carManager.race(attempts);
-    const winners = this.carManager.determineWinners();
+
+    this.startRace(carNames, attempts);
+  }
+
+  startRace(carNames, attempts) {
+    this.race.createCars(carNames);
+
+    OutputView.printResultGreeting();
+    for (let i = CONFIG.INITIAL_ATTEMPTS_NUMBER; i < attempts; i++) {
+      this.runSingleRound();
+      OutputView.printNewLine();
+    }
+    this.announceWinners();
+  }
+
+  runSingleRound() {
+    this.race.cars.forEach((car) => {
+      const randomNumber = pickRandomNumber();
+      this.race.moveForwardCar(car, randomNumber);
+      OutputView.printRaceResult(car.name, car.getPosition());
+    });
+  }
+
+  announceWinners() {
+    const winners = this.race.determineWinners();
     OutputView.printWinners(winners);
   }
 
   async readCarNames() {
     try {
       const input = await readLineAsync(INPUT.CAR_NAMES);
-      const carNames = splitStringToArray(input, CONFIG.COMMA);
+      const carNames = input.split(CONFIG.COMMA);
       carNames.forEach((carName) => {
-        CarNameValidator.checkCarNameLength(carName);
-        CarNameValidator.checkBlank(carName);
+        Validator.checkCarNameLength(carName);
+        Validator.checkBlank(carName);
       });
-      CarNameValidator.checkDuplicatedCarName(carNames);
+      Validator.checkDuplicatedCarName(carNames);
       return carNames;
     } catch (err) {
       console.log(err.message);
