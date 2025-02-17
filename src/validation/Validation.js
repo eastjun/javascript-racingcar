@@ -4,10 +4,8 @@ export const Validation = {
   isNameNotEmpty(parsedString) {
     return parsedString.every((name) => name.trim().length > 0);
   },
-  isNameTooLong(parsedString) {
-    return parsedString.every(
-      (name) => name.length <= systemSetting.MAX_NAME_LENGTH,
-    );
+  isNameTooLong(names) {
+    return names.every((name) => name.length <= systemSetting.MAX_NAME_LENGTH);
   },
   isNameDuplicate(parsedString) {
     return parsedString.length === new Set(parsedString).size;
