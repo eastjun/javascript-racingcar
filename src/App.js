@@ -25,7 +25,7 @@ class App {
     return await InputHandler.getAttemptCount();
   }
 
-  async play(race, attemptCount) {
+  play(race, attemptCount) {
     OutputView.print(OUTPUT_MESSAGE.RESULT);
     OutputView.print(LINE_BREAK);
 
@@ -38,7 +38,7 @@ class App {
     }
   }
 
-  async getWinner(race) {
+  getWinner(race) {
     const winnerList = race.getWinnerName();
     OutputView.print(
       `${OUTPUT_MESSAGE.WINNER} ${winnerList.join(JOINT_WINNER_DELIMITER)}`
