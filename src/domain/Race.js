@@ -37,6 +37,7 @@ class Race {
 
   getRaceResult() {
     return this.#raceResult;
+
   }
 }
 
