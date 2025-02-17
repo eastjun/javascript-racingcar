@@ -8,10 +8,10 @@ const Output = {
 
   /**
    *
-   * @param {Array<Array<{ name: string, count: number }>>} roundResults
+   * @param {Array<Array<{ name: string, count: number }>>} raceResults
    */
-  printRoundResults(roundResults) {
-    roundResults.flatMap((eachRound) => [
+  printRaceResults(raceResults) {
+    raceResults.flatMap((eachRound) => [
       ...eachRound.map(({ name, count }) => this.printRace(name, count)),
       Console.printLineBreak(),
     ]);
