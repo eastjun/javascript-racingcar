@@ -194,3 +194,8 @@ index.js -> GameController 인스턴스 생성 후, play() (게임 시작)
         ├── Input.js
         └── Output.js
 ```
+
+## 🐥 `Step2` 니야의 자동차 경주 리팩토링 - v2 🐥
+
+- [ ] 경주를 관리하는 `Race` 객체 만들어서 `view` 분리하기.
+- [ ] jest 모킹함수 사용하지 않도록 하기.
