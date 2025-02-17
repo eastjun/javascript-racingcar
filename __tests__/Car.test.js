@@ -5,19 +5,12 @@ import { checkCarName, checkCarCount, checkCarNameDuplicate } from '../src/valid
 
 describe('경주할 자동차 이름 입력 검증 테스트', () => {
   test('자동차는 이름을 가져야 한다.', () => {
-    // given
-
-    // when
     const car = new Car('재오');
 
-    // then
     expect(car.name).toBe('재오');
   });
 
   test.each(['', '상추상추상추'])('자동차 이름은 1~5자여야 한다.', (invalidName) => {
-    // given
-    // when
-    // then
     expect(() => {
       checkCarName(invalidName);
     }).toThrow('[ERROR]');
