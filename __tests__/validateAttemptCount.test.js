@@ -1,3 +1,4 @@
+import { ATTEMPT_NUMBER_MAX } from "../src/constants/Constants.js";
 import validateAttemptCount from "../src/validation/validateAttemptCount.js";
 
 describe("validateAttemptCount() 유효성 검사", () => {
@@ -20,6 +21,11 @@ describe("validateAttemptCount() 유효성 검사", () => {
   describe("입력 값이 0 이하인 경우", () => {
     test.each([-3, -5, 0])("0 이하의 값을 입력하면 에러 발생 - 입력: %j", (input) => {
       expect(() => validateAttemptCount(input)).toThrow("[ERROR] 0보다 큰 수를 입력해주세요.");
+    });
+  });
+  describe(`입력 값이 ${ATTEMPT_NUMBER_MAX}을 넘는 경우`, () => {
+    test.each([30, 21])(`${ATTEMPT_NUMBER_MAX}을 넘는 값을 입력하면 에러 발생 - 입력: %j`, (input) => {
+      expect(() => validateAttemptCount(input)).toThrow(`[ERROR] 최대 ${ATTEMPT_NUMBER_MAX}회까지 실행 가능합니다.`);
     });
   });
 });
