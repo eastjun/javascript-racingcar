@@ -21,8 +21,8 @@ describe("Car 단위 테스트", () => {
   });
 
   test.each([
-    ["무작위 랜덤 값이 4 이상일 경우 자동차는 움직인다.", 9, 1],
-    ["무작위 랜덤 값이 4 미만일 경우 자동차는 움직이지 않는다.", 3, 0],
+    [`무작위 랜덤 값이 ${MOVE_CONDITION_BOUNDARY} 이상일 경우 자동차는 움직인다.`, 9, 1],
+    [`무작위 랜덤 값이 ${MOVE_CONDITION_BOUNDARY} 미만일 경우 자동차는 움직이지 않는다.`, 3, 0],
   ])("%s", (_, randomNumber, expectedCount) => {
     // given
     // when

@@ -83,6 +83,7 @@
 - [x] 입력값 예외 테스트하기
   - [x] validateCarsNames
   - [x] validateTryCounts
+- [x] 테스트 코드 변수 상수화
 
 ## ⚙️ 폴더 구조
 
