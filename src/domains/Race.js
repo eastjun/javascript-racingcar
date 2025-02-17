@@ -3,7 +3,7 @@ import { generateRandomNumber } from "../utils/utils.js";
 
 export default class Race {
   createCars(names) {
-    return names.map((name) => new Car(name));
+    return names.map(Car.of);
   }
 
   race(cars) {

@@ -1,6 +1,7 @@
-import CarValidator from "./domains/validators/CarValidator.js";
 import Race from "./domains/Race.js";
-import TryNumberValidator from "./domains/validators/TryNumberValidator.js";
+import TryNumber from "./domains/TryNumber.js";
+import CarCount from "./domains/CarCount.js";
+import CarName from "./domains/CarName.js";
 import Input from "./views/Input.js";
 import Output from "./views/Output.js";
 
@@ -45,13 +46,15 @@ export default class App {
 
   async #readCarNames() {
     const carNames = await Input.carName();
-    CarValidator.validateInputCarName(carNames);
+    CarCount.validate(carNames);
+    CarName.validateCarNameLength(carNames);
+    CarName.validateDuplicateCarName(carNames);
     this.#cars = this.#raceModel.createCars(carNames);
   }
 
   async #readTryNumber() {
     const tryNumber = await Input.tryNumber();
-    TryNumberValidator.validateInputTryNumber(tryNumber);
+    TryNumber.validate(tryNumber);
     this.#tryNumber = tryNumber;
   }
 

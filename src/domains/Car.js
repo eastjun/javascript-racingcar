@@ -14,6 +14,10 @@ export default class Car {
     this.#position = Car.START_POSITION;
   }
 
+  static of(name) {
+    return new Car(name);
+  }
+
   move(isCanMove) {
     if (isCanMove) {
       this.#position += Car.MOVE_COUNT;
