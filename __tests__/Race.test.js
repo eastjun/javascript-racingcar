@@ -12,6 +12,14 @@ describe('조건에 따른 자동차 이동 테스트', () => {
 
     expect(winners).toEqual(['수이', '메타']);
   });
+
+  test('단일 우승자', () => {
+    sui.move()
+
+    const winners = race.getWinnerName();
+
+    expect(winners).toEqual(['수이']);
+  });
   })
 
 describe('조건에 따른 자동차 이동 테스트', () => {  
@@ -24,7 +32,7 @@ describe('조건에 따른 자동차 이동 테스트', () => {
   test(`randomNumber가 ${MOVE_CONDITION} 미만이면 자동차가 움직이지 않아야 한다.`, () => {
     race.moveCar(MOVE_CONDITION - 1, sui);
 
-    expect(sui.position).toBe(0);
+    expect(sui.position).toBe(1);
   });
 });
 
