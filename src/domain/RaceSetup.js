@@ -15,6 +15,11 @@ class RaceSetup {
     this.#raceCount = 0;
   }
 
+  async initializeRace() {
+    await this.carList();
+    await this.raceCount();
+  }
+
   async carList() {
     const carNames = await tryInput(InputView.readCarNames, validateCarNames);
 
