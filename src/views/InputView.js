@@ -3,6 +3,7 @@ import InputParser from "../input/InputParser.js";
 import readLineAsync from "../utils/readLineAsync.js";
 import validateAttemptCount from "../validation/validateAttemptCount.js";
 import validateCarNameList from "../validation/validateCarNameList.js";
+import OutputView from "./OutputView.js";
 
 const InputView = {
   async readUserInput(message) {
