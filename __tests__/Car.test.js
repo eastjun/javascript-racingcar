@@ -1,3 +1,4 @@
+import { CAR_MOVE_STANDARD } from '../src/constants/MAGIC_NUMBER.js';
 import Car from '../src/domain/Car.js';
 import { splitString } from '../src/utils/separator.js';
 import { checkCarName, checkCarCount, checkCarNameDuplicate } from '../src/validation/carValidates.js';
@@ -56,5 +57,14 @@ describe('경주할 자동차 이름 입력 검증 테스트', () => {
     expect(() => {
       checkCarNameDuplicate(carNames);
     }).toThrow('[ERROR]');
+  });
+});
+
+describe('자동차가 잘 움직이는지 테스트', () => {
+  const car = new Car('상추');
+
+  car.move(4 >= CAR_MOVE_STANDARD);
+  test('자동차는 4 이상의 숫자를 받으면 전진할 수 있다.', () => {
+    expect(car.position).toBe(1);
   });
 });
