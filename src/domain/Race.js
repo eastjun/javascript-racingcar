@@ -15,7 +15,7 @@ class Race {
     OutputView.printBeforeResult();
     for (let i = 0; i < raceCount; i++) {
       this.progressRace(carList);
-      console.log('');
+      OutputView.printEmptyLine();
     }
 
     this.printWinners(carList);
@@ -23,8 +23,8 @@ class Race {
 
   progressRace(carList) {
     carList.forEach((car) => {
-      const moveCondition = randomNumber();
-      if (moveCondition >= MIN.MOVE_CONDITION) {
+      const randomMoveValue = randomNumber();
+      if (randomMoveValue >= MIN.MOVE_CONDITION) {
         car.moveForward();
       }
 

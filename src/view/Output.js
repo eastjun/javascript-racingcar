@@ -11,6 +11,9 @@ const OutputView = {
   printWinners(winners) {
     console.log(`${OUTPUT.WINNER}${winners}`);
   },
+  printEmptyLine() {
+    console.log('');
+  },
 };
 
 export default OutputView;
