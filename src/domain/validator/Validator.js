@@ -7,7 +7,7 @@ const Validator = {
     if (!StringUtils.isValidLength(carName, CONFIG.MINIMUM_CAR_NAME, CONFIG.MAXIMUM_CAR_NAME)) {
       throw new Error(ERROR.CAR_NAME_LENGTH);
     }
-    return carName; x;
+    return carName;
   },
   checkBlank(carName) {
     if (StringUtils.hasBlank(carName)) {
