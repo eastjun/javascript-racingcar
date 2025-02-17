@@ -6,7 +6,7 @@ export default class CarRace {
   #cars;
   #tryCount;
 
-  constructor(names, tryCount) {
+  constructor(names = [], tryCount) {
     this.#cars = this.#makeCars(names);
     this.#tryCount = tryCount;
   }
@@ -24,7 +24,7 @@ export default class CarRace {
         if (isCarGo) car.go();
       });
 
-      onRoundEnd(this.#cars);
+      onRoundEnd?.(this.#cars);
     }
   }
 
@@ -38,6 +38,7 @@ export default class CarRace {
 
   getWinners() {
     const winnerPosition = Math.max(...this.#cars.map(car => car.position));
+
     return this.#cars
       .filter(car => car.position === winnerPosition)
       .map(car => car.name);
