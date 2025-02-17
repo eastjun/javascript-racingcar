@@ -30,14 +30,8 @@ class App {
   #race(racing, count) {
     OutputView.printMessage(GAME_MESSAGE.RACING_RESULT);
 
-    for (let i = 0; i < count; i++) {
-      racing.raceOnce();
-      racing.carList.forEach((car) => {
-        const { name, position } = car.getCarStatus();
-        OutputView.printRaceStatus(name, position);
-      });
-      OutputView.printBlank();
-    }
+    const raceStatus = racing.getStatus(count);
+    OutputView.printRaceStatus(raceStatus);
 
     const winner = racing.getWinner();
     OutputView.printRaceWinner(winner);

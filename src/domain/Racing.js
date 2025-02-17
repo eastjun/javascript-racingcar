@@ -23,10 +23,26 @@ class Racing {
       .map((car) => car.getCarStatus().name);
   }
 
-  raceOnce() {
+  #raceOnce() {
     this.carList.forEach((car) => {
       car.move(getRandomValueInRange(0, 9));
     });
+  }
+
+  getStatus(count) {
+    const raceStatus = [];
+
+    for (let i = 0; i < count; i++) {
+      const turn = [];
+      this.#raceOnce();
+      this.carList.forEach((car) => {
+        const { name, position } = car.getCarStatus();
+        turn.push({ name, position });
+      });
+      raceStatus.push(turn);
+    }
+
+    return raceStatus;
   }
 }
 

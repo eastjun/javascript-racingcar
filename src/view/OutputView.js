@@ -13,8 +13,13 @@ const OutputView = Object.freeze({
     console.log();
   },
 
-  printRaceStatus(name, position) {
-    OutputView.printMessage(`${name} : ${FORWARD_DASH.repeat(position)}`);
+  printRaceStatus(raceStatus) {
+    raceStatus.forEach((turn) => {
+      turn.forEach(({ name, position }) =>
+        OutputView.printMessage(`${name} : ${FORWARD_DASH.repeat(position)}`),
+      );
+      this.printBlank();
+    });
   },
 
   printRaceWinner(winner) {
