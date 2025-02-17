@@ -3,7 +3,7 @@ import throwError from "../utils/throwError.js";
 import { ATTEMPT_ERROR_MESSAGES } from "../constants/Constants.js";
 
 const checkEmptyInput = (attemptCount) => {
-  if (attemptCount.length === 0) {
+  if (attemptCount === null) {
     throwError(ATTEMPT_ERROR_MESSAGES.EMPTY_INPUT);
   }
 };
