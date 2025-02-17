@@ -39,7 +39,7 @@ class Race {
 
   #moveCars() {
     this.#cars.forEach((car) => {
-      if (this.#canCarMove()) car.move();
+      if (this.#canCarMove()) car.move(GAME_RULE.moveDistance);
     });
   }
 

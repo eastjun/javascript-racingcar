@@ -16,8 +16,8 @@ class Car {
       throw new Error(ERROR_MESSAGE.carNameLength);
   }
 
-  move() {
-    this.#position += GAME_RULE.moveDistance;
+  move(distance) {
+    this.#position += distance;
   }
 
   get name() {

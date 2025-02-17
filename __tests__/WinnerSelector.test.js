@@ -8,9 +8,8 @@ describe('우승자 선별 테스트', () => {
     const loser1 = new Car('재오');
     const winner = new Car('앵버');
     const loser2 = new Car('상추');
-    winner.move();
-    winner.move();
-    loser2.move();
+    winner.move(2);
+    loser2.move(1);
     const cars = [loser1, winner, loser2];
 
     // when
@@ -26,8 +25,8 @@ describe('우승자 선별 테스트', () => {
     const loser = new Car('재오');
     const winner1 = new Car('앵버');
     const winner2 = new Car('상추');
-    winner1.move();
-    winner2.move();
+    winner1.move(1);
+    winner2.move(1);
     const cars = [loser, winner1, winner2];
 
     // when
