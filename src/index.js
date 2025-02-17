@@ -1,4 +1,4 @@
-import App from './App.js';
+import { Controller } from './controller/index.js';
 
-const app = new App();
-await app.run();
+const controller = new Controller();
+await controller.init();

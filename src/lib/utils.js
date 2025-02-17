@@ -22,14 +22,15 @@ export async function readLineAsync(query) {
   });
 }
 
-export async function retryUntilSuccess(callbackFn) {
+export async function retryUntilSuccess(callbackFn, onError) {
   try {
     return await callbackFn();
-  } catch {
-    return await retryUntilSuccess(callbackFn);
+  } catch (error) {
+    onError(error);
+    return retryUntilSuccess(callbackFn, onError);
   }
 }
 
-export function getRandomInt(max) {
-  return Math.floor(Math.random() * max);
+export function getRandomNumber(maxValue) {
+  return Math.floor(Math.random() * (maxValue + 1));
 }
