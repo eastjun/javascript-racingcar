@@ -6,13 +6,13 @@ export default class CarRace {
   #cars;
   #tryCount;
 
-  constructor(names = [], tryCount) {
-    this.#cars = this.#makeCars(names);
+  constructor(carNames, tryCount = 0) {
+    this.#cars = this.#makeCars(carNames);
     this.#tryCount = tryCount;
   }
 
-  #makeCars(names) {
-    return names.map(name => new Car(name));
+  #makeCars(carNames) {
+    return carNames.map(name => new Car(name));
   }
 
   runRace(onRoundEnd) {
