@@ -2,18 +2,13 @@ import Car from '../domain/Car.js';
 import { OutputView } from '../view/OutputView.js';
 import randomNumberGenerator from '../domain/RandomNumberGenerator.js';
 import { systemSetting } from '../settings/systemSetting.js';
+import { parseInput, parseNames, parseRound } from './parsingService.js';
 
 export async function raceInit(inputProvider, parser) {
   const cars = [];
 
-  const carNames = await parser.parseInput(
-    inputProvider.getCarName,
-    parser.parseNames,
-  );
-  const round = await parser.parseInput(
-    inputProvider.getRound,
-    parser.parseRound,
-  );
+  const carNames = await parseInput(inputProvider.getCarName, parseNames);
+  const round = await parseInput(inputProvider.getRound, parseRound);
 
   carNames.forEach((carName) => cars.push(new Car(carName)));
 

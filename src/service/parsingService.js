@@ -2,41 +2,41 @@ import { withTryCatch } from '../util/errorHandler.js';
 import { Validation } from '../validation/Validation.js';
 import { ERROR_MESSAGE } from '../settings/ErrorMessage.js';
 
-export const parsingService = {
-  tryParse: (parser) => withTryCatch(parser),
+export const tryParse = (parser) => withTryCatch(parser);
 
-  parseNames(input) {
-    let nameList = input.split(',');
+export const parseNames = (input) => {
+  const nameList = input.split(',');
 
-    if (!Validation.isNameNotEmpty(nameList)) {
-      throw new Error(ERROR_MESSAGE.HAS_EMPTY_NAME);
-    }
-    if (!Validation.isNameTooLong(nameList)) {
-      throw new Error(ERROR_MESSAGE.NAME_TOO_LONG);
-    }
-    if (!Validation.isNameDuplicate(nameList)) {
-      throw new Error(ERROR_MESSAGE.DUPLICATE_NAME);
-    }
-    return nameList;
-  },
+  if (!Validation.isNameNotEmpty(nameList)) {
+    throw new Error(ERROR_MESSAGE.HAS_EMPTY_NAME);
+  }
+  if (!Validation.isNameTooLong(nameList)) {
+    throw new Error(ERROR_MESSAGE.NAME_TOO_LONG);
+  }
+  if (!Validation.isNameDuplicate(nameList)) {
+    throw new Error(ERROR_MESSAGE.DUPLICATE_NAME);
+  }
 
-  parseRound(input) {
-    if (!Validation.isInteger(input)) {
-      throw new Error(ERROR_MESSAGE.NOT_INTEGER);
-    }
-    if (!Validation.isPositive(input)) {
-      throw new Error(ERROR_MESSAGE.NOT_POSITIVE);
-    }
-    return Number(input);
-  },
+  return nameList;
+};
 
-  async parseInput(getInput, parser) {
-    const safeParser = this.tryParse(parser);
-    while (true) {
-      const input = await getInput();
-      const result = safeParser(input);
+export const parseRound = (input) => {
+  if (!Validation.isInteger(input)) {
+    throw new Error(ERROR_MESSAGE.NOT_INTEGER);
+  }
+  if (!Validation.isPositive(input)) {
+    throw new Error(ERROR_MESSAGE.NOT_POSITIVE);
+  }
 
-      if (result) return result;
-    }
-  },
+  return Number(input);
+};
+
+export const parseInput = async (getInput, parser) => {
+  const safeParser = tryParse(parser);
+  while (true) {
+    const input = await getInput();
+    const result = safeParser(input);
+
+    if (result) return result;
+  }
 };
