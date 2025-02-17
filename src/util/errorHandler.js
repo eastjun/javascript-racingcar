@@ -4,5 +4,6 @@ export const withTryCatch = (fn) => (input) => {
     return fn(input);
   } catch (error) {
     OutputView.printError(error);
+    return null;
   }
 };

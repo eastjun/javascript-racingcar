@@ -35,8 +35,8 @@ export const parsingService = {
     while (true) {
       const input = await getInput();
       const result = safeParser(input);
-      //!result를 쓰는것은 조금 위험해서..
-      if (result !== undefined) return result;
+
+      if (result) return result;
     }
   },
 };
