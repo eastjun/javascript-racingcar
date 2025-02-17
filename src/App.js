@@ -1,4 +1,5 @@
 import Race from "./domains/Race.js";
+import MoveCondition from "./domains/MoveCondition.js";
 import TryNumber from "./domains/TryNumber.js";
 import CarCount from "./domains/CarCount.js";
 import CarName from "./domains/CarName.js";
@@ -62,7 +63,7 @@ export default class App {
     Output.newLine();
     Output.raceResult();
     for (let i = 0; i < this.#tryNumber; i++) {
-      this.#raceModel.race(this.#cars);
+      this.#raceModel.race(this.#cars, MoveCondition);
       this.#cars.forEach((car) => {
         Output.scoreByRace(car.name, car.position);
       });
