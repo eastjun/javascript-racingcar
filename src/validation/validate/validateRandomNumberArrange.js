@@ -1,16 +1,16 @@
 import runValidators from '../../utils/runValidators.js';
 import throwError from '../../utils/throwError.js';
 import { RANDOM_ERROR_MESSAGES } from '../../constants/Constants.js';
-import isValidRandomNumber from '../isValid/isValidRandomNumber.js';
+import { RandomNumberValidator } from '../isValid/RandomNumberValidator.js';
 
 const validateInteger = (value) => {
-  if (!isValidRandomNumber.integer(value)) {
+  if (!RandomNumberValidator.isInteger(value)) {
     throwError(RANDOM_ERROR_MESSAGES.NOT_INTEGER);
   }
 };
 
 const validateMaxGreaterThanMin = (value) => {
-  if (!isValidRandomNumber.maxGreaterThanMin(value)) {
+if (!RandomNumberValidator.isMaxGreaterThanMin(value)) {
     throwError(RANDOM_ERROR_MESSAGES.MIN_GREATER_THAN_MAX);
   }
 };
