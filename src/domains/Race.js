@@ -21,8 +21,11 @@ class Race {
    * @returns {Array<{name: string, count: number }>}
    */
   #playRound() {
+    const MIN_RANDOM_NUMBER = 0;
+    const MAX_RANDOM_NUMBER = 9;
+
     return this.#cars.map((car) => {
-      car.move(getRandomNumber(0, 9));
+      car.move(getRandomNumber(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER));
       return { name: car.name, count: car.count };
     });
   }
