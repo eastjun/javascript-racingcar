@@ -5,4 +5,7 @@ export const OutputView = {
   printError(error) {
     console.error(error.message);
   },
+  printWinner(winner) {
+    console.log(`최종 우승자: ${winner.join(', ')}`);
+  },
 };
