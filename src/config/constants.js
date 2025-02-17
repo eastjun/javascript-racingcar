@@ -1,0 +1,10 @@
+export const MOVE_THRESHOLD = 4;
+export const CAR_NAME_MAX_LENGTH = 5;
+export const CAR_NAME_MIN_LENGTH = 1;
+export const CAR_MAX_COUNT = 10;
+export const MIN_RANDOM_VALUE = 0;
+export const MAX_RANDOM_VALUE = 9;
+export const MIN_ATTEMPT = 1;
+export const MAX_ATTEMPT = 50;
+export const CAR_MOVE_SYMBOL = "-";
+export const KOREAN_AND_ENGLISH_REGEX = /^[a-zA-Z가-힣]+$/;
