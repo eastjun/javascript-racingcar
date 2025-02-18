@@ -1,4 +1,5 @@
 import { ERROR } from '../constants/message.js';
+import { CAR } from '../constants/race.js';
 
 class CarNameValidator {
   validateNames(carNames) {
@@ -12,7 +13,7 @@ class CarNameValidator {
   }
 
   #valdiateCarNameLength(carName) {
-    if (carName.length < 1 || carName.length > 5) {
+    if (carName.length < CAR.MIN_NAME_LENGTH || carName.length > CAR.MAX_NAME_LENGTH) {
       throw new Error(ERROR.CAR_NAME.INVALID_LENGTH);
     }
   }
@@ -42,7 +43,7 @@ class CarNameValidator {
   }
 
   #validateCarNamesLength(carNames) {
-    if (carNames.length <= 1 || carNames.length > 100) {
+    if (carNames.length < CAR.MIN_CAR_COUNT || carNames.length > CAR.MAX_CAR_COUNT) {
       throw new Error(ERROR.CAR.INVALID_COUNT);
     }
   }
