@@ -6,7 +6,7 @@ describe("자동차 클래스 테스트", () => {
     const car = new Car(name);
 
     test("자동차를 생성할 수 있다.", () => {
-      expect(car).not.toBeUndefined();
+      expect(car.getName()).toBe("행성이");
     });
 
     test("자동차가 이동하면 위치가 1만큼 증가한다.", () => {
