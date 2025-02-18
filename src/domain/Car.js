@@ -8,8 +8,8 @@ export default class Car {
     this.position = 0;
   }
 
-  go(diceNumber) {
-    const randomNumber = diceNumber;
+  go(zeroToNine) {
+    const randomNumber = zeroToNine;
     if (randomNumber >= 4) this.position += 1;
   }
 }
