@@ -1,5 +1,7 @@
 import { getRandomNumber } from '../util.js';
 
+const MOVE_FORWARD_THRESHOLD = 4;
+
 const racingGame = {
   playRacing(gameCount, cars) {
     const results = [];
@@ -10,8 +12,16 @@ const racingGame = {
     return results;
   },
 
+  shouldMove(randomValue) {
+    return randomValue >= MOVE_FORWARD_THRESHOLD;
+  },
+
   moveCars(cars) {
-    cars.forEach((car) => car.move(getRandomNumber()));
+    cars.forEach((car) => {
+      if (this.shouldMove(getRandomNumber())) {
+        car.move();
+      }
+    });
   },
 
   getRoundResult(cars) {
