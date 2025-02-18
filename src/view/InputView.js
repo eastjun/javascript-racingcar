@@ -3,21 +3,21 @@ import { INPUT_MESSAGE } from "../constants/view.js";
 import { validateCarNames, validateTryCount } from "../utils/validation.js";
 
 export default class InputView {
-  async readCarNames() {
+  static async readCarNames() {
     return await this.validateAndRetry(
       INPUT_MESSAGE.CAR_NAMES,
       validateCarNames,
     );
   }
 
-  async readTryCount() {
+  static async readTryCount() {
     return await this.validateAndRetry(
       INPUT_MESSAGE.TRY_COUNT,
       validateTryCount,
     );
   }
 
-  async validateAndRetry(message, validateFn) {
+  static async validateAndRetry(message, validateFn) {
     try {
       const input = await this.readLineAsync(message);
       validateFn(input);
@@ -28,7 +28,7 @@ export default class InputView {
     }
   }
 
-  readLineAsync(query) {
+  static readLineAsync(query) {
     return new Promise((resolve, reject) => {
       if (arguments.length !== 1) {
         reject(new Error("arguments must be 1"));

@@ -4,14 +4,10 @@ import Race from "./Race.js";
 import Winner from "./Winner.js";
 
 export default class Controller {
-  constructor() {
-    this.inputView = new InputView();
-  }
-
   async run() {
-    const carNameInput = await this.inputView.readCarNames();
+    const carNameInput = await InputView.readCarNames();
     const carNames = carNameInput.split(",").map((carName) => carName.trim());
-    const tryCount = await this.inputView.readTryCount();
+    const tryCount = await InputView.readTryCount();
 
     const cars = carNames.map((carName) => new Car(carName));
 
