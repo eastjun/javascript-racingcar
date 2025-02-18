@@ -3,6 +3,7 @@ import InputView from "./views/InputView.js";
 import OutputView from "./views/OutputView.js";
 import validateAttemptCount from "./validation/validateAttemptCount.js";
 import validateCarNameList from "./validation/validateCarNameList.js";
+import retryOnError from "./utils/retryOnError.js";
 
 class App {
   async getNameInput() {
@@ -18,9 +19,9 @@ class App {
   }
 
   async run() {
-    const carNameList = await InputView.retryOnError(() => this.getNameInput());
+    const carNameList = await retryOnError(() => this.getNameInput(), OutputView.print);
 
-    const attemptCount = await InputView.retryOnError(() => this.getAttemptCount());
+    const attemptCount = await retryOnError(() => this.getAttemptCount(), OutputView.print);
 
     const race = new Race(carNameList, attemptCount);
 
