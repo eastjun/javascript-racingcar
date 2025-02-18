@@ -1,3 +1,4 @@
+import { SYSTEM_MESSAGE } from "../constants/SystemMessage.js";
 import Cars from "../domain/Cars.js";
 import Winner from "../domain/Winner.js";
 import CarNameValidator from "../validators/CarNameValidator.js";
@@ -25,7 +26,9 @@ class RaceController {
   async #initCarNames() {
     while (true) {
       try {
-        const carNames = await this.#inputView.getCarNames();
+        const carNames = await this.#inputView.getCarNames(
+          SYSTEM_MESSAGE.INPUT_CAR_NAME,
+        );
         const parsedCarNames = carNames
           .split(",")
           .map((carName) => carName.trim());
@@ -40,11 +43,10 @@ class RaceController {
   async #initTryCount() {
     while (true) {
       try {
-        const tryCount = await this.#inputView.getTryCount();
-        const parsedTryCount = Number(tryCount);
-        new TryCountValidator().validateNumber(parsedTryCount);
-
-        return parsedTryCount;
+        const tryCount = await this.#inputView.getTryCount(
+          SYSTEM_MESSAGE.INPUT_TRY_COUNT,
+        );
+        return tryCount;
       } catch (error) {
         console.log(error.message);
       }
