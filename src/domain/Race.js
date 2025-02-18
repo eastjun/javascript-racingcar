@@ -27,12 +27,8 @@ class Race {
   }
 
   getWinnerName() {
-    const winnerPosition = Math.max(
-      ...this.#carList.map((car) => car.position)
-    );
-    const winnerCar = this.#carList.filter(
-      (car) => car.position === winnerPosition
-    );
+    const winnerCar = this.#carList
+  .filter((car) => car.position === Math.max(...this.#carList.map((car) => car.position)));
 
     const winnerName = winnerCar.map((car) => car.name);
     return winnerName;
