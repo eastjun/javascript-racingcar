@@ -36,8 +36,7 @@ class App {
   play(attemptCount, carList) {
     for (let i = 0; i < attemptCount; i++) {
       carList.forEach((car)=>{
-        const randomNumber = getRandomNumber(RANDOM_NUMBER.MIN, RANDOM_NUMBER.MAX)
-        Race.moveCar(randomNumber, car)
+        Race.moveCar(getRandomNumber(RANDOM_NUMBER.MIN, RANDOM_NUMBER.MAX), car)
       })
       this.printResult(carList)
     }

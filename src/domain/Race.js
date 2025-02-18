@@ -3,7 +3,6 @@ import { MOVE_CONDITION } from "../constants/Constants.js";
 export const Race = {
     moveCar(randomNumber, car) {
       if (this.checkMoveCondition(randomNumber)) car.move();
-      return { name: car.name, position: car.position };
     },
 
     checkMoveCondition(randomNumber){
