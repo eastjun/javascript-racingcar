@@ -15,12 +15,15 @@ describe('시도 횟수 유효성 클래스 테스트', () => {
   });
 
   describe('예외 케이스', () => {
-    test.each(['^', NaN, undefined, {}])('%p를 입력하면 에러가 발생한다.', (value) => {
+    test.each(['^', NaN, undefined, {}])('시도 횟수가 숫자가 아니면 에러가 발생한다. (입력값 : %p)', (value) => {
       expect(() => tryCountValidator.validateNumber(value)).toThrow(ERROR.TRY_COUNT.INVALID_TYPE);
     });
 
-    test.each([-1, 0, -Infinity, null, []])('%p를 입력하면 에러가 발생한다.', (value) => {
-      expect(() => tryCountValidator.validateNumber(value)).toThrow(ERROR.TRY_COUNT.INVALID_RANGE);
-    });
+    test.each([-1, 0, -Infinity, null, []])(
+      '시도 횟수가 양의 정수가 아니면 에러가 발생한다. (입력값 : %p)',
+      (value) => {
+        expect(() => tryCountValidator.validateNumber(value)).toThrow(ERROR.TRY_COUNT.INVALID_RANGE);
+      },
+    );
   });
 });
