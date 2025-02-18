@@ -2,24 +2,34 @@
 
 import CarManager from '../domain/CarManager.js';
 import OutputView from '../views/OutputView.js';
-import User from '../user/User.js';
-import RaceResult from '../domain/RaceResult.js';
+import { readCarNames, readAttempts } from '../user/User.js';
+import determineWinners from '../utils/determineWinners.js';
 
 class Controller {
-  constructor() {
-    this.user = new User();
-  }
+  carManager;
 
   async process() {
-    const carNames = await this.user.readCarNames();
+    await this.initialize();
+    await this.executeRace();
+    this.announceWinners();
+  }
+
+  async initialize() {
+    const carNames = await readCarNames();
     this.carManager = new CarManager(carNames);
+  }
 
-    const attempts = await this.user.readAttempts();
+  async executeRace() {
+    const attempts = await readAttempts();
     OutputView.printResultGreeting();
-    this.carManager.race(attempts);
 
-    const raceResult = new RaceResult(this.carManager.cars);
-    const winners = raceResult.determineWinners();
+    this.carManager.executeRace(attempts, (cars) => {
+      OutputView.printRaceStatus(cars);
+    });
+  }
+
+  announceWinners() {
+    const winners = determineWinners(this.carManager.cars);
     OutputView.printWinners(winners);
   }
 }
