@@ -8,6 +8,19 @@ class Cars {
     this.#cars = carNames.map((carName) => new Car(carName));
   }
 
+  getWinners() {
+    const maxPosition = this.getMaxPosition();
+    return this.#cars
+      .filter((car) => car.getPosition() === maxPosition)
+      .map((car) => car.getName());
+  }
+
+  getMaxPosition() {
+    return this.#cars.reduce((maxPosition, car) => {
+      return car.comparePosition(maxPosition);
+    }, -1);
+  }
+
   getRandomNumber() {
     return Math.floor(Math.random() * 10);
   }
@@ -24,15 +37,8 @@ class Cars {
     }
   }
 
-  getMaxPosition() {
-    return this.#cars.reduce((maxPosition, car) => {
-      return car.comparePosition(maxPosition);
-    }, -1);
-  }
-
   getCars() {
-    const carList = [...this.#cars];
-    return carList;
+    return [...this.#cars];
   }
 }
 
