@@ -1,4 +1,3 @@
-import Race from './domain/Race.js';
 import InputHandler from './input/InputHandler.js';
 import OutputView from './views/OutputView.js';
 import {
@@ -6,16 +5,19 @@ import {
   OUTPUT_MESSAGE,
   JOINT_WINNER_DELIMITER,
   POSITION,
+  CAR_NAME_CONDITION,
+  RANDOM_NUMBER,
 } from './constants/Constants.js';
+import { Race } from './domain/Race.js';
+import { getRandomNumber } from './utils/getRandomNumber.js';
 
 class App {
   async run() {
     const carList = await this.inputCarList();
     const attemptCount = await this.inputAttemptCount();
-    const race = new Race(carList);
     this.printResultMessage();
-    this.play(race, attemptCount);
-    this.getWinner(race);
+    this.play(attemptCount, carList);
+    this.getWinner(carList);
   }
 
   async inputCarList() {
@@ -31,22 +33,25 @@ class App {
     OutputView.print(LINE_BREAK);
   }
 
-  play(race, attemptCount) {
+  play(attemptCount, carList) {
     for (let i = 0; i < attemptCount; i++) {
-      const carListStatus = race.executeTurn();
-      this.printResult(carListStatus)
+      carList.forEach((car)=>{
+        const randomNumber = getRandomNumber(RANDOM_NUMBER.MIN, RANDOM_NUMBER.MAX)
+        Race.moveCar(randomNumber, car)
+      })
+      this.printResult(carList)
     }
   }
 
-  printResult(carListStatus){
-    carListStatus.forEach((car) => {
+  printResult(carList){
+    carList.forEach((car) => {
       OutputView.print(`${car.name} : ${POSITION.repeat(car.position)}`);
     });
     OutputView.print(LINE_BREAK);
   }
 
-  getWinner(race) {
-    const winnerList = race.getWinnerName();
+  getWinner(carList) {
+    const winnerList = Race.getWinnerName(carList);
     OutputView.print(
       `${OUTPUT_MESSAGE.WINNER} ${winnerList.join(JOINT_WINNER_DELIMITER)}`
     );
