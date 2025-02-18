@@ -63,12 +63,12 @@ class RaceController {
   }
 
   #processWinner(cars) {
-    const maxPosition = cars.getMaxPosition();
-    const carList = cars.getCars();
-
-    this.#outputView.printWinners(
-      new Winner().getWinners(carList, maxPosition),
+    const winners = cars.getWinners();
+    this.#outputView.printResult(
+      SYSTEM_MESSAGE.OUTPUT_WINNER,
+      winners.join(SYSTEM_MESSAGE.OUTPUT_WINNER_SEPERATOR),
     );
+    this.#outputView.printWinners(winners);
   }
 }
 
