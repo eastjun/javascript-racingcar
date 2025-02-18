@@ -15,8 +15,9 @@ describe("차 객체 유닛 테스트", () => {
   test("차를 2번 움직이면 차의 위치가 2 증가해야함", () => {
     //given
     const car = new Car("마빈");
-    const initialPosition = 0;
-    const EXPECTED_RESULT = initialPosition + 2;
+    const INITIAL_POSITION = 0;
+    const EXPECTED_RESULT = INITIAL_POSITION + 2;
+    expect(car.position).toBe(INITIAL_POSITION);
 
     //when
     car.goForward();
