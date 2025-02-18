@@ -17,4 +17,12 @@ export const OutputView = {
   printWinner(winner) {
     console.log(SystemMessage.WINNER_MESSAGE(winner));
   },
+  printRoundResult(roundResult) {
+    for (const round of roundResult) {
+      for (const car of round) {
+        this.printRound(car.name, car.position);
+      }
+      console.log("\n");
+    }
+  },
 };
