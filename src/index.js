@@ -1,20 +1,18 @@
-import Output from "./ui/Output.js";
-import Input from "./ui/Input.js";
-import Race from "./domain/Race.js";
-
-const input = new Input();
-const output = new Output();
+import Race from './domain/Race.js';
+import { getValidRaceCarNames, getValidRaceCount } from './view/Input.js';
+import { printResult } from './view/Output.js';
 
 async function run() {
-  const raceCarNames = await input.raceCarNames();
-  const raceCount = await input.raceCount();
+  const raceCarNames = await getValidRaceCarNames();
+  const raceCount = await getValidRaceCount();
 
   const race = new Race(raceCarNames, raceCount);
   race.raceCar();
-  const moveResult = race.getMoveResult();
+  const raceResults = race.getRaceResult();
   const winnerList = race.getWinner();
 
-  output.printResult(moveResult, winnerList);
+  printResult(raceResults, winnerList);
+
 }
 
 run();
