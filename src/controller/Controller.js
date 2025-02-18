@@ -3,7 +3,7 @@
 import CarManager from '../domain/CarManager.js';
 import OutputView from '../views/OutputView.js';
 import { readCarNames, readAttempts } from '../user/User.js';
-import RaceResult from '../domain/RaceResult.js';
+import determineWinners from '../utils/determineWinners.js';
 
 class Controller {
   carManager;
@@ -29,9 +29,7 @@ class Controller {
   }
 
   announceWinners() {
-    const raceResult = new RaceResult(this.carManager.cars);
-
-    const winners = raceResult.determineWinners();
+    const winners = determineWinners(this.carManager.cars);
     OutputView.printWinners(winners);
   }
 }
