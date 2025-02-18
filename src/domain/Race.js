@@ -1,8 +1,9 @@
 import { getRandomInt } from '../utils.js';
+import Car from './Car.js';
 
 class Race {
-  constructor(cars) {
-    this.cars = cars;
+  constructor(carNames) {
+    this.cars = carNames.map(name => new Car(name));
   }
 
   playOneRound() {

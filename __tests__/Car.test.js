@@ -1,12 +1,6 @@
 import Car from '../src/domain/Car.js';
 
 describe('자동차 테스트', () => {
-  test('자동차는 만들어질수 있다.', () => {
-    const car = new Car();
-    // then
-    expect(car).toBeDefined();
-  });
-
   test('자동차는 초기에 0에 위치한다.', () => {
     const car = new Car();
 
