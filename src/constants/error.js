@@ -1,4 +1,4 @@
-import { CAR } from "./domain";
+import { CAR } from "./domain.js";
 
 export const ERROR_PREFIX = "[ERROR]";
 
