@@ -1,9 +1,6 @@
 import { SYSTEM_MESSAGE } from "../constants/SystemMessage.js";
 import Cars from "../domain/Cars.js";
 import Winner from "../domain/Winner.js";
-import CarNameValidator from "../validators/CarNameValidator.js";
-import TryCountValidator from "../validators/TryCountValidator.js";
-
 class RaceController {
   #inputView;
   #outputView;
