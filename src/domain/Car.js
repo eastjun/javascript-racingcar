@@ -3,20 +3,20 @@ import { validateCarNames } from "../utils/validation.js";
 
 export default class Car {
   #name;
-  #position = 0;
-
-  constructor(name) {
+  #position;
+  constructor(name, position = 0) {
     validateCarNames(name);
     this.#name = name;
+    this.#position = position;
   }
 
   move(number) {
-    if (this.isMove(number)) {
+    if (this.canMove(number)) {
       this.#position += 1;
     }
   }
 
-  isMove(number) {
+  canMove(number) {
     return number >= CAR.PROGRESS_CRITERIA;
   }
 
@@ -26,9 +26,5 @@ export default class Car {
 
   getPosition() {
     return this.#position;
-  }
-
-  setPosition(position) {
-    this.#position = position;
   }
 }
