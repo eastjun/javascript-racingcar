@@ -1,12 +1,15 @@
 class OutputView {
-  static printOneGame(name, output) {
-    console.log(`${name} : ${output}`);
+  static printOneGame(cars) {
+    cars.forEach(car => {
+      const carOutput = '-'.repeat(car.position);
+      console.log(`${car.name} : ${carOutput}`);
+    });
     console.log('');
   }
 
-  static printAllGame(nameList, outputList) {
-    outputList.forEach((output, index) => {
-      OutputView.printOneGame(nameList[index], output);
+  static printAllGame(roundResultList) {
+    roundResultList.forEach(roundResult => {
+      OutputView.printOneGame(roundResult);
     });
   }
 
