@@ -15,9 +15,7 @@ import OutputView from '../views/OutputView.js';
 async function setCarNames() {
   const input = await readLineAsync(INPUT.CAR_NAMES);
   const carNames = splitStringToArray(input, CONFIG.COMMA);
-  carNames.forEach((carName) => {
-    carNameValidator(carName);
-  });
+  carNames.forEach(carNameValidator);
   checkDuplicatedCarName(carNames);
   return carNames;
 }
