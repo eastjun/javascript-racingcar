@@ -1,4 +1,5 @@
-import generateRandomNumberBetween0And9 from "../utils/generateRandomNumberBetween0And9.js";
+import { RANDOM_RANGE_END, RANDOM_RANGE_START } from "../constant/constant.js";
+import generateRandomNumber from "../utils/generateRandomNumber.js";
 
 class Race {
   #carsInstance = [];
@@ -25,7 +26,7 @@ class Race {
 
   #playRound() {
     this.#carsInstance.forEach((carInstance) => {
-      carInstance.move(generateRandomNumberBetween0And9());
+      carInstance.move(generateRandomNumber(RANDOM_RANGE_START, RANDOM_RANGE_END));
     });
     return this.#carsInstance.map((car) => ({
       name: car.name,

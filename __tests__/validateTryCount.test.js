@@ -1,9 +1,13 @@
-import validateTryCount from "../src/validations/validateTryCount.js";
-import { ERROR_TRY_COUNT_MESSAGE } from "../src/constants/constants.js";
+import validateTryCount from "../src/validation/validateTryCount.js";
+import { ERROR_TRY_COUNT_MESSAGE } from "../src/constant/constant.js";
 
 describe("TryCount 유효성 테스트", () => {
   test.each([
-    { description: "시도 횟수가 숫자가 아닌 경우", input: "Niya", errorMessage: ERROR_TRY_COUNT_MESSAGE.INVALID_NUMBER },
+    {
+      description: "시도 횟수가 숫자가 아닌 경우",
+      input: "Niya",
+      errorMessage: ERROR_TRY_COUNT_MESSAGE.INVALID_NUMBER,
+    },
     {
       description: "시도 횟수가 정수가 아닌 경우",
       input: "1.1",
@@ -14,7 +18,7 @@ describe("TryCount 유효성 테스트", () => {
       input: "-1",
       errorMessage: ERROR_TRY_COUNT_MESSAGE.INVALID_RANGE,
     },
-  ])("%s 에러가 발생한다.", ({ input, errorMessage }) => {
+  ])("$description 에러가 발생한다.", ({ input, errorMessage }) => {
     // given
     // when & then
     expect(() => validateTryCount(input)).toThrow(errorMessage);

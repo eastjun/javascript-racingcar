@@ -1,5 +1,5 @@
-import Car from "../src/domains/Car";
-import Race from "../src/domains/Race";
+import Car from "../src/domain/Car";
+import Race from "../src/domain/Race";
 
 //자동차 경주 게임을 완료한 후 누가 우승했는지를 알려준다. 우승자는 한 명 이상일 수 있다.
 describe("Race 단위 테스트", () => {

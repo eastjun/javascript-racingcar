@@ -1,5 +1,5 @@
 import Console from "../utils/Console.js";
-import { INPUT_PROMPT_MESSAGE } from "../constants/constants.js";
+import { INPUT_PROMPT_MESSAGE } from "../constant/constant.js";
 
 const Input = {
   async carName() {
