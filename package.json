@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "test": "jest --no-cache",
-    "start": "node src/index.js"
+    "start": "node src/index.js",
+    "start-step1": "node src/index.js"
   },
   "devDependencies": {
     "@babel/cli": "^7.26.4",
