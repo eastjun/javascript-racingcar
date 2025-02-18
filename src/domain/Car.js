@@ -1,4 +1,3 @@
-import { MOVE_THRESHOLD } from "../constants.js";
 import { canMove } from "./util/move.js";
 
 class Car {

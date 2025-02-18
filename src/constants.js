@@ -1,8 +1,20 @@
-export const MOVE_THRESHOLD = 4;
-export const CAR_NAME_MAX_LENGTH = 5;
-export const MIN_RANDOM_VALUE = 0;
-export const MAX_RANDOM_VALUE = 9;
-export const CAR_PROGRESS_MARK = "-";
+export const RANDOM_NUMBER = {
+  MIN_VALUE: 0,
+  MAX_VALUE: 9,
+}
+
+export const CAR = {
+  MOVE_THRESHOLD: 4,
+  MIN_COUNT: 2,
+  MAX_COUNT: 10,
+  MAX_NAME_LENGTH: 5,
+  PROGRESS_MARK: "-",
+};
+
+export const ATTEMPT = {
+  MIN: 1,
+  MAX: 50,
+};
 
 export const DELIMITERS = {
   CAR_NAME: ",",

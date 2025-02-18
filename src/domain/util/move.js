@@ -1,3 +1,3 @@
-import { MOVE_THRESHOLD } from "../../constants.js";
+import { CAR } from "../../constants.js";
 
-export const canMove = (number) => number >= MOVE_THRESHOLD;
+export const canMove = (number) => number >= CAR.MOVE_THRESHOLD;
