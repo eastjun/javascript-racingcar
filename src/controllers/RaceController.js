@@ -2,7 +2,7 @@ import Cars from '../domains/Cars.js';
 import Winner from '../domains/Winner.js';
 import CarNameValidator from '../validators/CarNameValidator.js';
 import TryCountValidator from '../validators/TryCountValidator.js';
-import getRandomNumber from '../utils/getRandomNumber.js';
+import MoveStrategy from '../domains/MoveStrategy.js';
 
 class RaceController {
   #inputView;
@@ -17,7 +17,7 @@ class RaceController {
     const carNames = await this.#initCarNames();
     const tryCount = await this.#initTryCount();
 
-    const cars = new Cars(carNames, getRandomNumber);
+    const cars = new Cars(carNames);
 
     this.#processRacing(cars, tryCount);
     this.#processWinner(cars);
@@ -64,7 +64,7 @@ class RaceController {
   }
 
   #processRound(cars) {
-    cars.moveCars();
+    cars.moveCars(MoveStrategy.randomMove);
     this.#outputView.printRaceResult(cars.cars);
     this.#outputView.printNewLine();
   }

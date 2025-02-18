@@ -1,6 +1,5 @@
-import { RACE } from '../../src/constants/race';
 import Cars from '../../src/domains/Cars';
-import getRandomNumber from '../../src/utils/getRandomNumber';
+import MoveStrategy from '../../src/domains/MoveStrategy';
 
 describe('자동차 리스트 클래스 테스트', () => {
   const names = ['목성이', '화성이', '금성이'];
@@ -9,7 +8,7 @@ describe('자동차 리스트 클래스 테스트', () => {
     let cars;
 
     beforeEach(() => {
-      cars = new Cars(names, getRandomNumber);
+      cars = new Cars(names);
     });
 
     test('자동차 리스트를 생성할 수 있다.', () => {
@@ -17,7 +16,7 @@ describe('자동차 리스트 클래스 테스트', () => {
     });
 
     test('자동차 경주를 한 라운드 실행하면, 전진 또는 멈춘다.', () => {
-      cars.moveCars();
+      cars.moveCars(MoveStrategy.randomMove);
       cars.cars.forEach((car) => {
         expect([0, 1]).toContain(car.position);
       });
@@ -32,13 +31,14 @@ describe('자동차 리스트 클래스 테스트', () => {
   describe('이동 테스트', () => {
     test('자동차들이 번갈아가며 이동한다.', () => {
       let idx = 0;
+
       const moveStrategy = () => {
         idx++;
-        return idx % 2 === 0 ? RACE.FOWARD_THRESHOLD + 1 : RACE.FOWARD_THRESHOLD - 1;
+        return idx % 2 === 0 ? true : false;
       };
 
-      const cars = new Cars(names, moveStrategy);
-      cars.moveCars();
+      const cars = new Cars(names);
+      cars.moveCars(moveStrategy);
 
       expect(cars.cars[0].position).toBe(0);
       expect(cars.cars[1].position).toBe(1);

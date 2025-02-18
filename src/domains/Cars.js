@@ -1,18 +1,15 @@
-import { RACE } from '../constants/race.js';
 import Car from '../domains/Car.js';
 
 class Cars {
   #cars;
-  #moveStrategy;
 
-  constructor(carNames, moveStrategy) {
+  constructor(carNames) {
     this.#cars = carNames.map((carName) => new Car(carName));
-    this.#moveStrategy = moveStrategy;
   }
 
-  moveCars() {
+  moveCars(moveStrategy) {
     this.#cars.forEach((car) => {
-      this.#processMoveCars(car);
+      this.#processMoveCars(car, moveStrategy);
     });
   }
 
@@ -22,14 +19,10 @@ class Cars {
     }, -1);
   }
 
-  #processMoveCars(car) {
-    if (this.#canMove()) {
+  #processMoveCars(car, moveStrategy) {
+    if (moveStrategy()) {
       car.move();
     }
-  }
-
-  #canMove() {
-    return this.#moveStrategy() >= RACE.FOWARD_THRESHOLD;
   }
 
   get cars() {
