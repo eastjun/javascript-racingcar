@@ -17,10 +17,10 @@ class App {
     });
 
     const race = new Race(cars, tryCount);
-    race.tryMove(cars, tryCount);
+    race.tryMove();
     OutputView.printRaceResult(cars, tryCount, race.carPositionHistory);
 
-    const winners = race.getWinner(cars);
+    const winners = race.getWinner();
     OutputView.printWinner(winners);
   }
 }

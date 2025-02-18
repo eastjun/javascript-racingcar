@@ -8,20 +8,20 @@ class Race {
     this.carPositionHistory = new CarPositionHistory();
   }
 
-  tryMove(cars, tryCount) {
-    for (let i = 0; i < tryCount; i++) {
-      cars.forEach((car) => {
+  tryMove() {
+    for (let i = 0; i < this.tryCount; i++) {
+      this.cars.forEach((car) => {
         car.move(getRandomNumber() >= CAR_MOVE_STANDARD);
         this.carPositionHistory.saveHistory(car);
       });
     }
   }
 
-  getWinner(cars) {
-    const finalPosition = cars.map((car) => car.position);
+  getWinner() {
+    const finalPosition = this.cars.map((car) => car.position);
     const maxPosition = Math.max(...finalPosition);
 
-    const winner = cars.filter((car) => car.position === maxPosition).map((car) => car.name);
+    const winner = this.cars.filter((car) => car.position === maxPosition).map((car) => car.name);
 
     return winner;
   }
