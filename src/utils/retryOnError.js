@@ -1,9 +1,9 @@
-const retryOnError = async (asyncFn, printError) => {
+const retryOnError = async (asyncFn, onError) => {
   while (true) {
     try {
       return await asyncFn();
     } catch (e) {
-      printError(e.message);
+      onError(e);
     }
   }
 };

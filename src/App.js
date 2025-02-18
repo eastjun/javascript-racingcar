@@ -19,9 +19,15 @@ class App {
   }
 
   async run() {
-    const carNameList = await retryOnError(() => this.getNameInput(), OutputView.print);
+    const carNameList = await retryOnError(
+      () => this.getNameInput(),
+      (e) => OutputView.print(e.message),
+    );
 
-    const attemptCount = await retryOnError(() => this.getAttemptCount(), OutputView.print);
+    const attemptCount = await retryOnError(
+      () => this.getAttemptCount(),
+      (e) => OutputView.print(e.message),
+    );
 
     const race = new Race(carNameList, attemptCount);
 
