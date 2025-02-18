@@ -2,19 +2,21 @@ import { getRandomNumber } from "../utils/getRandomNumber.js";
 import OutputView from "../view/OutputView.js";
 
 export default class Race {
-  constructor() {
+  constructor(cars, tryCount) {
     this.outputView = new OutputView();
+    this.cars = cars;
+    this.tryCount = tryCount;
   }
 
-  runRace(cars, tryCount) {
+  runRace() {
     this.outputView.printResultText();
-    for (let i = 0; i < tryCount; i++) {
-      this.runRound(cars);
+    for (let i = 0; i < this.tryCount; i++) {
+      this.runRound();
     }
   }
 
-  runRound(cars) {
-    cars.forEach((car) => {
+  runRound() {
+    this.cars.forEach((car) => {
       car.move(getRandomNumber(10));
       this.outputView.printProgressResult(car.name, car.position);
     });

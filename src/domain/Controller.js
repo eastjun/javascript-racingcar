@@ -17,8 +17,8 @@ export default class Controller {
 
     const cars = carNames.map((carName) => new Car(carName));
 
-    const race = new Race();
-    race.runRace(cars, tryCount);
+    const race = new Race(cars, tryCount);
+    race.runRace();
 
     const winner = new Winner();
     winner.findWinner(cars);
