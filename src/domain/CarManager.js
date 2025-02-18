@@ -33,7 +33,13 @@ class CarManager {
     this.cars.forEach((car) => {
       this.moveForwardCar(car, pickRandomNumber());
     });
+  }
 
+  executeRace(attempts, raceProgress) {
+    for (let i = 0; i < attempts; i++) {
+      this.race();
+      raceProgress(this.cars);
+    }
   }
 }
 

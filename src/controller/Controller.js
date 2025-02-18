@@ -6,6 +6,8 @@ import { readCarNames, readAttempts } from '../user/User.js';
 import RaceResult from '../domain/RaceResult.js';
 
 class Controller {
+  carManager;
+
   async process() {
     await this.initialize();
     await this.executeRace();
@@ -21,10 +23,9 @@ class Controller {
     const attempts = await readAttempts();
     OutputView.printResultGreeting();
 
-    for (let i = 0; i < attempts; i++) {
-      this.carManager.race();
-      OutputView.printRaceStatus(this.carManager.cars);
-    }
+    this.carManager.executeRace(attempts, (cars) => {
+      OutputView.printRaceStatus(cars);
+    });
   }
 
   announceWinners() {
