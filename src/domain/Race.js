@@ -1,7 +1,7 @@
 import Car from "./Car.js";
-import { LINE_BREAK, MOVE_CONDITION, OUTPUT_MESSAGE, RANDOM_NUMBER } from "../constants/Constants.js";
+import { RANDOM_NUMBER } from "../constants/Constants.js";
 import { getRandomNumber } from "../utils/getRandomNumber.js";
-import OutputView from "../views/OutputView.js";
+
 class Race {
   #carList = [];
 
@@ -10,39 +10,36 @@ class Race {
     this.attemptCount = attemptCount;
   }
 
-  play() {
-    OutputView.print(OUTPUT_MESSAGE.RESULT);
+  executeRace() {
+    const raceResult = [];
     for (let i = 0; i < this.attemptCount; i++) {
       this.executeTurn();
-      OutputView.print(LINE_BREAK);
+      raceResult.push(this.getTurnResult());
     }
 
-    const winners = this.getWinnerName();
-
-    OutputView.print(`${OUTPUT_MESSAGE.WINNER} ${winners.join(", ")}`);
+    return raceResult;
   }
 
   executeTurn() {
     this.#carList.forEach((car) => {
       const randomNumber = getRandomNumber(RANDOM_NUMBER.MIN, RANDOM_NUMBER.MAX);
-
-      this.checkMove(randomNumber, car);
-      car.printStatus();
+      car.move(randomNumber);
     });
   }
 
-  checkMove(randomNumber, car) {
-    if (randomNumber >= MOVE_CONDITION) {
-      car.move();
-    }
+  getTurnResult() {
+    return this.#carList.map((car) => ({ name: car.name, position: car.position }));
   }
 
   getWinnerName() {
     const winnerPosition = Math.max(...this.#carList.map((car) => car.position));
-    const winnerCar = this.#carList.filter((car) => car.position === winnerPosition);
+    return this.#carList.filter((car) => car.position === winnerPosition).map((car) => car.name);
+  }
 
-    const winnerName = winnerCar.map((car) => car.name);
-    return winnerName;
+  play() {
+    const raceResult = this.executeRace();
+    const winners = this.getWinnerName();
+    return { raceResult, winners };
   }
 
   get carList() {

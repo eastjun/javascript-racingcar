@@ -1,4 +1,17 @@
 {
-  "endOfLine": "auto",
-  "printWidth": 160
+  "semi": true,
+
+  "useTabs": false,
+
+  "tabWidth": 2,
+
+  "trailingComma": "all",
+
+  "printWidth": 160,
+
+  "bracketSpacing": true,
+
+  "arrowParens": "always",
+
+  "endOfLine": "auto"
 }

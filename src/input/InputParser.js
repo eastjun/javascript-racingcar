@@ -5,6 +5,9 @@ const InputParser = {
     return carNameList.split(NAME_DELIMITER).map((car) => car.trim());
   },
   attempt(attemptInput) {
+    if (attemptInput === "") {
+      return null;
+    }
     return Number(attemptInput);
   },
 };
