@@ -1,4 +1,5 @@
-import { MOVE_DEFAULT, MOVE_THRESHOLD } from "../constants.js";
+import { MOVE_THRESHOLD } from "../constants.js";
+import { canMove } from "./util/move.js";
 
 class Car {
   #name = "";
@@ -16,11 +17,9 @@ class Car {
     return this.#position;
   }
 
-  move(number, type) {
-    if (number >= MOVE_THRESHOLD) {
-      if (type === MOVE_DEFAULT) {
-        this.#position += 1;
-      }
+  move(number, steps) {
+    if (canMove(number)) {
+      this.#position += steps;
     }
   }
 }
