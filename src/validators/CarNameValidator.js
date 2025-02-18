@@ -35,9 +35,9 @@ class CarNameValidator {
   }
 
   #validateSpecialSymbol(carNames) {
-    const specialSymbolRegExp = /^[{}[\]/?.,;:|)*~`!^_+<>@#$%&\\=('"-]$/g;
+    const invalidCharactersPattern = /^[{}[\]/?.,;:|)*~`!^_+<>@#$%&\\=('"-]$/g;
 
-    if (specialSymbolRegExp.test(carNames)) {
+    if (invalidCharactersPattern.test(carNames)) {
       throw new Error(ERROR.CAR_NAME.SPECIAL_SYMBOL);
     }
   }
