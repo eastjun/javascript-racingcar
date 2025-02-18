@@ -4,42 +4,45 @@ import CountValidator from './utils/validator/CountValidator.js';
 import InputView from './view/InputView.js';
 import OutputView from './view/OutputView.js';
 import parseToNumber from './utils/parseToNumber.js';
-import Car from './Car.js';
-import Racing from './Racing.js';
-import Printer from './Printer.js';
-import IOMessage from './constants/IOMessage.js';
+import Car from '../src/domain/Car.js';
+import Racing from '../src/domain/Racing.js';
+import Printer from './view/Printer.js';
+import IO_MESSAGE from './constants/IO_MESSAGE.js';
 
 class App {
   async run() {
-    const cars = await this.getCar();
-    const tryCount = await this.getTryCount();
-    const racing = new Racing(cars);
-    racing.runRace(tryCount);
-    const raceResult = racing.decideWinner();
+    const cars = await this.#getCar();
+    const tryCount = await this.#getTryCount();
+    const racing = new Racing(cars, tryCount);
+
+    Printer.printHeader(IO_MESSAGE.resultHeader);
+    const results = racing.runRace();
+
+    const raceResult = racing.decideWinner(results);
     Printer.printWinner(raceResult);
   }
 
-  async getCar() {
+  async #getCar() {
     try {
-      const carNameInput = await InputView.readLineAsync(IOMessage.getCarName);
+      const carNameInput = await InputView.readLineAsync(IO_MESSAGE.getCarName);
       const parsedCarName = splitInput(carNameInput);
       NameValidator.isValid(parsedCarName);
       return parsedCarName.map((carName) => new Car(carName));
     } catch (error) {
       OutputView.print(error.message);
-      return this.getCar();
+      return this.#getCar();
     }
   }
 
-  async getTryCount() {
+  async #getTryCount() {
     try {
-      const tryCount = await InputView.readLineAsync(IOMessage.getTryCount);
+      const tryCount = await InputView.readLineAsync(IO_MESSAGE.getTryCount);
       const parsedTryCount = parseToNumber(tryCount);
       CountValidator.isValid(parsedTryCount);
       return parsedTryCount;
     } catch (error) {
       OutputView.print(error.message);
-      return this.getTryCount();
+      return this.#getTryCount();
     }
   }
 }
