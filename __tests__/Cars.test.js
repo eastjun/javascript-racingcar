@@ -6,7 +6,10 @@ describe("자동차 리스트 클래스 테스트", () => {
     const cars = new Cars(names);
 
     test("자동차 리스트를 생성할 수 있다.", () => {
-      expect(cars).not.toBeUndefined();
+      const carList = cars.getCars();
+      expect(carList).toHaveLength(3);
+      const carNames = carList.map((car) => car.getName());
+      expect(carNames).toEqual(["목성이", "화성이", "금성이"]);
     });
 
     test("자동차 경주를 한 라운드 실행하면, 전진 또는 멈춘다.", () => {
