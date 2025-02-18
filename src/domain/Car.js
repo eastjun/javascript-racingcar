@@ -6,12 +6,8 @@ export default class Car {
   #position = 0;
 
   constructor(name) {
-    this.validate(name);
-    this.#name = name;
-  }
-
-  validate(name) {
     validateCarNames(name);
+    this.#name = name;
   }
 
   move(number) {
