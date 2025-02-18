@@ -28,7 +28,7 @@ export default class Car {
     return this.#position;
   }
 
-  setPostion(position) {
+  setPosition(position) {
     this.#position = position;
   }
 }

@@ -8,8 +8,8 @@ describe("최종 우승자 선별 테스트", () => {
     //   { name: "데이지", position: 3 },
     //   { name: "머핀", position: 1 },
     // ];
-    CARS[0].setPostion(3);
-    CARS[1].setPostion(1);
+    CARS[0].setPosition(3);
+    CARS[1].setPosition(1);
     const winners = new Winner();
 
     expect(
@@ -25,8 +25,8 @@ describe("최종 우승자 선별 테스트", () => {
     //   { name: "머핀", position: 5 },
     //   { name: "메리", position: 2 },
     // ];
-    CARS[0].setPostion(3);
-    CARS[1].setPostion(3);
+    CARS[0].setPosition(3);
+    CARS[1].setPosition(3);
     const winners = new Winner(CARS);
 
     expect(
