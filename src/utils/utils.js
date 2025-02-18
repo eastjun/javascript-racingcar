@@ -1,20 +1,20 @@
 const splitStringToArray = (string, symbol) => string.split(symbol);
 
-const _reduce = (f, acc, iter) => {
-  if (!iter) {
-    iter = acc[Symbol.iterator]();
-    acc = iter.next().value;
+const _reduce = (f, accumulate, iterator) => {
+  if (!iterator) {
+    iterator = accumulate[Symbol.iterator]();
+    accumulate = iterator.next().value;
   }
-  for (const a of iter) {
-    acc = f(acc, a);
+  for (const a of iterator) {
+    accumulate = f(accumulate, a);
   }
-  return acc;
+  return accumulate;
 };
 
 const _pipe =
-  (...fns) =>
+  (...functions) =>
   (x) =>
-    _reduce((v, f) => f(v), x, fns);
+    _reduce((v, fn) => fn(v), x, functions);
 
 export { _reduce, _pipe, splitStringToArray };
 
