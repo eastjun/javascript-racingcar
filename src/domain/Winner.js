@@ -6,8 +6,8 @@ export default class Winner {
   }
 
   findWinner(cars) {
-    const max = Math.max(...cars.map((car) => car.getPosition()));
-    const winners = cars.filter((car) => car.getPosition() === max);
+    const max = Math.max(...cars.map((car) => car.position));
+    const winners = cars.filter((car) => car.position === max);
     this.outputView.printWinner(winners);
     return winners;
   }

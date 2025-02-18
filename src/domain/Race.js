@@ -16,7 +16,7 @@ export default class Race {
   runRound(cars) {
     cars.forEach((car) => {
       car.move(getRandomNumber(10));
-      this.outputView.printProgressResult(car.getName(), car.getPosition());
+      this.outputView.printProgressResult(car.name, car.position);
     });
     this.outputView.printNewLine();
   }

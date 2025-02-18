@@ -20,11 +20,11 @@ export default class Car {
     return number >= CAR.PROGRESS_CRITERIA;
   }
 
-  getName() {
+  get name() {
     return this.#name;
   }
 
-  getPosition() {
+  get position() {
     return this.#position;
   }
 }

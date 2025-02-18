@@ -26,7 +26,7 @@ describe("자동차 경주 한 라운드 테스트", () => {
     const race = new Race();
     race.runRound(CARS);
 
-    expect(CARS[0].getPosition()).toBe(0);
+    expect(CARS[0].position).toBe(0);
   });
 
   test("자동차 한 라운드 진행 후 전진 정도가 변한다.(여러대일 경우)", () => {
@@ -35,8 +35,8 @@ describe("자동차 경주 한 라운드 테스트", () => {
     const race = new Race();
     race.runRound(CARS);
 
-    expect(CARS[0].getPosition()).toBe(0);
-    expect(CARS[1].getPosition()).toBe(1);
+    expect(CARS[0].position).toBe(0);
+    expect(CARS[1].position).toBe(1);
   });
 });
 
@@ -58,7 +58,7 @@ describe("자동차 경주 테스트", () => {
 
     //then
     CARS.forEach((car, index) => {
-      expect(car.getPosition()).toEqual(RESULT[index]);
+      expect(car.position).toEqual(RESULT[index]);
     });
 
     // getRandomNumber 원래 함수로 복구

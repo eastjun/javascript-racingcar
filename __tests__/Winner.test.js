@@ -7,9 +7,9 @@ describe("최종 우승자 선별 테스트", () => {
 
     const winners = new Winner();
 
-    expect(
-      winners.findWinner(CARS).map((winner) => winner.getName()),
-    ).toStrictEqual(["데이지"]);
+    expect(winners.findWinner(CARS).map((winner) => winner.name)).toStrictEqual(
+      ["데이지"],
+    );
   });
 
   test("최종 우승자를 뽑고 출력한다.(우승자가 2명 이상인 경우", () => {
@@ -17,8 +17,8 @@ describe("최종 우승자 선별 테스트", () => {
 
     const winners = new Winner(CARS);
 
-    expect(
-      winners.findWinner(CARS).map((winner) => winner.getName()),
-    ).toStrictEqual(["데이지", "머핀"]);
+    expect(winners.findWinner(CARS).map((winner) => winner.name)).toStrictEqual(
+      ["데이지", "머핀"],
+    );
   });
 });
