@@ -1,23 +1,23 @@
 import { OUTPUT_MESSAGE } from "../constants/view.js";
 
 export default class OutputView {
-  printProgressResult(carName, carPosition) {
+  static printProgressResult(carName, carPosition) {
     console.log(
       `${carName} : ${OUTPUT_MESSAGE.PROGRESS_SYMBOL.repeat(carPosition)}`,
     );
   }
 
-  printWinner(winners) {
+  static printWinner(winners) {
     console.log(
       `최종 우승자: ${winners.map((winner) => winner.name).join(", ")}`,
     );
   }
 
-  printResultText() {
+  static printResultText() {
     console.log(OUTPUT_MESSAGE.RESULT);
   }
 
-  printNewLine() {
+  static printNewLine() {
     console.log("");
   }
 }
