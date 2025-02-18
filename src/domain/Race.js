@@ -1,11 +1,12 @@
-import CarPositionHistory from '../storage/CarPositionHistory.js';
+import CarPositionHistory from './CarPositionHistory.js';
 import { getRandomNumber } from '../utils/randomNumber.js';
 import { CAR_MOVE_STANDARD } from '../constants/MAGIC_NUMBER.js';
 class Race {
+  carPositionHistory = new CarPositionHistory();
+
   constructor(cars, tryCount) {
     this.cars = cars;
     this.tryCount = tryCount;
-    this.carPositionHistory = new CarPositionHistory();
   }
 
   tryMove() {
