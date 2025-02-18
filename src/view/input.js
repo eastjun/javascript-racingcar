@@ -1,7 +1,16 @@
 import readline from "readline";
 
-export function readLineAsync(query) {
-  return new Promise((resolve, reject) => {
+export const retryInput = async (callback) => {
+  try {
+    return await callback();
+  } catch (error) {
+    console.log(error.message);
+    return retryInput(callback);
+  }
+};
+
+export const readLineAsync = (query) => {
+  return new Promise((resolve) => {
     const rl = readline.createInterface({
       input: process.stdin,
       output: process.stdout,
@@ -12,4 +21,4 @@ export function readLineAsync(query) {
       resolve(input);
     });
   });
-}
+};

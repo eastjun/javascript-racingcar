@@ -1,3 +1,3 @@
-export const splitByDelimiter = (arr, delimiter) => {
-  return arr.split(delimiter);
+export const splitByDelimiter = (str, delimiter) => {
+  return str.split(delimiter);
 };

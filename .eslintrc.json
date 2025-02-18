@@ -1,5 +1,4 @@
 {
-  "rules": {},
   "env": {
     "es6": true,
     "node": true
@@ -8,5 +7,33 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "extends": ["eslint:recommended", "plugin:prettier/recommended"]
+  "extends": [
+    "eslint:recommended",
+    "plugin:import/recommended",
+    "plugin:prettier/recommended"
+  ],
+  "rules": {
+    "no-unused-vars": "warn",
+    "no-console": "off",
+    "import/no-unresolved": "error",
+    "import/order": [
+      "error",
+      {
+        "groups": ["external", "internal"],
+        "pathGroups": [
+          {
+            "pattern": "*",
+            "group": "external",
+            "position": "before"
+          }
+        ],
+        "pathGroupsExcludedImportTypes": ["builtin"],
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        },
+        "newlines-between": "always"
+      }
+    ]
+  }
 }

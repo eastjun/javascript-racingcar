@@ -1,3 +1,3 @@
-export const getMaxPosition = (cars) => {
-  return Math.max(...cars.map((car) => car.position));
+export const findMaxValue = (arr, propertyName) => {
+  return Math.max(...arr.map((item) => item[propertyName]));
 };
