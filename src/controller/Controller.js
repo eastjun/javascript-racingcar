@@ -2,14 +2,10 @@
 
 import CarManager from '../domain/CarManager.js';
 import OutputView from '../views/OutputView.js';
-import User from '../user/User.js';
+import { readCarNames, readAttempts } from '../user/User.js';
 import RaceResult from '../domain/RaceResult.js';
 
 class Controller {
-  constructor() {
-    this.user = new User();
-  }
-
   async process() {
     await this.initialize();
     await this.executeRace();
@@ -17,17 +13,17 @@ class Controller {
   }
 
   async initialize() {
-    const carNames = await this.user.readCarNames();
+    const carNames = await readCarNames();
     this.carManager = new CarManager(carNames);
   }
 
   async executeRace() {
-    const attempts = await this.user.readAttempts();
+    const attempts = await readAttempts();
     OutputView.printResultGreeting();
 
     for (let i = 0; i < attempts; i++) {
-      this.carManager?.race();
-      OutputView.printRaceStatus(this.carManager?.cars);
+      this.carManager.race();
+      OutputView.printRaceStatus(this.carManager.cars);
     }
   }
 
