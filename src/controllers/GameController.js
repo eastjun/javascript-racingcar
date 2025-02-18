@@ -1,24 +1,28 @@
 import Input from "../views/Input.js";
 import Output from "../views/Output.js";
-import RaceController from "./RaceController.js";
+import Car from "../domains/Car.js";
+import validateCarNames from "../validations/validateCarNames.js";
+import getValidInput from "../utils/getValidInput.js";
+import validateTryCount from "../validations/validateTryCount.js";
+import Race from "../domains/Race.js";
+
 class GameController {
   async play() {
-    const { names, tryCount } = await this.#readAndValidateInputs();
+    const { carNames, tryCount } = await this.#getValidatedInputs();
 
-    const raceController = new RaceController(names, tryCount);
+    const cars = carNames.map((carName) => new Car(carName));
+    const race = new Race(cars);
 
     Output.printRaceStart();
-    raceController.race();
-
-    const winners = raceController.getWinners();
-    Output.printWinner(winners);
+    Output.printRaceResults(race.playRace(tryCount));
+    Output.printWinners(race.getWinners());
   }
 
-  async #readAndValidateInputs() {
-    const names = await Input.carName();
-    const tryCount = await Input.tryCount();
+  async #getValidatedInputs() {
+    const carNames = await getValidInput(Input.carNames, validateCarNames);
+    const tryCount = await getValidInput(Input.tryCount, validateTryCount);
 
-    return { names, tryCount };
+    return { carNames, tryCount };
   }
 }
 
