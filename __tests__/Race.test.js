@@ -22,21 +22,21 @@ describe("자동차 경주 한 라운드 테스트", () => {
     global.getRandomNumber = originalGetRandomNumber;
   });
   test("자동차 한 라운드 진행 후 전진 정도가 변한다.(한대일 경우)", () => {
-    const CARS = [new Car("머핀")];
+    const cars = [new Car("머핀")];
     const race = new Race();
-    race.runRound(CARS);
+    race.runRound();
 
-    expect(CARS[0].position).toBe(0);
+    expect(cars[0].position).toBe(0);
   });
 
   test("자동차 한 라운드 진행 후 전진 정도가 변한다.(여러대일 경우)", () => {
-    const CARS = [new Car("머핀"), new Car("데이지")];
+    const cars = [new Car("머핀"), new Car("데이지")];
 
     const race = new Race();
-    race.runRound(CARS);
+    race.runRound();
 
-    expect(CARS[0].position).toBe(0);
-    expect(CARS[1].position).toBe(1);
+    expect(cars[0].position).toBe(0);
+    expect(cars[1].position).toBe(1);
   });
 });
 
@@ -47,18 +47,18 @@ describe("자동차 경주 테스트", () => {
     const originalGetRandomNumber = global.getRandomNumber;
     global.getRandomNumber = predictableRandomNumber;
 
-    const CARS = [new Car("머핀"), new Car("데이지")];
-    const RESULT = [1, 1];
-    const TRY_COUNT = 2;
+    const cars = [new Car("머핀"), new Car("데이지")];
+    const result = [1, 1];
+    const tryCount = 2;
 
     const race = new Race();
 
     //when
-    race.runRace(CARS, TRY_COUNT);
+    race.runRace(cars, tryCount);
 
     //then
     CARS.forEach((car, index) => {
-      expect(car.position).toEqual(RESULT[index]);
+      expect(car.position).toEqual(result[index]);
     });
 
     // getRandomNumber 원래 함수로 복구
