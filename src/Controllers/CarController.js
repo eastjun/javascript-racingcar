@@ -29,7 +29,7 @@ class CarController {
 
   startRace(cars, tryCount) {
     const race = new Race(cars, tryCount);
-    race.movePosition();
+    race.moveForward();
     return race;
   }
 
