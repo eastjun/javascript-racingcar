@@ -9,20 +9,6 @@ class OutputView {
     console.log(`${value}${SYSTEM_MESSAGE.OUTPUT_RACE_DELIMITER}${result}`);
   }
 
-  printRaceResult(carList) {
-    carList.forEach((car) => {
-      console.log(
-        `${car.getName()}${SYSTEM_MESSAGE.OUTPUT_RACE_DELIMITER}${SYSTEM_MESSAGE.OUTPUT_CAR_MARK.repeat(car.getPosition())}`,
-      );
-    });
-  }
-
-  //   printWinners(winners) {
-  //     console.log(
-  //       `${SYSTEM_MESSAGE.OUTPUT_WINNER}${winners.join(SYSTEM_MESSAGE.OUTPUT_WINNER_SEPERATOR)}`,
-  //     );
-  //   }
-
   printNewLine() {
     console.log();
   }

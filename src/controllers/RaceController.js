@@ -52,11 +52,16 @@ class RaceController {
   #processRacing(cars, parsedTryCount) {
     this.#outputView.printResultHeader();
 
-    const carList = cars.getCars();
-
     Array.from({ length: parsedTryCount }).forEach(() => {
       cars.moveCars();
-      this.#outputView.printRaceResult(carList);
+
+      cars.getCars().forEach((car) => {
+        this.#outputView.printResult(
+          car.name,
+          SYSTEM_MESSAGE.OUTPUT_CAR_MARK.repeat(car.position),
+        );
+      });
+
       this.#outputView.printNewLine();
     });
   }
