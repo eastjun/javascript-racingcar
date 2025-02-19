@@ -4,10 +4,10 @@ import { OutputView } from "../view/OutputView.js";
 
 export function startRace(cars, round) {
   OutputView.printMessage(SystemMessage.RESULT_MESSAGE);
-  const Race = new CarRacing(cars, round);
-  const roundResult = Race.playRace(cars);
+  const race = new CarRacing(cars, round);
+  const roundResult = race.playRace(cars);
   OutputView.printRoundResult(roundResult);
 
-  const Winner = Race.getWinner(cars);
+  const Winner = race.getWinner(cars);
   return Winner;
 }
