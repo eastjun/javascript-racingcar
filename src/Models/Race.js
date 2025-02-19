@@ -11,15 +11,15 @@ class Race {
     this.cars = cars;
   }
 
-  canMove() {
-    const randomNumber = getRandomNumberInRange(0, 9);
+  canMove(randomNumber) {
     return randomNumber >= MIN_FORWARD_NUMBER;
   }
 
   moveForward() {
     for (let i = 0; i < this.tryCount; i++) {
       this.cars.forEach((car) => {
-        car.movePosition(this.canMove());
+        const randomNumber = getRandomNumberInRange(0, 9);
+        car.movePosition(this.canMove(randomNumber));
       });
     }
   }

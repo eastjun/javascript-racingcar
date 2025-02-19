@@ -1,15 +1,5 @@
 import Car from '../src/Models/Car.js';
 
-export function mockRandom(numbers) {
-  const mockRandomFunction = jest.spyOn(Math, 'random');
-
-  numbers.forEach((number) => {
-    const randomNumber = number / 10;
-
-    mockRandomFunction.mockReturnValueOnce(randomNumber);
-  });
-}
-
 describe('Car 객체를 테스트', () => {
   let car;
   const CAR_NAMES = ['앵버', '재오', '상추'];

@@ -16,6 +16,10 @@ class Car {
     return this.#position;
   }
 
+  setPosition(position) {
+    this.#position = position;
+  }
+
   getHistory(index) {
     if (index) {
       return this.#history[index];
