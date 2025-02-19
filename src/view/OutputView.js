@@ -14,7 +14,8 @@ export const OutputView = {
     const stringPosition = this.printStringPosition(position);
     console.log(`${name} : ${stringPosition}`);
   },
-  printWinner(winner) {
+  printWinner(winnerInput) {
+    const winner = winnerInput.join(", ");
     console.log(SystemMessage.WINNER_MESSAGE(winner));
   },
   printRoundResult(roundResult) {
