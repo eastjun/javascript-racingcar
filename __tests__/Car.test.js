@@ -1,5 +1,4 @@
 import Car from '../src/Models/Car.js';
-import Race from '../src/Models/Race.js';
 
 export function mockRandom(numbers) {
   const mockRandomFunction = jest.spyOn(Math, 'random');
@@ -12,17 +11,20 @@ export function mockRandom(numbers) {
 }
 
 describe('Car 객체를 테스트', () => {
-  test('객체가 잘 생성됐는지 확인한다.', () => {
-    // when
-    const car = new Car('재오', ['재오', '앵버']);
+  let car;
+  const CAR_NAMES = ['앵버', '재오', '상추'];
 
+  beforeEach(() => {
+    car = new Car(CAR_NAMES[0], CAR_NAMES);
+  });
+
+  test('객체가 잘 생성됐는지 확인한다.', () => {
     // then
-    expect(car.name).toBe('재오');
+    expect(car.name).toBe(CAR_NAMES[0]);
   });
 
   test('자동차 현재 위치 저장 테스트', () => {
     // when
-    const car = new Car('재오', ['재오', '앵버']);
     car.movePosition(true);
     car.movePosition(false);
     car.movePosition(true);
@@ -34,7 +36,6 @@ describe('Car 객체를 테스트', () => {
 
   test('자동차 위치 히스토리 저장 테스트', () => {
     // when
-    const car = new Car('재오', ['재오', '앵버']);
     car.movePosition(true);
     car.movePosition(false);
     car.movePosition(true);
