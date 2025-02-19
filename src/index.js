@@ -37,7 +37,7 @@ export async function run() {
   const race = new Race(cars);
   const roundResultList = race.playAllRounds(count);
 
-  OutputView.printAllGame(roundResultList, nameList);
+  OutputView.printAllGame(roundResultList);
 
   const winnerOutput = Winner.findWinners(cars);
 
