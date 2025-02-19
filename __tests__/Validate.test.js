@@ -1,4 +1,4 @@
-import { MAX_TRY_COUNT, MIN_TRY_COUNT } from '../src/constants/common.js';
+import { MAX_CAR_NAME, MAX_TRY_COUNT, MIN_CAR_COUNT, MIN_TRY_COUNT } from '../src/constants/common.js';
 import Validate from '../src/Models/Validate.js';
 
 export const getLogSpy = () => {
@@ -8,27 +8,28 @@ export const getLogSpy = () => {
 };
 
 describe('자동차 이름 입력 검증 테스트', () => {
+  const CAR_NAME = '앵버';
+
   test('자동차 이름 빈 값 오류 검증 테스트', () => {
-    //then
+    // then
     expect(() => Validate.checkIsEmpty('')).toThrow('[ERROR]');
   });
 
-  test.each([['앵버앵버앵버', '상']])('자동차 이름 길이(1~5자) 오류 검증 테스트', (carName) => {
-    //then
-    expect(() => Validate.checkCarNameLength(carName)).toThrow('[ERROR]');
+  test('자동차 이름 길이(5자) 오류 검증 테스트', () => {
+    // then
+    expect(() => Validate.checkCarNameLength(CAR_NAME.repeat(MAX_CAR_NAME + 1))).toThrow('[ERROR]');
   });
 
   test('자동차 이름 중복 오류 검증 테스트', () => {
     // given
-    const carNames = ['상추', '상추'];
+    const carNames = Array.from({ length: MIN_CAR_COUNT }).fill(CAR_NAME);
 
     //then
     expect(() => Validate.checkCarNameDuplicate(carNames)).toThrow('[ERROR]');
   });
 
   test('최소 자동차 대수(2대) 미만 입력 검증 테스트', () => {
-    // given
-    const carNames = ['앵버'];
+    const carNames = Array.from({ length: MIN_CAR_COUNT - 1 }).fill(CAR_NAME);
 
     // then
     expect(() => Validate.checkCarCount(carNames)).toThrow('[ERROR]');
