@@ -3,18 +3,28 @@ import Cars from "../src/domain/Cars.js";
 describe("자동차 리스트 클래스 테스트", () => {
   describe("자동차 리스트 클래스 정상 케이스", () => {
     const names = ["목성이", "화성이", "금성이"];
-    const cars = new Cars(names);
+    let cars;
+
+    beforeEach(() => {
+      cars = new Cars(names);
+    });
+
+    test("자동차를 생성할 수 있다.", () => {
+      const car = cars.getCars()[0];
+      expect(car.name).toEqual("목성이");
+    });
 
     test("자동차 리스트를 생성할 수 있다.", () => {
       const carList = cars.getCars();
       expect(carList).toHaveLength(3);
-      const carNames = carList.map((car) => car.getName());
-      expect(carNames).toEqual(["목성이", "화성이", "금성이"]);
+      const carNames = carList.map((car) => car.name);
+      expect(carNames).toEqual(names);
     });
 
     test("자동차 경주를 한 라운드 실행하면, 전진 또는 멈춘다.", () => {
+      cars.moveCars();
       cars.getCars().forEach((car) => {
-        expect(car.getPosition()).toBeLessThan(2);
+        expect(car.position).toBeLessThan(2);
       });
     });
 
