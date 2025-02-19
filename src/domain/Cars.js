@@ -5,20 +5,24 @@ class Cars {
   #cars;
 
   constructor(carNames) {
-    this.#cars = carNames.map((carName) => new Car(carName));
+    this.#cars = carNames.map((name) => ({
+      name: name,
+      position: NUMBER.INIT_POSITION,
+    }));
   }
 
   getWinners() {
     const maxPosition = this.getMaxPosition();
     return this.#cars
-      .filter((car) => car.getPosition() === maxPosition)
-      .map((car) => car.getName());
+      .filter((car) => car.position === maxPosition)
+      .map((car) => car.name);
   }
 
   getMaxPosition() {
-    return this.#cars.reduce((maxPosition, car) => {
-      return car.comparePosition(maxPosition);
-    }, -1);
+    return this.#cars.reduce(
+      (maxPosition, car) => Math.max(car.position, maxPosition),
+      -1,
+    );
   }
 
   getRandomNumber() {
@@ -33,7 +37,7 @@ class Cars {
 
   #checkMoveCondition(car) {
     if (this.getRandomNumber() >= NUMBER.MIN_NUMBER_TO_MOVE) {
-      car.move();
+      car.position += NUMBER.MOVE_POSITION;
     }
   }
 
