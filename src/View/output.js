@@ -1,25 +1,15 @@
-import { getRandomNumber } from '../util.js';
-
 const outputView = {
-  printGameResult(gameCount, cars) {
+  printGameResult(results) {
     console.log('\n실행 결과');
-    for (let count = 0; count < gameCount; count += 1) {
-      cars.forEach((car) => {
-        const randomNumber = getRandomNumber();
-        car.move(randomNumber);
-        console.log(`${car.getName()} : ${'-'.repeat(car.getPosition())}`);
+    results.forEach((round) => {
+      round.forEach(({ name, position }) => {
+        console.log(`${name} : ${'-'.repeat(position)}`);
       });
       console.log('');
-    }
+    });
   },
-  printWinners(cars) {
-    const carPositions = cars.map((car) => car.getPosition());
-    const winnerPosition = Math.max(...carPositions);
-    const winners = cars
-      .filter((car) => car.getPosition() === winnerPosition)
-      .map((car) => car.getName())
-      .join(', ');
-    console.log(`최종 우승자: ${winners}`);
+  printWinners(winners) {
+    console.log(`최종 우승자: ${winners.join(', ')}`);
   },
 };
 

@@ -1,5 +1,15 @@
 const MAX_NAME_LENGTH = 5;
 
+export const validateCarNameNoSpaces = (input) => {
+  const carNames = input.split(',').map((name) => name.trim());
+
+  const space = carNames.some((name) => name.includes(' '));
+
+  if (space) {
+    throw new Error('[Error] 자동차 이름에는 공백이 포함될 수 없습니다.');
+  }
+};
+
 export const validateCarsNameLength = (input) => {
   if (input.split(',').some((carName) => carName.length > MAX_NAME_LENGTH)) {
     throw new Error(
@@ -8,10 +18,12 @@ export const validateCarsNameLength = (input) => {
   }
 };
 
-export const validateCarsNameForm = (input) => {
-  const commaCount = input.split('').filter((value) => value === ',').length;
-  const carCount = input.split(',').filter(Boolean).length;
-  if (input.trim() === '' || commaCount !== carCount - 1) {
+export const validateCarNameForm = (input) => {
+  const trimmedInput = input.trim();
+  const carNames = trimmedInput.split(',').filter(Boolean);
+  const commaCount = (trimmedInput.match(/,/g) || []).length;
+
+  if (!trimmedInput || commaCount !== carNames.length - 1) {
     throw new Error('[Error] 자동차 이름이 올바르지 않습니다.');
   }
 };

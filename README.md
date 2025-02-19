@@ -1,4 +1,5 @@
 # javascript-racingcar
+
 ```
 javascript-racingcar
 ├─ .eslintrc.json
@@ -24,6 +25,7 @@ javascript-racingcar
   ├─ index.js : 진입점
   └─ util.js
 ```
+
 ## 자동차
 
 1. 자동차에 5자 이하로 이름을 부여할 수 있다.
@@ -53,3 +55,33 @@ javascript-racingcar
 3. 경주 실행 시키기
 4. 경주 결과 출력하기
 5. 우승자 출력하기
+
+## 피드백
+
+1. UI와 비즈니스 로직 분리
+   - 실행결과 추출(비즈니스), 실행결과 출력(UI) 분리
+   - 우승자 도출(비즈니스), 우승자 출력(UI) 분리
+   - car와 game의 역할분리
+   - 
+
+2. 변수/함수명 직관적이게 수정
+   - moveCondition / MOVE_FORWARD
+   - getCarsname
+   - validateCarsNameForm
+
+3. 테스트 코드 개선
+   - 테스트 이름 구체적으로(기대결과 포함)
+   - 예외테스트 시 기대하는 결과 명확히 표시
+   - 테스트 세부항목 별 카테고리화
+   - car와 game 각각 도메인 테스트
+
+4. 엣지케이스 예외처리
+   - 자동차 이름 공백(공백만 입력과는 다름)
+
+5. 기타
+   - 매직넘버로 하드코딩한 값 변수명 지정하기
+   - 이름입력 시 공백제거하여 전처리하기
+   - run 분리
+   
+
+   

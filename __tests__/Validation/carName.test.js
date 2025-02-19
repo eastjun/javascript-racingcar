@@ -1,28 +1,29 @@
 import {
   validateCarsNameLength,
-  validateCarsNameForm,
+  validateCarNameForm,
   validateDuplicatedCarName,
+  validateCarNameNoSpaces,
 } from '../../src/Validation/carName.js';
 
 describe('자동차 이름 유효성 검사', () => {
-  test('자동차 이름 길이 5자 이하', () => {
+  test('자동차 이름 길이 5자 이하 통과', () => {
     const carName = 'hakuu';
     expect(() => {
       validateCarsNameLength(carName);
     }).not.toThrow('[Error]');
   });
 
-  test('자동차 이름 길이 5자 초과', () => {
+  test('자동차 이름 길이 5자 초과 오류', () => {
     const carName = 'hakuuu';
     expect(() => {
       validateCarsNameLength(carName);
     }).toThrow('[Error]');
   });
 
-  test('자동차 이름 올바른 형식', () => {
+  test('자동차 이름 올바른 형식 통과', () => {
     const carsName = 'haku,logun';
     expect(() => {
-      validateCarsNameForm(carsName);
+      validateCarNameForm(carsName);
     }).not.toThrow('[Error]');
   });
 
@@ -31,16 +32,26 @@ describe('자동차 이름 유효성 검사', () => {
     [' ', '[Error]'],
     ['', '[Error]'],
     [',', '[Error]'],
-  ])('자동차 이름 틀린 형식', (input, errorMessage) => {
+  ])(
+    '자동차 이름 공백, 미입력, 구분자만 입력한 틀린 형식 오류',
+    (input, errorMessage) => {
+      expect(() => {
+        validateCarNameForm(input);
+      }).toThrow(errorMessage);
+    },
+  );
+
+  test('자동차 이름 중복 오류', () => {
+    const carNames = 'haku,haku';
     expect(() => {
-      validateCarsNameForm(input);
-    }).toThrow(errorMessage);
+      validateDuplicatedCarName(carNames);
+    }).toThrow('[Error]');
   });
 
-  test('자동차 이름 중복', () => {
-    const carsName = 'haku,haku';
+  test('자동차 이름 공백 오류', () => {
+    const carNames = 'ha ku,pobi';
     expect(() => {
-      validateDuplicatedCarName(carsName);
+      validateCarNameNoSpaces(carNames);
     }).toThrow('[Error]');
   });
 });
