@@ -3,16 +3,16 @@ import Race from '../src/Models/Race.js';
 import { mockRandom } from './Car.test.js';
 
 describe('우승자 선별 테스트', () => {
-  let carNames;
-  let tryCount;
-  let cars;
+  let CAR_NAMES;
+  let TRY_COUNT;
+  let CARS;
   let race;
 
   beforeEach(() => {
-    carNames = ['재오', '앵버', '상추'];
-    tryCount = 2;
-    cars = carNames.map((name) => new Car(name, carNames));
-    race = new Race(cars, tryCount);
+    CAR_NAMES = ['재오', '앵버', '상추'];
+    TRY_COUNT = 2;
+    CARS = CAR_NAMES.map((name) => new Car(name, CAR_NAMES));
+    race = new Race(CARS, TRY_COUNT);
   });
 
   test('이동 가능 여부 판단 테스트', () => {
