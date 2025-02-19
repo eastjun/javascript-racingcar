@@ -5,6 +5,10 @@ class OutputView {
     console.log(SYSTEM_MESSAGE.OUTPUT_RACE_HEADER);
   }
 
+  printResult(value, result) {
+    console.log(`${value}${SYSTEM_MESSAGE.OUTPUT_RACE_DELIMITER}${result}`);
+  }
+
   printRaceResult(carList) {
     carList.forEach((car) => {
       console.log(
@@ -13,11 +17,11 @@ class OutputView {
     });
   }
 
-  printWinners(winners) {
-    console.log(
-      `${SYSTEM_MESSAGE.OUTPUT_WINNER}${winners.join(SYSTEM_MESSAGE.OUTPUT_WINNER_SEPERATOR)}`,
-    );
-  }
+  //   printWinners(winners) {
+  //     console.log(
+  //       `${SYSTEM_MESSAGE.OUTPUT_WINNER}${winners.join(SYSTEM_MESSAGE.OUTPUT_WINNER_SEPERATOR)}`,
+  //     );
+  //   }
 
   printNewLine() {
     console.log();

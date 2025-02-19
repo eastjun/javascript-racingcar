@@ -4,7 +4,7 @@ export const SYSTEM_MESSAGE = Object.freeze({
   INPUT_TRY_COUNT: "시도할 횟수는 몇 회인가요?\n",
   OUTPUT_RACE_HEADER: "\n실행 결과",
   OUTPUT_CAR_MARK: "-",
-  OUTPUT_WINNER: "최종 우승자: ",
+  OUTPUT_WINNER: "최종 우승자",
   OUTPUT_WINNER_SEPERATOR: ", ",
   OUTPUT_RACE_DELIMITER: " : ",
 });

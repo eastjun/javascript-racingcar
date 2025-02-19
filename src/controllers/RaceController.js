@@ -1,6 +1,5 @@
 import { SYSTEM_MESSAGE } from "../constants/SystemMessage.js";
 import Cars from "../domain/Cars.js";
-import Winner from "../domain/Winner.js";
 class RaceController {
   #inputView;
   #outputView;
@@ -68,7 +67,6 @@ class RaceController {
       SYSTEM_MESSAGE.OUTPUT_WINNER,
       winners.join(SYSTEM_MESSAGE.OUTPUT_WINNER_SEPERATOR),
     );
-    this.#outputView.printWinners(winners);
   }
 }
 
