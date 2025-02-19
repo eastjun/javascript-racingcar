@@ -10,10 +10,8 @@ class RaceController {
   }
 
   async race() {
-    const parsedCarNames = await this.#initCarNames();
+    const cars = await this.#initCarNames();
     const parsedTryCount = await this.#initTryCount();
-
-    const cars = new Cars(parsedCarNames);
 
     this.#processRacing(cars, parsedTryCount);
     this.#processWinner(cars);
@@ -25,11 +23,8 @@ class RaceController {
         const carNames = await this.#inputView.getCarNames(
           SYSTEM_MESSAGE.INPUT_CAR_NAME,
         );
-        const parsedCarNames = carNames
-          .split(",")
-          .map((carName) => carName.trim());
-        new CarNameValidator().valiateNames(parsedCarNames);
-        return parsedCarNames;
+
+        return new Cars(carNames);
       } catch (error) {
         console.log(error.message);
       }
