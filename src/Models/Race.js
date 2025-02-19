@@ -8,6 +8,7 @@ class Race {
     Validate.checkIsInteger(tryCountNumber);
     Validate.checkTryCountRange(tryCountNumber);
     this.tryCount = tryCountNumber;
+
     this.cars = cars;
   }
 
@@ -19,7 +20,7 @@ class Race {
     for (let i = 0; i < this.tryCount; i++) {
       this.cars.forEach((car) => {
         const randomNumber = getRandomNumberInRange(0, 9);
-        car.movePosition(this.canMove(randomNumber));
+        car.movePosition(randomNumber);
       });
     }
   }

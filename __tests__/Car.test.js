@@ -1,3 +1,4 @@
+import { MIN_FORWARD_NUMBER } from '../src/constants/common.js';
 import Car from '../src/Models/Car.js';
 
 describe('Car 객체를 테스트', () => {
@@ -15,10 +16,10 @@ describe('Car 객체를 테스트', () => {
 
   test('자동차 현재 위치 저장 테스트', () => {
     // when
-    car.movePosition(true);
-    car.movePosition(false);
-    car.movePosition(true);
-    car.movePosition(false);
+    car.movePosition(MIN_FORWARD_NUMBER - 1);
+    car.movePosition(MIN_FORWARD_NUMBER);
+    car.movePosition(MIN_FORWARD_NUMBER - 1);
+    car.movePosition(MIN_FORWARD_NUMBER);
 
     // then
     expect(car.getPosition()).toEqual(2);
@@ -26,12 +27,12 @@ describe('Car 객체를 테스트', () => {
 
   test('자동차 위치 히스토리 저장 테스트', () => {
     // when
-    car.movePosition(true);
-    car.movePosition(false);
-    car.movePosition(true);
-    car.movePosition(false);
+    car.movePosition(MIN_FORWARD_NUMBER + 1);
+    car.movePosition(MIN_FORWARD_NUMBER + 4);
+    car.movePosition(MIN_FORWARD_NUMBER - 1);
+    car.movePosition(MIN_FORWARD_NUMBER - 2);
 
     // then
-    expect(car.getHistory()).toEqual([1, 1, 2, 2]);
+    expect(car.getHistory()).toEqual([1, 2, 2, 2]);
   });
 });

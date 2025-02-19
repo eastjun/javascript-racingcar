@@ -1,3 +1,4 @@
+import { MIN_FORWARD_NUMBER } from '../constants/common.js';
 import Validate from './Validate.js';
 
 class Car {
@@ -28,9 +29,17 @@ class Car {
     }
   }
 
-  movePosition(isMove) {
-    this.#position += Number(isMove);
-    this.#history.push(this.#position);
+  movePosition(randomNumber) {
+    if (this.canMove(randomNumber)) {
+      this.#position += 1;
+      this.#history.push(this.#position);
+    } else {
+      this.#history.push(this.#position);
+    }
+  }
+
+  canMove(randomNumber) {
+    return randomNumber >= MIN_FORWARD_NUMBER;
   }
 }
 
