@@ -3,7 +3,7 @@ import { ERROR_MESSAGE } from '../constants/message.js';
 
 class Validate {
   static checkIsEmpty(carName) {
-    if (carName.trim().length === 0) throw new Error(ERROR_MESSAGE.CAR_NAME_EMPTY);
+    if (carName.trim().length === MIN_CAR_NAME - 1) throw new Error(ERROR_MESSAGE.CAR_NAME_EMPTY);
   }
 
   static checkCarNameLength(carName) {
