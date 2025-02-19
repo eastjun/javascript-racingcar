@@ -7,6 +7,15 @@ export const createCars = (carNames) => {
 
 export const moveCars = (cars) => {
   for (const c of cars) {
+    const n = getRandomNumber();
     c.move(getRandomNumber(), 1);
   }
+};
+
+export const getWinners = (cars) => {
+  const maxPosition = Math.max(...cars.map((car) => car.position));
+  const winners = cars
+    .filter((car) => car.position === maxPosition)
+    .map((car) => car.name);
+  return winners;
 };

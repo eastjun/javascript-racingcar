@@ -1,7 +1,7 @@
 export const RANDOM_NUMBER = {
   MIN_VALUE: 0,
   MAX_VALUE: 9,
-}
+};
 
 export const CAR = {
   MOVE_THRESHOLD: 4,

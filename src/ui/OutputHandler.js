@@ -12,10 +12,6 @@ export const displayRaceResult = (cars) => {
   console.log();
 };
 
-export const displayWinner = (cars) => {
-  const maxPosition = Math.max(...cars.map((car) => car.position));
-  const winners = cars
-    .filter((car) => car.position === maxPosition)
-    .map((car) => car.name);
+export const displayWinner = (winners) => {
   console.log(`${INFO_MESSAGE.WINNER_TITLE}${winners.join(DELIMITERS.WINNER)}`);
 };

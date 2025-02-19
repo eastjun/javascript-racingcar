@@ -1,4 +1,6 @@
 import { ERROR_MESSAGE, CAR, ATTEMPT } from "../constants.js";
+import { getCarNames, getAttempt } from "../ui/InputHandler.js"
+import { DELIMITERS } from "../constants.js";
 
 export const validateCarCount = (carNames) => {
   if (carNames.length < CAR.MIN_COUNT) throw Error(ERROR_MESSAGE.TOO_FEW_CARS);
@@ -16,4 +18,33 @@ export const validateAttempt = (attempt) => {
   else if (!Number.isInteger(attempt)) throw Error(ERROR_MESSAGE.ATTEMPT_NUMBER_IS_NOT_INTEGER);
   else if (attempt < ATTEMPT.MIN) throw Error(ERROR_MESSAGE.ATTEMPT_TOO_LOW);
   else if (attempt > ATTEMPT.MAX) throw Error(ERROR_MESSAGE.ATTEMPT_TOO_HIGH);
+};
+
+const parseCarNames = (input) => {
+  return input.split(DELIMITERS.CAR_NAME).map((name) => name.trim());
+};
+
+export const getValidCarNames = async () => {
+  while (true) {
+    try {
+      const carNames = parseCarNames(await getCarNames());
+      validateCarCount(carNames);
+      validateCarNames(carNames);
+      return carNames;
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
+};
+
+export const getValidAttempt = async () => {
+  while (true) {
+    try {
+      const attempt = await getAttempt();
+      validateAttempt(attempt);
+      return attempt;
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
 };

@@ -1,5 +1,5 @@
-import { getValidCarNames, getValidAttempt } from "./ui/InputHandler.js";
-import { createCars, moveCars } from "./domain/CarRacing.js";
+import { getValidCarNames, getValidAttempt } from "./domain/validate.js";
+import { createCars, moveCars, getWinners } from "./domain/CarRacing.js";
 import { displayResultTitle, displayRaceResult, displayWinner } from "./ui/OutputHandler.js";
 
 async function run() {
@@ -11,7 +11,8 @@ async function run() {
     moveCars(cars);
     displayRaceResult(cars);
   }
-  displayWinner(cars);
+  const winners = getWinners(cars);
+  displayWinner(winners);
 }
 
 run();
