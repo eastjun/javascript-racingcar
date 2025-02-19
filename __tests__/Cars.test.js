@@ -1,6 +1,25 @@
 import Cars from "../src/domain/Cars.js";
 
 describe("자동차 리스트 클래스 테스트", () => {
+  describe("자동차 이름 유효성 클래스 테스트", () => {
+    test("자동차 이름은 1이상 5이하이다.", () => {
+      const carNames = ["일", "화성", "토성이", "목성목성", "금성금성금"];
+      expect(() => new Cars(carNames).validateCarNames(carNames)).not.toThrow();
+    });
+
+    describe("자동차 이름 유효성 클래스 예외 케이스", () => {
+      test("1글자 미만의 자동차 이름이 포함되어 있으면 에러가 발생한다.", () => {
+        const carNames = ["", "화성", "토성이", "목성목성"];
+        expect(() => new Cars(carNames).validateCarNames(carNames)).toThrow();
+      });
+
+      test("5글자를 초과하는 자동차 이름이 포함되어 있으면 에러가 발생한다.", () => {
+        const carNames = ["화성", "토성이", "목성목성", "금성금성금성"];
+        expect(() => new Cars(carNames).validateCarNames(carNames)).toThrow();
+      });
+    });
+  });
+
   describe("자동차 리스트 클래스 정상 케이스", () => {
     const names = ["목성이", "화성이", "금성이"];
     let cars;
