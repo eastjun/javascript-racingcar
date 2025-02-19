@@ -1,7 +1,34 @@
 import readline from "readline";
+import { INPUT_MESSAGE } from "../constants/view.js";
+import { validateCarNames, validateTryCount } from "../utils/validation.js";
 
 export default class InputView {
-  readLineAsync(query) {
+  static async readCarNames() {
+    return await this.validateAndRetry(
+      INPUT_MESSAGE.CAR_NAMES,
+      validateCarNames,
+    );
+  }
+
+  static async readTryCount() {
+    return await this.validateAndRetry(
+      INPUT_MESSAGE.TRY_COUNT,
+      validateTryCount,
+    );
+  }
+
+  static async validateAndRetry(message, validateFn) {
+    try {
+      const input = await this.readLineAsync(message);
+      validateFn(input);
+      return input;
+    } catch (e) {
+      console.log(e.message);
+      return this.validateAndRetry(message, validateFn);
+    }
+  }
+
+  static readLineAsync(query) {
     return new Promise((resolve, reject) => {
       if (arguments.length !== 1) {
         reject(new Error("arguments must be 1"));
