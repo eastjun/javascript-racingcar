@@ -1,11 +1,15 @@
+import { systemConstants } from "../constants/systemConstants.js";
+
 export const Validation = {
   isNameNotEmpty(parsedString) {
-    return parsedString.every((name) => name.length > 0);
+    return !parsedString.some((name) => name.length === 0);
   },
-  isNameTooLong(parsedString) {
-    return parsedString.every((name) => name.length <= 5);
+  isNameLengthValid(parsedString) {
+    return !parsedString.some(
+      (name) => name.length > systemConstants.NAME_LIMIT
+    );
   },
-  isNameDuplicate(parsedString) {
+  isNameNotDuplicate(parsedString) {
     return parsedString.length === new Set(parsedString).size;
   },
 
@@ -13,7 +17,7 @@ export const Validation = {
     return Number.isInteger(Number(input));
   },
 
-  isNegative(input) {
+  isPositive(input) {
     return Number(input) > 0;
   },
 };

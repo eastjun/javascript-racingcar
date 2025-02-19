@@ -2,7 +2,7 @@ import { Validation } from "../src/validation/Validation.js";
 describe("input validation test", () => {
   test("이름에 공백이 존재하는 경우 false를 반환한다", () => {
     //given
-    const INPUT_VALUE = "1,2,,".split(",");
+    const INPUT_VALUE = ["1", "2", ""];
 
     //when
     const RESULT = Validation.isNameNotEmpty(INPUT_VALUE);
@@ -16,7 +16,7 @@ describe("input validation test", () => {
     const INPUT_VALUE = "abcdfe".split(",");
 
     //when
-    const RESULT = Validation.isNameTooLong(INPUT_VALUE);
+    const RESULT = Validation.isNameLengthValid(INPUT_VALUE);
 
     //then
     expect(RESULT).toBe(false);
@@ -26,7 +26,7 @@ describe("input validation test", () => {
     const INPUT_VALUE = "a,a,b,c".split(",");
 
     //when
-    const RESULT = Validation.isNameDuplicate(INPUT_VALUE);
+    const RESULT = Validation.isNameNotDuplicate(INPUT_VALUE);
 
     //then
     expect(RESULT).toBe(false);
@@ -56,7 +56,7 @@ describe("input validation test", () => {
     const INPUT_VALUE = "-1";
 
     //when
-    const RESULT = Validation.isNegative(INPUT_VALUE);
+    const RESULT = Validation.isPositive(INPUT_VALUE);
 
     //then
     expect(RESULT).toBe(false);
