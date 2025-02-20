@@ -1,8 +1,5 @@
-import Cars from "../models/Cars.js";
-import Winner from "../models/Winner.js";
-import CarNameValidator from "../validators/CarNameValidator.js";
-import TryCountValidator from "../validators/TryCountValidator.js";
-
+import { SYSTEM_MESSAGE } from "../constants/SystemMessage.js";
+import Cars from "../domain/Cars.js";
 class RaceController {
   #inputView;
   #outputView;
@@ -13,23 +10,21 @@ class RaceController {
   }
 
   async race() {
-    const parsedCarNames = await this.#initCarNames();
+    const cars = await this.#initCarNames();
     const parsedTryCount = await this.#initTryCount();
-
-    const cars = new Cars(parsedCarNames);
 
     this.#processRacing(cars, parsedTryCount);
     this.#processWinner(cars);
   }
 
   async #initCarNames() {
-    while(true) {
+    while (true) {
       try {
-        const carNames = await this.#inputView.getCarNames();
-        const parsedCarNames = carNames.split(",").map((carName) => carName.trim());
-        new CarNameValidator().valiateNames(parsedCarNames);
-  
-        return parsedCarNames;
+        const carNames = await this.#inputView.getCarNames(
+          SYSTEM_MESSAGE.INPUT_CAR_NAME,
+        );
+
+        return new Cars(carNames);
       } catch (error) {
         console.log(error.message);
       }
@@ -37,13 +32,12 @@ class RaceController {
   }
 
   async #initTryCount() {
-    while(true) {
+    while (true) {
       try {
-        const tryCount = await this.#inputView.getTryCount();
-        const parsedTryCount = Number(tryCount);
-        new TryCountValidator().validateNumber(parsedTryCount);
-  
-        return parsedTryCount;
+        const tryCount = await this.#inputView.getTryCount(
+          SYSTEM_MESSAGE.INPUT_TRY_COUNT,
+        );
+        return tryCount;
       } catch (error) {
         console.log(error.message);
       }
@@ -52,21 +46,26 @@ class RaceController {
 
   #processRacing(cars, parsedTryCount) {
     this.#outputView.printResultHeader();
-    const carList = cars.getCars();
 
-    for (let i = 0; i < parsedTryCount; i++) {
+    Array.from({ length: parsedTryCount }).forEach(() => {
       cars.moveCars();
-      this.#outputView.printRaceResult(carList);
+
+      cars.getCars().forEach((car) => {
+        this.#outputView.printResult(
+          car.name,
+          SYSTEM_MESSAGE.OUTPUT_CAR_MARK.repeat(car.position),
+        );
+      });
+
       this.#outputView.printNewLine();
-    }
+    });
   }
 
   #processWinner(cars) {
-    const maxPosition = cars.getMaxPosition();
-    const carList = cars.getCars();
-
-    this.#outputView.printWinners(
-      new Winner().getWinners(carList, maxPosition)
+    const winners = cars.getWinners();
+    this.#outputView.printResult(
+      SYSTEM_MESSAGE.OUTPUT_WINNER,
+      winners.join(SYSTEM_MESSAGE.OUTPUT_WINNER_SEPERATOR),
     );
   }
 }
