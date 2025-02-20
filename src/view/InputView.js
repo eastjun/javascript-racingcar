@@ -1,22 +1,8 @@
-import { readLineAsync, retryUntilSuccess } from '../utils.js';
-import Validator from '../validator.js';
+import { readLineAsync } from '../utils.js';
 
 export default class InputView {
-  static async getNameList() {
-    return retryUntilSuccess(async () => {
-      const rawName = await readLineAsync(
-        '경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).\n',
-      );
-      Validator.validateCarName(rawName);
-      return rawName.split(',').map(name => name.trim());
-    });
-  }
-
-  static async getCount() {
-    return retryUntilSuccess(async () => {
-      const rawCount = await readLineAsync('시도할 횟수는 몇 회인가요?\n');
-      Validator.validateCount(rawCount);
-      return Number(rawCount);
-    });
+  static async getInput(message) {
+    const rawDate = await readLineAsync(message);
+    return rawDate;
   }
 }

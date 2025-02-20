@@ -1,37 +1,47 @@
-import CarModel from './model/CarModel.js';
+import Car from './domain/Car.js';
 import InputView from './view/InputView.js';
+import OutputView from './view/OutputView.js';
+import Race from './domain/Race.js';
+import Winner from './domain/Winner.js';
+import Validator from './validator.js';
 
-function printOneGame(nameList, cars) {
-  for (let i = 0; i < nameList.length; i++) {
-    const carOutput = '-'.repeat(cars[i].position);
-    console.log(`${nameList[i]} : ${carOutput}`);
-  }
-  console.log('');
-}
-
-// 입출력 예시
 export async function run() {
-  const nameList = await InputView.getNameList();
-  const count = await InputView.getCount();
+  let nameList;
+  let count;
 
-  const cars = nameList.map(name => new CarModel(name));
+  while (!nameList) {
+    try {
+      const rawNameList = await InputView.getInput(
+        '경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).\n',
+      );
+      Validator.validateCarName(rawNameList);
+      nameList = rawNameList.split(',').map(name => name.trim());
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
 
-  console.log('\n실행 결과');
-  Array.from({ length: count }, () => {
-    cars.forEach(car => car.go());
-    printOneGame(nameList, cars);
-  });
+  while (!count) {
+    try {
+      const rawCount = await InputView.getInput('시도할 횟수는 몇 회인가요?\n');
+      Validator.validateCount(rawCount);
+      count = Number(rawCount);
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
 
-  const winnerPosition = cars.reduce((maxPosition, car) => 
-    Math.max(car.position, maxPosition), 0);
+  const cars = nameList.map(name => new Car(name));
 
-  const winnerList = cars.filter(car => car.position === winnerPosition).map(car => car.name);
+  OutputView.printGameStart();
+  const race = new Race(cars);
+  const roundResultList = race.playAllRounds(count);
 
+  OutputView.printAllGame(roundResultList);
 
-  const winnerOutput = winnerList.join(', ');
+  const winnerOutput = Winner.findWinners(cars);
 
-  // FIX: 한 자동차가 0의 스코어일때 최종우승자가 뜨지 않는 오류
-  console.log(`최종 우승자: ${winnerOutput}`);
+  OutputView.printWinners(winnerOutput);
 }
 
 await run();
