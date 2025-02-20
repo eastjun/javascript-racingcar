@@ -1,33 +1,38 @@
+import { MIN_FORWARD_NUMBER } from '../src/constants/common.js';
 import Car from '../src/Models/Car.js';
 
-export function mockRandom(numbers) {
-  const mockRandomFunction = jest.spyOn(Math, 'random');
-
-  numbers.forEach((number) => {
-    const randomNumber = number / 10;
-
-    mockRandomFunction.mockReturnValueOnce(randomNumber);
-  });
-}
-
 describe('Car 객체를 테스트', () => {
-  test('객체가 잘 생성됐는지 확인한다.', () => {
-    // when
-    const car = new Car('재오', ['재오', '앵버']);
+  let car;
+  const CAR_NAMES = ['앵버', '재오', '상추'];
 
-    // then
-    expect(car.name).toBe('재오');
+  beforeEach(() => {
+    car = new Car(CAR_NAMES[0], CAR_NAMES);
   });
 
-  test('자동차 위치 history 저장 테스트', () => {
+  test('객체가 잘 생성됐는지 확인한다.', () => {
+    // then
+    expect(car.name).toBe(CAR_NAMES[0]);
+  });
+
+  test('자동차 현재 위치 저장 테스트', () => {
     // when
-    const car = new Car('재오', ['재오', '앵버']);
-    car.movePosition(true);
-    car.movePosition(false);
-    car.movePosition(true);
-    car.movePosition(false);
+    car.movePosition(MIN_FORWARD_NUMBER - 1);
+    car.movePosition(MIN_FORWARD_NUMBER);
+    car.movePosition(MIN_FORWARD_NUMBER - 1);
+    car.movePosition(MIN_FORWARD_NUMBER);
 
     // then
-    expect(car.getHistory()).toEqual([1, 1, 2, 2]);
+    expect(car.getPosition()).toEqual(2);
+  });
+
+  test('자동차 위치 히스토리 저장 테스트', () => {
+    // when
+    car.movePosition(MIN_FORWARD_NUMBER + 1);
+    car.movePosition(MIN_FORWARD_NUMBER + 4);
+    car.movePosition(MIN_FORWARD_NUMBER - 1);
+    car.movePosition(MIN_FORWARD_NUMBER - 2);
+
+    // then
+    expect(car.getHistory()).toEqual([1, 2, 2, 2]);
   });
 });

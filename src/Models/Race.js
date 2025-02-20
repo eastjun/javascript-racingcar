@@ -1,25 +1,26 @@
+import Validate from './Validate.js';
 import { MIN_FORWARD_NUMBER } from '../constants/common.js';
-import { getRandomNumber } from '../utils/randomNumber.js';
-import { checkIsInteger, checkTryCountRange } from '../validates/tryCountValidates.js';
+import { getRandomNumberInRange } from '../utils/randomNumber.js';
 
 class Race {
   constructor(cars, tryCount) {
     const tryCountNumber = Number(tryCount);
-    checkIsInteger(tryCountNumber);
-    checkTryCountRange(tryCountNumber);
+    Validate.checkIsInteger(tryCountNumber);
+    Validate.checkTryCountRange(tryCountNumber);
     this.tryCount = tryCountNumber;
+
     this.cars = cars;
   }
 
-  canMove() {
-    const randomNumber = getRandomNumber();
+  canMove(randomNumber) {
     return randomNumber >= MIN_FORWARD_NUMBER;
   }
 
-  movePosition() {
+  moveForward() {
     for (let i = 0; i < this.tryCount; i++) {
       this.cars.forEach((car) => {
-        car.movePosition(this.canMove());
+        const randomNumber = getRandomNumberInRange(0, 9);
+        car.movePosition(randomNumber);
       });
     }
   }
