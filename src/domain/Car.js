@@ -1,4 +1,4 @@
-import OutputView from "../views/OutputView.js";
+import validateCarName from '../validation/validate/validateCarName.js';
 
 class Car {
   #name;
@@ -7,6 +7,11 @@ class Car {
   constructor(name) {
     this.#name = name;
     this.#position = 0;
+    this.#validate();
+  }
+
+  #validate() {
+    validateCarName(this.#name);
   }
 
   move() {
