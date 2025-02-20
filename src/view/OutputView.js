@@ -8,9 +8,9 @@ function printResultMessage() {
     console.log(OUTPUT_MESSAGE.RACING_RESULT_TITLE);
 }
 
-function printOneRoundResult(cars) {
-    cars.forEach(car => {
-        console.log(`${car.name} : ${'-'.repeat(car.position)}`);
+function printOneRoundResult(result) {
+    cars.forEach(({ name, position }) => {
+        console.log(`${name} : ${'-'.repeat(position)}`);
     });
     console.log();
 }

@@ -72,12 +72,15 @@ class App {
 
     for (let i = 0; i < attempts; i++) {
       raceResult = RacingCar.oneRound(raceResult);
-      OutputView.printOneRoundResult(raceResult);
+      const results = raceResult.map(car => ({
+        name: car.name,
+        position: car.position
+      }));
+      OutputView.printOneRoundResult(results);
     }
 
     return raceResult;
   }
-
 }
 
 export default App;
