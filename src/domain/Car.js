@@ -1,5 +1,4 @@
-const MOVE_CONDITION = 4
-const MOVE_FORWARD = 1;
+import { MOVE_CONDITION, MOVE_FORWARD } from "./constants.js";
 class Car {
     name
     position
@@ -9,10 +8,11 @@ class Car {
     }
 
     move(randomNumber) {
-        if(randomNumber >= MOVE_CONDITION) {
+        if (randomNumber >= MOVE_CONDITION) {
             this.position += MOVE_FORWARD;
         }
     }
 
 }
+
 export default Car;
