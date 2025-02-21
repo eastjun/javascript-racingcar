@@ -6,11 +6,8 @@ import { checkCarName } from './validation/carValidates.js';
 import { checkTryCount } from './validation/tryCountValidates.js';
 class App {
   async run() {
-    const carNamesInput = await InputView.inputCarName();
-    const carNames = checkCarName(carNamesInput);
-
-    const tryCountInput = await InputView.inputTryCount();
-    const tryCount = checkTryCount(tryCountInput);
+    const carNames = await this.getNameInput();
+    const tryCount = await this.getTryCountInput();
 
     const cars = carNames.map((car) => {
       return new Car(car);
@@ -22,6 +19,16 @@ class App {
 
     const winners = race.getWinner();
     OutputView.printWinner(winners);
+  }
+
+  async getNameInput() {
+    const carNamesInput = await InputView.inputCarName();
+    return checkCarName(carNamesInput);
+  }
+
+  async getTryCountInput() {
+    const tryCountInput = await InputView.inputTryCount();
+    return checkTryCount(tryCountInput);
   }
 }
 
