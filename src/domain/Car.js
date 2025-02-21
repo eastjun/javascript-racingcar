@@ -4,8 +4,8 @@ class Car {
     this.position = 0;
   }
 
-  move(isMove) {
-    this.position += Number(isMove);
+  move() {
+    this.position += 1;
   }
 }
 
