@@ -15,7 +15,7 @@ describe('Race 객체 테스트', () => {
 
     race.tryMove();
 
-    expect(race.carPositionHistory.getHistory('상추').length).toBe(3);
+    expect(race.getHistory('상추').length).toBe(3);
   });
 
   test('가장 멀리 떨어진 위치에 있는 자동차가 우승자다.', () => {

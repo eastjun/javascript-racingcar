@@ -13,11 +13,11 @@ class OutputView {
     console.log(`최종 우승자: ${winners.join(', ')}`);
   }
 
-  static printRaceResult(cars, tryCount, carPositionHistory) {
+  static printRaceResult(cars, tryCount, race) {
     OutputView.printMessage('\n실행 결과');
     for (let i = 0; i < tryCount; i++) {
       cars.forEach((car) => {
-        OutputView.printEachResult(car.name, carPositionHistory.getHistory(car.name)[i]);
+        OutputView.printEachResult(car.name, race.getHistory(car.name)[i]);
       });
       OutputView.printMessage('');
     }

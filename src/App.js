@@ -18,7 +18,7 @@ class App {
 
     const race = new Race(cars, tryCount);
     race.tryMove();
-    OutputView.printRaceResult(cars, tryCount, race.carPositionHistory);
+    OutputView.printRaceResult(cars, tryCount, race);
 
     const winners = race.getWinner();
     OutputView.printWinner(winners);
