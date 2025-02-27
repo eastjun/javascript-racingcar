@@ -1,5 +1,5 @@
-import InputView from './ui/InputView.js';
-import OutputView from './ui/OutputView.js';
+import InputView from './view/InputView.js';
+import OutputView from './view/OutputView.js';
 import Validate from './utils/Validate.js';
 import RacingcarManager from './domain/RacingcarManager.js'
 
